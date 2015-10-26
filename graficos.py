@@ -1,24 +1,18 @@
-def graficarTimeline (data):
+def makeTimeline (touchs, sounds):
 
     import matplotlib.pyplot as plt
     import numpy as np
     import datetime
-    
-    sessions = data['sessions']
-    levels = data['levels']
-    trials = data['trials']
-    touchs = data['touchs']
-    sounds = data['sounds']
-    usuarios = data['usuarios']
-    
+    from Scripts import fechaLocal
+
     juntar = False # Si es true, junta todos los levels de una misma sesion, sino separa por level
 
-    for index, usuario in usuarios.iterrows():
+    for usuario in touchs['Alias'].unique():
         # Genera el plot
-        fig = plt.figure(figsize=(20,5))
+        fig = plt.figure(figsize=(30,5))
 
         ax = fig.add_subplot(111)
-        ax.set_title('Informacion de eventos para el usuario {}'.format(usuario['Alias']), fontsize=10, fontweight='bold')
+        ax.set_title('Informacion de eventos para el usuario {}'.format(usuario), fontsize=10, fontweight='bold')
         ax.set_xlabel('Tiempo')
         ax.set_ylabel('')
         ax.get_yaxis().set_ticks([])
@@ -26,80 +20,98 @@ def graficarTimeline (data):
 
 
 
-        # Procesa la info de las sesiones
-        sesionesUsuario = sessions[sessions['userID']==usuario['usuarios']]
-        fechas = sesionesUsuario['sessionDate']
+        # Procesa la info para graficar las sesiones del usuario
+        fechas = touchs[touchs['Alias']==usuario]['sessionInstance']
+        fechasFormateadas = [fechaLocal(fecha) for fecha in fechas]
         altura = np.ones(fechas.size)*10
-        ax.plot(fechas,altura,'ro')
+        ax.plot(fechasFormateadas,altura,'ro')
+
+        touchsUsuario = touchs[touchs['Alias'] == usuario]
+        soundsUsuario = sounds[sounds['Alias'] == usuario]
 
         # ahora para este usuario va a hacer un grafico por sesion
-        for index, session in sesionesUsuario.iterrows():
+        for session in touchsUsuario['sessionInstance'].unique():
 
-            #Carga los levels de la sesion
-            levelsSesion = levels[levels['sessionId']==session['id']]
+            #Carga los touchs de cada session
+            touchsSession = touchsUsuario[touchsUsuario['sessionInstance']==session]
+            soundsSession = soundsUsuario[soundsUsuario['sessionInstance']==session]
 
             if juntar: #Crea un grafico nuevo si esta configurado asi
-                if levelsSesion.size > 0:
+                if touchsSession.size > 0:
                     # Genera el plot si se va a usar
-                    fig = plt.figure(figsize=(20,5))
+                    fig = plt.figure(figsize=(30,5))
                     ax = fig.add_subplot(111)
-                    ax.set_title('Informacion de eventos para el usuario '+str(usuario['Alias'])+' sesion del '+str(session['sessionDate']), fontsize=14, fontweight='bold')
+                    ax.set_title('Informacion de eventos para el usuario '+str(usuario)+' sesion del '+str(fechaLocal(touchSession)), fontsize=14, fontweight='bold')
                     ax.set_xlabel('Tiempo')
                     ax.set_ylabel('')
                     ax.get_yaxis().set_ticks([])
                     ax.set_ylim([0,11])
-
+         
             # Procesa la info de los levels
-            for index, level in levelsSesion.iterrows():
+            for level in touchsSession['levelInstance'].unique():
+
+                touchsLevel = touchsSession[touchsSession['levelInstance']==level]
+                soundsLevel = soundsSession[soundsSession['levelInstance']==level]
+                levelInfo = touchsLevel.iloc[0]
 
                 if not juntar: #Crea un grafico nuevo si esta configurado asi
                     # Genera el plot si se va a usar
-                    fig = plt.figure(figsize=(20,5))
+                    fig = plt.figure(figsize=(30,5))
                     ax = fig.add_subplot(111)
-                    ax.set_title('Informacion de eventos para el usuario '+str(usuario['Alias'])+' sesion del '+str(session['sessionDate']), fontsize=14, fontweight='bold')
+                    ax.set_title('Informacion de eventos para el usuario '+str(usuario)+', sesion del '+str(fechaLocal(session))+', nivel: '+str(levelInfo['levelId']), fontsize=14, fontweight='bold')
                     ax.set_xlabel('Tiempo')
                     ax.set_ylabel('')
                     ax.get_yaxis().set_ticks([])
                     ax.set_ylim([0,11])
 
                 # Configura el color segun este completado o no el nivel
-                if level['levelCompleted'] == True:
+                if levelInfo['levelCompleted'] == True:
                     color = 'blue'
                 else:
                     color = 'red'
+
                 # Grafica el segmento principal
-                x = [datetime.datetime.fromtimestamp (level['timeStarts']/1000),datetime.datetime.fromtimestamp (level['timeExit']/1000)]
+                x = [fechaLocal(levelInfo['timeLevelStarts']),fechaLocal(levelInfo['timeLevelExit'])]
                 y = [9,9]
                 ax.plot(x,y,color=color)
                 # Grafica dos bordes para remarcar los inicios y los finales
-                ax.plot([datetime.datetime.fromtimestamp(level['timeStarts']/1000-0.01),datetime.datetime.fromtimestamp(level['timeStarts']/1000+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
-                ax.plot([datetime.datetime.fromtimestamp(level['timeExit']/1000-0.01),datetime.datetime.fromtimestamp(level['timeExit']/1000+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+                ax.plot([fechaLocal(levelInfo['timeLevelStarts']-0.01),fechaLocal(levelInfo['timeLevelStarts']+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+                ax.plot([fechaLocal(levelInfo['timeLevelExit']-0.01),fechaLocal(levelInfo['timeLevelExit']+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+
                 # Agrega el id del nivel
-                xCenter = datetime.datetime.fromtimestamp ((level['timeStarts']/1000+level['timeExit']/1000)/2)
-                ax.text(xCenter, 8.5, level['levelId'])
+                xCenter = fechaLocal((levelInfo['timeLevelStarts']+levelInfo['timeLevelExit'])/2)
+                ax.text(xCenter, 8.5, levelInfo['levelInstance'])
+
 
                 # Procesa la info de los trials del level en cuestion
-                trialsSesion = trials[trials['levelInstance']==level['levelInstance']]
-                for index, trial in trialsSesion.iterrows():
+                for trial in touchsLevel['trialInstance'].unique():
+
+                    touchsTrial = touchsLevel[touchsLevel['trialInstance']==trial]
+                    soundsTrial = soundsLevel[soundsLevel['trialInstance']==trial]
+
+                    trialInfo = touchsTrial.iloc[0]
+
                     # Configura el color segun el tipo de trial
-                    if trial['tipoDeTrial'] == 'ENTRENAMIENTO':
+                    if trialInfo['tipoDeTrial'] == 'ENTRENAMIENTO':
                         color = 'yellow'
                     else:
                         color = 'cyan'
+
                     # Grafica el segmento principal
-                    x = [datetime.datetime.fromtimestamp (trial['timeTrialStart']/1000),datetime.datetime.fromtimestamp (trial['timeExitTrial']/1000)]
+                    x = [fechaLocal(trialInfo['timeTrialStart']),fechaLocal(trialInfo['timeTrialExit'])]
                     y = [7,7]
                     ax.plot(x,y,color=color)
                     # Grafica dos bordes para remarcar los inicios y los finales
-                    ax.plot([datetime.datetime.fromtimestamp(trial['timeTrialStart']/1000-0.01),datetime.datetime.fromtimestamp(trial['timeTrialStart']/1000+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
-                    ax.plot([datetime.datetime.fromtimestamp(trial['timeExitTrial']/1000-0.01),datetime.datetime.fromtimestamp(trial['timeExitTrial']/1000+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+                    ax.plot([fechaLocal(trialInfo['timeTrialStart']-0.01),fechaLocal(trialInfo['timeTrialStart']+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+                    ax.plot([fechaLocal(trialInfo['timeTrialExit']-0.01),fechaLocal(trialInfo['timeTrialExit']+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
                     # Agrega el id del trial
-                    xCenter = datetime.datetime.fromtimestamp ((trial['timeTrialStart']/1000+trial['timeExitTrial']/1000)/2)
-                    ax.text(xCenter, 6.5, trial['trialId'])
+                    xCenter = fechaLocal ((trialInfo['timeTrialStart']+trialInfo['timeTrialExit'])/2)
+                    ax.text(xCenter, 6.5, trialInfo['trialId'])
 
-                    # Procesa los toques en cada trial
-                    touchsTrial = touchs[touchs['trialInstance']==trial['trialInstance']]
-                    for index, touch in touchsTrial.iterrows():
+                    # Procesa la info de los touchs del trial en cuestion 
+                    for touchInstance in touchsTrial['touchInstance'].unique():
+                        touch = touchsTrial[touchsTrial['touchInstance']==touchInstance]
+                        touch = touch.iloc[0]
 
                         # Configura el color segun sea un acierto o no
                         if touch['isTrue'] == True: # Ojo que aca un Nan es un false!
@@ -109,20 +121,23 @@ def graficarTimeline (data):
 
                         y = [3,3]
                         # Grafica el segmento cuasivertical
-                        ax.plot([datetime.datetime.fromtimestamp(touch['touchInstance']/1000-0.01),datetime.datetime.fromtimestamp(touch['touchInstance']/1000+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+                        ax.plot([fechaLocal(touch['touchInstance']-0.01),fechaLocal(touch['touchInstance']+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
                         # Agrega el id del elemento tocado
-                        xCenter = datetime.datetime.fromtimestamp (touch['touchInstance']/1000+0.3)
+                        xCenter = fechaLocal(touch['touchInstance']+0.3)
                         ax.text(xCenter, 2.5, touch['idResourceTouched']['id'])
 
+
                     # Procesa los sounds en cada trial
-                    soundsTrial = sounds[sounds['trialInstance']==trial['trialInstance']]
-                    for index, sound in soundsTrial.iterrows():
+                    for soundInstance in soundsTrial['soundInstance'].unique():
+
+                        sound = soundsTrial[soundsTrial['soundInstance']==soundInstance]
+                        sound = sound.iloc[0]
 
                         # Configura el color
                         color = 'gray'
                         y = [5,5]
                         # Grafica el segmento cuasivertical
-                        ax.plot([datetime.datetime.fromtimestamp(sound['soundInstance']/1000-0.01),datetime.datetime.fromtimestamp(sound['soundInstance']/1000+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
+                        ax.plot([fechaLocal(soundInstance-0.01),fechaLocal(soundInstance+0.01)],[y[0]+0.5,y[0]-0.5],color=color)
                         # Agrega el id del elemento tocado
-                        xCenter = datetime.datetime.fromtimestamp (sound['soundInstance']/1000+0.3)
-                        ax.text(xCenter, 4.5, sound['soundId']['id'])
+                        xCenter = fechaLocal(soundInstance+0.3)
+                        ax.text(xCenter, 4.5, sound['soundSourceId']['id'])
