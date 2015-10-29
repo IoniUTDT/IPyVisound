@@ -1,5 +1,12 @@
 def distribucionDeProbabilidadRandom (histograma):
     
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+        
+    
     import math
     
     distribuciones = [0] * len(histograma)
@@ -35,89 +42,28 @@ def distribucionDeProbabilidadRandom (histograma):
     return combinado
 
 
-
-def analizarSesion (sesion, data):
-    
-    import matplotlib.pyplot as plt
-    
-    #Carga los datos
-    levels=data['levels']
-    trials=data['trials']
-    touchs=data['touchs']
-    usuarios=data['usuarios']
-    
-    print ('Se analizara la sesion del '+ str(fechaLocal(sesion['id'])))
-    levelsSesion = levels[levels['sessionId']==sesion['id']]
-
-    print ('Numero de niveles jugados en esta sesion: '+str(len(levelsSesion.index)))
-    print ('')
-    
-    for index, level in levelsSesion.iterrows():
-        print ('Detalles del nivel: '+str(level['levelId']))
-        print ('Titulo del nivel: ' + level['levelTitle'])
-        print ('Horario de juego: ' + str(fechaLocal(level['levelInstance'])))
-        print ('Duracion del nivel: ' + str((level['timeExit']-level['timeStarts'])/1000 * 1/60)[:-12] + ' minutos')
-        
-        if not level['levelCompleted']:
-            print ('Nivel incompleto')
-        
-        print ('')
-        print ('Detalle de los trials del nivel '+str(level['levelId'])+':')
-        trialsLevel = trials[trials['levelInstance']==level['levelInstance']]
-        trialsLevelTest = trialsLevel[trialsLevel['tipoDeTrial']=='TEST']
-        histograma = makeHistogramaTrials(trialsLevelTest)
-        # print ('Histograma de numero de opciones a responder para el nivel: ' + str(histograma))
-        distribucion = distribucionDeProbabilidadRandom(histograma)
-        # Hacemos un plot con los datos y el resultado
-        fig = plt.figure(figsize=(10,3))
-        ax = fig.add_subplot(111)
-        usuario = usuarios[usuarios['usuarios']==level['idUser']]
-        display(usuario.loc[0,'Alias'])
-        title = 'Distribucion de probabilidad y numero de respuestas correctas \n' + 'Usuario: '+str(usuario) + ' nivel: ' + str(level['levelId'])
-        ax.set_title(title, fontsize=10, fontweight='bold')
-        ax.set_xlabel('Numero de respuestas correctas')
-        ax.set_ylabel('Probabilidad')
-        x = range(len(distribucion))
-        y = distribucion
-        ax.plot(x,y)
-        # Ahora agregamos la marca del numero obtenido, para eso primero hay que calcularlo
-        touchsLevel = touchs[touchs['levelInstance']==level['levelInstance']]
-        aciertos = 0
-        for index, touch in touchsLevel.iterrows():
-            if touch['tipoDeTrial'] == 'TEST':
-                if touch['isTrue'] == True:
-                    aciertos = aciertos + 1
-        x=[aciertos-0.001,aciertos+0.001]        
-        y=[0,ax.get_ylim()[1]/2]
-        color = 'green'
-        ax.plot(x,y,color)
-        print ('')
-        print ('')
-
-def analizarUsuario (usuario, data):
-    #Carga los datos necesarios
-    sessions = data['sessions']
-    
-    print ('Se analizara las estadisticas del usuario '+ str(usuario['Alias'])+':')
-    sesionesUsuario = sessions[sessions['userID']==usuario['usuarios']]
-    
-    print ('Cantidad de veces que se logueo el usuario: '+str(len(sesionesUsuario.index)))
-    print ('Fechas:')
-    
-    for fecha in sesionesUsuario['id']:
-        print (str(fechaLocal(fecha)))
-    
-    print ('')
-    
-    for index, session in sesionesUsuario.iterrows():
-        analizarSesion(session,data)
-
 def fechaLocal (millisec):
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+    
+    
     import datetime
     
     return datetime.datetime.fromtimestamp(millisec/1000)
 
-def makeHistogramaTrials (trials):
+
+def makeHistogramaTrials (touchs):
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+    
+    
+    import pandas as pd
     
     #
     # Esta rutina encuentra un histograma de frecuencia de cantidad de opciones para elegir respuesta.
@@ -126,11 +72,33 @@ def makeHistogramaTrials (trials):
     # Esto no tiene mucho sentido conceptual aca pero si despues para las cuentas
     #
     
+    # Filtramos un solo touch por cada trial (en teoria como son trials de tipo TEST hay uno solo pero podria ser que en el futuro no)
+    trialInstances = touchs['trialInstance'].unique()
+    infoTrials = pd.concat(pd.DataFrame(touchs[touchs['trialInstance']==trialInstance].iloc[0]).transpose() for trialInstance in trialInstances)
+        
+    # Extraemos la info del json del trial
+    temp = pd.DataFrame(columns=['elementosId'])
+    for (i,r) in infoTrials.iterrows():
+        e = r['jsonTrial']
+        temp.loc[i] = [e['elementosId']]
+    infoTrials = pd.concat([infoTrials, temp], axis=1)
+    
     histograma = []
-    for index, trial in trials.iterrows():
-        # REVISAR esto sirve para la version vieja de datos, en el futuro hay que cambiarlo para que busque en el json bien donde corresponde
-        if len(trial['resourcesIdSort']) > len (histograma): 
+    for index, trial in infoTrials.iterrows():
+        if len(trial['elementosId']) > len (histograma): 
             ext = [0] * (len(trial['resourcesIdSort'])-len (histograma))
             histograma.extend(ext)
         histograma[len(trial['resourcesIdSort'])-1] = histograma[len(trial['resourcesIdSort'])-1] + 1
+    
     return histograma
+
+def findTrueFirstTouch (touchs):
+    # Esta funcion asume que solo tiene sentido contar un touch como true si hay un solo touch por trial!
+    aciertos = 0;
+    trialInstances = touchs['trialInstance'].unique()
+    for trialInstance in trialInstances:
+        if len(touchs[touchs['trialInstance']==trialInstance].index) == 1:
+            touchsAEvaluar = touchs[touchs['trialInstance']==trialInstance].iloc[0]
+            if touchsAEvaluar['isTrue']==True:
+                aciertos = aciertos + 1
+    return aciertos

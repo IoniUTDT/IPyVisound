@@ -12,6 +12,8 @@ def DownloadFile ():
     st = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
     filenameBackup = './backups/' + filename[:-5] + ' backup ' + st + '.json'
     
+    print ('Starting download, please wait')
+    
     # Bajamos el archivo 
     urllib.request.urlretrieve(url, filenameTemp)
 
@@ -21,3 +23,5 @@ def DownloadFile ():
         if os.path.isfile(filename):
             os.rename(filename,filenameBackup)
         os.rename(filenameTemp,filename)
+
+    print ('Donload finish')

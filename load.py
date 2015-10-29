@@ -1,4 +1,10 @@
-def load ():
+def load (codeVersion):
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+    
     
     import json
     import pandas as pd
@@ -49,4 +55,10 @@ def load ():
     sounds = pd.merge(sounds, levels, on='levelInstance')
     sounds = pd.merge(sounds, sessions, on='sessionInstance')
     
+    #Filtramos ahora por version del codigo:
+    if codeVersion != 0:
+        touchs = touchs[touchs['codeVersion']==codeVersion]
+        sounds = sounds[sounds['codeVersion']==codeVersion]
+        
+    print ('recursos cargados del archivo')
     return touchs, sounds

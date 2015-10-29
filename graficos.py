@@ -1,5 +1,10 @@
 def makeTimeline (touchs, sounds):
 
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+    
     import matplotlib.pyplot as plt
     import numpy as np
     import datetime
