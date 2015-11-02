@@ -30,8 +30,8 @@ def load (codeVersion):
     name_map = {user_id: 'Usr'+str(alias) for alias, user_id in enumerate(sessions['userID'].unique())}
     sessions['Alias'] = sessions['userID'].map(name_map)
 
-    levels.drop(['class','exitTrialId','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials'],inplace=True, axis=1)
-    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog'],inplace=True, axis=1)
+    levels.drop(['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition'],inplace=True, axis=1)
+    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel'],inplace=True, axis=1)
     touchs.drop(['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound'],inplace=True, axis=1)
     # Para el sonidos solo extraigo lo que necesito
     sounds = sounds[['trialInstance','soundId','soundInstance']]
