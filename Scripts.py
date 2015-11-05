@@ -102,3 +102,10 @@ def findTrueFirstTouch (touchs):
             if touchsAEvaluar['isTrue']==True:
                 aciertos = aciertos + 1
     return aciertos
+
+def significativos(distribucion):
+    acumulado=0
+    for i in range(len(distribucion)):
+        acumulado = acumulado + distribucion[i]
+        if acumulado > 0.95:
+            return i
