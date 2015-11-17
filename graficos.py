@@ -97,7 +97,7 @@ def makeTimeline (touchs, sounds):
                     trialInfo = touchsTrial.iloc[0]
 
                     # Configura el color segun el tipo de trial
-                    if trialInfo['tipoDeTrial'] == 'ENTRENAMIENTO':
+                    if trialInfo['tipoDeTrial'] == 'TUTORIAL':
                         color = 'yellow'
                     else:
                         color = 'cyan'
@@ -123,6 +123,7 @@ def makeTimeline (touchs, sounds):
                             color = 'green'
                         else:
                             color = 'red'
+                            
 
                         y = [3,3]
                         # Grafica el segmento cuasivertical

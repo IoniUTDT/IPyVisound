@@ -1,4 +1,4 @@
-def load (codeVersion):
+def load (settings):
     
     import sys
     if not sys.version_info[:2] == (3, 4):
@@ -31,7 +31,7 @@ def load (codeVersion):
     sessions['Alias'] = sessions['userID'].map(name_map)
 
     levels.drop(['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition'],inplace=True, axis=1)
-    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel'],inplace=True, axis=1)
+    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion','userName'],inplace=True, axis=1)
     touchs.drop(['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound'],inplace=True, axis=1)
     # Para el sonidos solo extraigo lo que necesito
     sounds = sounds[['trialInstance','soundId','soundInstance']]
@@ -56,9 +56,17 @@ def load (codeVersion):
     sounds = pd.merge(sounds, sessions, on='sessionInstance')
     
     #Filtramos ahora por version del codigo:
-    if codeVersion != 0:
-        touchs = touchs[touchs['codeVersion']==codeVersion]
-        sounds = sounds[sounds['codeVersion']==codeVersion]
+    if settings['FilterCodeVersion'] != 0:
+        touchs = touchs[touchs['codeVersion']==settings['FilterCodeVersion']]
+        sounds = sounds[sounds['codeVersion']==settings['FilterCodeVersion']]
+    
+    if settings['FilterLevelVersion'] != 0:
+        touchs = touchs[touchs['levelVersion']==settings['FilterLevelVersion']]
+        sounds = sounds[sounds['levelVersion']==settings['FilterLevelVersion']]
+    
+    if settings['FilterResourcesVersion'] != 0:
+        touchs = touchs[touchs['resourcesVersion']==settings['FilterResourcesVersion']]
+        sounds = sounds[sounds['resourcesVersion']==settings['FilterResourcesVersion']]
         
     print ('recursos cargados del archivo')
     return touchs, sounds

@@ -109,3 +109,50 @@ def significativos(distribucion):
         acumulado = acumulado + distribucion[i]
         if acumulado > 0.95:
             return i
+        
+        
+        
+def resumen (reporteSignificancia):
+    
+    import pandas as pd
+    
+    reportePandas = pd.DataFrame(reporteSignificancia)
+    reportePandas['Tag'] = "L:" + reportePandas['Level'].apply(str) +' \n D: '  + reportePandas['FiltroDificultad'].apply(str)
+
+    
+    # Reporte simplificado
+    fig = plt.figure(figsize=(30,3))
+    ax = fig.add_subplot(111)
+    title = 'Resultados obtenidos y aciertos significativos vs nivel y dificultad'
+    ax.set_title(title, fontsize=10, fontweight='bold')
+    ax.set_xlabel('Numero de respuestas correctas')
+    ax.set_ylabel('Nivel+Dificultad')
+    ax.set_ylim([0,40]) # Aca hay que cambiarlo si se hacen levels de mas de 40 trials
+
+    i=0
+    tags = []
+    for tag in reportePandas['Tag'].unique():
+        reportes = reportePandas[reportePandas['Tag']==tag]
+        # Filtramos solo donde hay mas de 10 preguntas.
+        if len(reportes.iloc[0]['DistribucionRandom']) > 10:
+            i = i + 1
+            x=[i-0.25,i+0.25]        
+            # Agregamos el label
+            tags.append(tag)
+            # Dibujamos todos los intentos
+            for valor in reportes['RtasCorrectas'].tolist():
+                if valor > reportes.iloc[0]['Significativo']:
+                    color = 'green'
+                else:
+                    color = 'red'
+                y=[valor,valor]
+                ax.plot(x,y,color)
+            # Dibujamos la significancia  
+            x=[i-0.1,i+0.1]
+            y=[reportes.iloc[0]['Significativo'],reportes.iloc[0]['Significativo']]
+            color = 'yellow'
+            ax.plot(x,y,color)
+    # Agregamos el label
+    plt.xticks(range(1,i+1), tags)
+            
+    plt.show()
