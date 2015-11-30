@@ -156,3 +156,203 @@ def resumen (reporteSignificancia):
     plt.xticks(range(1,i+1), tags)
             
     plt.show()
+    
+    
+def joinDB(touchs, sounds, tag, identificador):
+    
+    import os
+    import pandas as pd
+    from IPython.display import display
+
+    # Creamos una base de datos vacia
+    touchsToJoin = touchs.copy()
+    soundsToJoin = sounds.copy()
+    
+    # Cargamos los datos ya guardados
+    display ('Verificando datos guardados previamente')
+    filenameTouchs = 'dbTouchs'
+    filenameSounds = 'dbSounds'
+    
+    if os.path.isfile(filenameTouchs):
+        touchsLoad = pd.read_pickle(filenameTouchs)
+        display ('Datos de touchs previos cargados')
+    else:
+        display ('Datos de touchs previos inexistentes')
+        touchsLoad = pd.DataFrame()
+
+    if os.path.isfile(filenameSounds):
+        soundsLoad = pd.read_pickle(filenameSounds)
+        display ('Datos de sounds previos cargados')
+    else:
+        display ('Datos de sounds previos inexistentes')
+        soundsLoad = pd.DataFrame()
+
+        
+    # Limpiamos de los touchs a almacenar los que ya estan almacenados
+    if touchsLoad.index.size>0:
+        for (i,r) in touchsLoad.iterrows():
+            touchsToJoin.drop(touchsToJoin.index[touchsToJoin['touchInstance'] == r['touchInstance']], inplace=True)
+    touchsToJoin['TagJoin'] = tag
+    touchsToJoin['identificador'] = identificador
+            
+    # Limpiamos de los sounds a almacenar los que ya estan almacenados
+    if soundsLoad.index.size>0:
+        for (i,r) in soundsLoad.iterrows():
+            soundsToJoin.drop(soundsToJoin.index[soundsToJoin['soundInstance'] == r['soundInstance']], inplace=True)
+    soundsToJoin['TagJoin'] = tag
+    soundsToJoin['identificador'] = identificador
+    
+    soundsLoad = soundsLoad.append(soundsToJoin, ignore_index=True)
+    display ('Agregados '+str(soundsToJoin.index.size)+' entradas a los sounds')
+    soundsLoad.to_pickle(filenameSounds)
+    touchsLoad = touchsLoad.append(touchsToJoin, ignore_index=True)
+    display ('Agregados '+str(touchsToJoin.index.size)+' entradas a los touchs')
+    touchsLoad.to_pickle(filenameTouchs)
+      
+def loadFromDb(identificador):
+
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+        
+    import os
+    import pandas as pd
+    from IPython.display import display    
+    
+    display ('Verificando datos guardados previamente')
+    filenameTouchs = 'dbTouchs'
+    filenameSounds = 'dbSounds'
+    
+    if os.path.isfile(filenameTouchs):
+        touchsLoad = pd.read_pickle(filenameTouchs)
+        display ('Datos de touchs previos cargados')
+    else:
+        display ('Datos de touchs previos inexistentes')
+        touchsLoad = pd.DataFrame()
+
+    if os.path.isfile(filenameSounds):
+        soundsLoad = pd.read_pickle(filenameSounds)
+        display ('Datos de sounds previos cargados')
+    else:
+        display ('Datos de sounds previos inexistentes')
+        soundsLoad = pd.DataFrame()
+       
+    if identificador!=0:
+        touchsLoad = touchsLoad[touchsLoad['identificador']==identificador] 
+        soundsLoad = soundsLoad[soundsLoad['identificador']==identificador]
+        
+    return touchsLoad, soundsLoad
+
+def guardarComo (touchs, filename):
+    import pandas as pd
+    import os
+    from IPython.display import display
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+        
+    if os.path.isfile(filename):
+        display ('Ya existe una base de datos con ese nombre')
+    else:
+        display ('Archivo guardado')
+        touchs.to_pickle(filename)
+        
+def cargarTouchs (filename):
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+        
+    import pandas as pd
+    import os
+    from IPython.display import display
+    
+    if os.path.isfile(filename):
+        return pd.read_pickle (filename)
+    else:
+        display ('No existe una base de datos guardada con el nombre: '+filename)
+    
+    
+    
+def buscarUmbral (touchs):
+    
+    import pandas as pd    
+    from IPython.display import display
+    from Scripts import fechaLocal
+    
+    import numpy as np # importando numpy
+    from scipy import stats # importando scipy.stats
+
+    # Creamos un dataframe para guardar los datos
+    resumen = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion'])
+    
+    for usuario in touchs['Alias'].unique():
+        touchsUsuario = touchs[touchs['Alias']==usuario]
+        for session in touchsUsuario['sessionInstance'].unique():
+            touchsSession = touchsUsuario[touchsUsuario['sessionInstance']==session]
+
+            for level in touchsSession['levelInstance'].unique():
+
+                resumenToAppend = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion'])
+                
+                # Cargamos cosas en el resumen
+                resumenToAppend['Session'] = [fechaLocal(session)]
+                resumenToAppend['Usuario'] = [usuario]
+                resumenToAppend['Level'] = [fechaLocal(level)]
+                
+                
+                touchsLevel = touchsSession[touchsSession['levelInstance']==level]
+                
+                #filtramos la ultima mitad de los datos
+                touchsLevelEnd = touchsLevel.iloc[-int(touchsLevel.index.size/2):,:]
+            
+                # Miramos si tiene algun tipo de sentido (que este en el fondo de la cola). Para eso revisamos que no haya mas false que true (Xq una vez q se estabiliza tiene q haber dos true x cada false (el codigo disminuye la señal despues de dos aciertos))
+                # y ademas revisamos que no haya menos de 1/4 de falses xq eso indicaria que no esta rebotando
+                
+                levelInfo = touchsLevel.iloc[0]
+                contadorTouchsLevelTrue = touchsLevelEnd[touchsLevelEnd['isTrue']==True].index.size
+                contadorTouchsLevelFalse = touchsLevelEnd[touchsLevelEnd['isTrue']==False].index.size
+                                
+                if ((contadorTouchsLevelTrue < contadorTouchsLevelFalse) or (contadorTouchsLevelFalse*3<contadorTouchsLevelTrue)):
+                    resumenToAppend['CumpleCriterioCola'] = [False]
+                else:
+                    resumenToAppend['CumpleCriterioCola'] = [True]
+                        
+            
+                # Extraemos la info de del delta tita del estimulo de cada trial
+                columnName = 'DeltaTita'
+                if not columnName in touchsLevelEnd.columns:
+                    temp = pd.DataFrame(columns=[columnName])
+                    for (i,r) in touchsLevelEnd.iterrows():
+                        e = r['jsonMetaDataRta']
+                        temp.loc[i] = [e['infoConceptual']['deltaAngulo']]
+                    touchsLevelEnd = pd.concat([touchsLevelEnd, temp], axis=1)
+                else:
+                    display ('Warning: Se encontraron datos ya cargados para: '+columnName)
+                    
+                # Extraemos la info del angulo de referencia
+                columnName = 'AnguloDeReferencia'
+                if not columnName in touchsLevelEnd.columns:
+                    temp = pd.DataFrame(columns=[columnName])
+                    for (i,r) in touchsLevelEnd.iterrows():
+                        e = r['jsonMetaDataRta']
+                        temp.loc[i] = [e['infoConceptual']['direccionAnguloReferencia']]
+                    touchsLevelEnd = pd.concat([touchsLevelEnd, temp], axis=1)
+                else:
+                    display ('Warning: Se encontraron datos ya cargados para: '+columnName)
+                    
+                levelInfo = touchsLevelEnd.iloc[0]
+                datos = touchsLevelEnd['DeltaTita'].tolist()
+                
+                resumenToAppend['AnguloReferencia'] = [levelInfo['AnguloDeReferencia']]
+                resumenToAppend['MediaDeltaTita'] = [np.mean(datos)]
+                resumenToAppend['DesviacionDeltaTita'] = [np.std(datos)]
+                resumenToAppend['LevelVersion'] = [levelInfo['levelVersion']]
+                resumen = pd.concat([resumen, resumenToAppend], axis=0, ignore_index=True)
+    
+    return resumen
+                
