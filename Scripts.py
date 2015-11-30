@@ -288,7 +288,7 @@ def buscarUmbral (touchs):
     from scipy import stats # importando scipy.stats
 
     # Creamos un dataframe para guardar los datos
-    resumen = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion'])
+    resumen = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion','Identificador'])
     
     for usuario in touchs['Alias'].unique():
         touchsUsuario = touchs[touchs['Alias']==usuario]
@@ -297,13 +297,13 @@ def buscarUmbral (touchs):
 
             for level in touchsSession['levelInstance'].unique():
 
-                resumenToAppend = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion'])
+                resumenToAppend = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion','Identificador'])
                 
                 # Cargamos cosas en el resumen
                 resumenToAppend['Session'] = [fechaLocal(session)]
                 resumenToAppend['Usuario'] = [usuario]
                 resumenToAppend['Level'] = [fechaLocal(level)]
-                
+               
                 
                 touchsLevel = touchsSession[touchsSession['levelInstance']==level]
                 
@@ -352,6 +352,7 @@ def buscarUmbral (touchs):
                 resumenToAppend['MediaDeltaTita'] = [np.mean(datos)]
                 resumenToAppend['DesviacionDeltaTita'] = [np.std(datos)]
                 resumenToAppend['LevelVersion'] = [levelInfo['levelVersion']]
+                resumenToAppend['Identificador'] = [levelInfo['identificador']]
                 resumen = pd.concat([resumen, resumenToAppend], axis=0, ignore_index=True)
     
     return resumen
