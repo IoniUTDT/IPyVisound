@@ -260,6 +260,22 @@ def guardarComo (touchs, filename):
         display ('Archivo guardado')
         touchs.to_pickle(filename)
         
+def guardarComoSounds (sounds, filename):
+    import pandas as pd
+    import os
+    from IPython.display import display
+    
+    import sys
+    if not sys.version_info[:2] == (3, 4):
+        print ('Sos un boludo!, pero uno previsor')
+        print ('Este codigo esta pensado para correr en python 3.4')
+        
+    if os.path.isfile(filename):
+        display ('Ya existe una base de datos con ese nombre')
+    else:
+        display ('Archivo guardado')
+        sounds.to_pickle(filename)
+        
 def cargarTouchs (filename):
     
     import sys
@@ -352,8 +368,45 @@ def buscarUmbral (touchs):
                 resumenToAppend['MediaDeltaTita'] = [np.mean(datos)]
                 resumenToAppend['DesviacionDeltaTita'] = [np.std(datos)]
                 resumenToAppend['LevelVersion'] = [levelInfo['levelVersion']]
-                resumenToAppend['Identificador'] = [levelInfo['identificador']]
+                if 'appVersion' in touchsLevelEnd.columns:
+                    resumenToAppend['AppVersion'] = [levelInfo['appVersion']]
+                else:
+                    resumenToAppend['AppVersion'] = 'Sin Dato'
+                if 'identificador' in touchsLevelEnd.columns:
+                    resumenToAppend['Identificador'] = [levelInfo['identificador']]
+                else:
+                    resumenToAppend['Identificador'] = 'Dato no cargado'
                 resumen = pd.concat([resumen, resumenToAppend], axis=0, ignore_index=True)
     
     return resumen
+
+
+
+def plotResumen (resumen):
+    
+    import matplotlib.pyplot as plt
+    import numpy as np
+    
+    resumen['ReferenciaEnRadianes'] = resumen['AnguloReferencia']/180*np.pi
+    resumen['Color'] = ['g' if x else 'r' for x in resumen['CumpleCriterioCola'].tolist() ] 
+    resumen['Identificador'].fillna('SinDato',inplace=True)
+    
+    # Esto es solo temporal
+    resumen['Identificador'].replace(['Detalle90'], ['SinDato'],  inplace=True) 
+    #resumen[resumen['Identificador']=='Detalle90']['Identificador']='SinDato'
+    
+    plt.figure(num=None, figsize=(10, 10), dpi=180, facecolor='w', edgecolor='k')
+    ax = plt.subplot(111, projection='polar')
+    ax.set_title("Separacion angular minima (en º) que se puede detectar en funcion de la orientacion de las rectas \'pseudoparalelas\'. \n El tamaño del punto representa el error asociado, y el color si se considera que la medicion paso un test de confianza o no. \n Cada linea representa una secuencia separada de mediciones.", va='bottom')
+    
+    for identificador in resumen['Identificador'].unique():
+        resumenFiltrado = resumen[resumen['Identificador']==identificador]
+        
+        x = resumenFiltrado['ReferenciaEnRadianes'].tolist()
+        y = resumenFiltrado['MediaDeltaTita'].tolist()
+        color = resumenFiltrado['Color'].tolist()
+        size = resumenFiltrado['DesviacionDeltaTita']
+    
+        ax.plot(x, y)
+        ax.scatter(x, y, marker='o', c=color, s=1000*size, label='the data')
                 
