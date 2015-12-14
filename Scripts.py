@@ -1,8 +1,5 @@
 def distribucionDeProbabilidadRandom (histograma):
-    """ 
-    este es el help
-    alskdfgklajdfgha   
-    """
+
     
     import sys
     if not sys.version_info[:2] == (3, 4):
