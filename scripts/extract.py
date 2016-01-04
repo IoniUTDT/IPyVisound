@@ -1,12 +1,16 @@
-def DownloadFile ():
+def downloadFile ():
 
     """
         Esta funcion descarga la base de datos en formato json del servidor y hace una backup del archivo anterior.
     """
+
     import datetime
     import time
     import urllib
     import os
+
+    from scripts.general import chkVersion
+    chkVersion()
 
     url='http://turintur.dynu.com/db'
     filenameTemp = 'temp.json'
@@ -30,24 +34,21 @@ def DownloadFile ():
     print ('Donload finish')
 
 
-def join ():
+def join (filename='db.json'):
+
+    from scripts.general import chkVersion
+    chkVersion()
+
     """
     Este codigo sirve para ir acumulando los datos brutos tal cual salen de la base datos que se descarga, de forma de poder limpiar y reducir el tamaño del archivo online mas o menos seguid
     sin perder la coherencia de los datos. Esto es necesario porque el json-server no se banca bien manejar archivos muy grandes (empieza a tener delay) y el volumen de datos que se genera crece rapido.
 
-    NOTA: este script esta a maedio hacer y compatibilizar
     """
-    import sys
-    if not sys.version_info[:2] == (3, 4):
-        print ('Sos un boludo!, pero uno previsor')
-        print ('Este codigo esta pensado para correr en python 3.4')
-
+    from IPython.display import display
     import json
     import pandas as pd
     import numpy as np
     import os
-
-    filename = 'db.json'
 
     with open(filename) as data_file:
         db = json.load(data_file)
@@ -55,6 +56,8 @@ def join ():
     sessionsNuevos = pd.concat((pd.DataFrame(x) for x in db['SessionEnviables']), ignore_index=True)
     levelsNuevos = pd.concat((pd.DataFrame(x) for x in db['LevelEnviables']), ignore_index=True)
     trialsNuevos = pd.concat((pd.DataFrame(x) for x in db['TrialEnviables']), ignore_index=True)
+
+    display ('Datos del json cargados')
 
     if os.path.isfile('./Guardados/db.sessions'):
         sessions = pd.read_pickle ('./Guardados/db.sessions')
@@ -80,230 +83,84 @@ def join ():
         display ('Warning: no se encontro los trials buscados')
         trialsExists = False
 
-    contador = 0
-    if sessionsNuevos.index.size > 0:
-        if sessionsExists:
-            for index, row in sessionsNuevos.iterrows():
-                if not row['id'] in sessions['id'].tolist():
-                    sessions = pd.concat([sessions, sessionsNuevos.iloc[index]], axis=0, ignore_index=True)
-                    contador = contador + 1
-        else:
-            sessions = sessionsNuevos
-            display ('Se ha creado una nueva lista de sessiones')
+    if sessionsExists:
+        sessionsJoin = pd.concat([sessions, sessionsNuevos], axis=0, ignore_index=True)
+        sessionsJoin.drop_duplicates(cols='id', inplace=True)
+        display ('Se agregaron '+ str(sessionsJoin.index.size - sessions.index.size)+' registros al registro de sesiones.')
+    else:
+        sessionsJoin = sessionsNuevos
+        display ('Se creo un archivo nuevo con registro de sesiones')
+    sessionsJoin.to_pickle('./Guardados/db.sessions')
 
-    display ('Se agregaron '+str(contador)+' registros al registro de sesiones')
-    sessions.to_pickle('./Guardados/db.sessions')
 
-    contador = 0
-    if levelsNuevos.index.size > 0:
-        if levelsExists:
-            for index, row in levelsNuevos.iterrows():
-                if not row['levelInstance'] in levels['levelInstance'].tolist():
-                    levels = pd.concat([levels, levelsNuevos.iloc[index]], axis=0, ignore_index=True)
-                    contador = contador + 1
-        else:
-            levels = levelsNuevos
-            display ('Se ha creado una nueva lista de levels')
+    if levelsExists:
+        levelsJoin = pd.concat([levels, levelsNuevos], axis=0, ignore_index=True)
+        levelsJoin.drop_duplicates(cols='levelInstance', inplace=True)
+        display ('Se agregaron '+ str(levelsJoin.index.size - levels.index.size)+' registros al registro de levels.')
+    else:
+        levelsJoin = levelsNuevos
+        display ('Se creo un archivo nuevo con registro de levels')
+    levelsJoin.to_pickle('./Guardados/db.levels')
 
-    display ('Se agregaron '+str(contador)+' registros al registro de niveles')
-    levels.to_pickle('./Guardados/db.levels')
 
-    contador = 0
-    if trialsNuevos.index.size > 0:
-        if trialsExists:
-            for index, row in trialsNuevos.iterrows():
-                if not row['trialInstance'] in trials['trialInstance'].tolist():
-                    trials = pd.concat([trials, trialsNuevos.iloc[index]], axis=0, ignore_index=True)
-                    contador = contador + 1
-        else:
-            trials = trialsNuevos
-            display ('Se ha creado una nueva lista de trials')
-
-    display ('Se agregaron '+str(contador)+' registros al registro de trials')
-    trials.to_pickle('./Guardados/db.trials')
+    if trialsExists:
+        trialsJoin = pd.concat([trials, trialsNuevos], axis=0, ignore_index=True)
+        trialsJoin.drop_duplicates(cols='trialInstance', inplace=True)
+        display ('Se agregaron '+ str(trialsJoin.index.size - trials.index.size)+' registros al registro de trials.')
+    else:
+        trialsJoin = trialsNuevos
+        display ('Se creo un archivo nuevo con registro de trials')
+    trialsJoin.to_pickle('./Guardados/db.trials')
 
 
 
 
-
-def load (settings):
+def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersion=0, filtrarXUsuarioRegistrado=False, usuario=False):
 
     """
-        Esta funcion extrae de la base de datos json dos dataframes uno para touchs y uno para sounds. Para eso mergea los sub json que hay en la db.json del servidor unificando por instancias de level, sesion y trial.
-        Los formatos en que se guardan los json que vienen de la aplicacion resultaron ser muy poco practicos por esa razon es importante reordenarlos.
-        La funcion recibe como parametros un dict settings, que le indica que filtros utilizar para leer los datos y evitar problemas de compatibilidad entre experimentos, versiones de datos, etc.
-        La funcion devuelve dos dataframes uno de touchs y uno de sounds que son la base de la estructura de datos para procesamientos posteriores.
+    Esta funcion extrae de la base de datos ya separada en registros de sesion,
+    level y trials, y acumulada en archivos locales en formato json dos
+    dataframes uno para touchs y uno para sounds. Para eso mergea los sub json
+    que hay en la db.json del servidor unificando por instancias de level,
+    sesion y trial.
+    Los formatos en que se guardan los json que vienen de la aplicacion
+    resultaron ser muy poco practicos por esa razon es importante reordenarlos.
+    La funcion recibe como parametros un dict settings, que le indica que
+    filtros utilizar para leer los datos y evitar problemas de compatibilidad
+    entre experimentos, versiones de datos, etc.
+    La funcion devuelve dos dataframes uno de touchs y uno de sounds que son la
+    base de la estructura de datos para procesamientos posteriores.
     """
 
-
-    import sys
-    if not sys.version_info[:2] == (3, 4):
-        print ('Sos un boludo!, pero uno previsor')
-        print ('Este codigo esta pensado para correr en python 3.4')
-
-
-    import json
-    import pandas as pd
-    import numpy as np
-
-    filename = 'db.json'
-
-    with open(filename) as data_file:
-        db = json.load(data_file)
-
-    # Voy a armar dos tablas gigantes, una con toda la info de los touchs y otra con toda la info de los sounds
-
-    # Primero cargo la info de la estructura json (los otuchs y sounds vienen dentro de los trials)
-    sessions = pd.concat((pd.DataFrame(x) for x in db['SessionEnviables']), ignore_index=True)
-    levels = pd.concat((pd.DataFrame(x) for x in db['LevelEnviables']), ignore_index=True)
-    trials = pd.concat((pd.DataFrame(x) for x in db['TrialEnviables']), ignore_index=True)
-    touchs = pd.concat(pd.DataFrame(x) for x in list(trials['touchLog']) if x is not np.nan)
-    sounds = pd.concat(pd.DataFrame(x) for x in list(trials['soundLog']) if x is not np.nan)
-
-    # Borro info innecesaria para procesar los datos
-    sessions.drop(['class','idEnvio','status'],inplace=True, axis=1)
-    # agregamos un alias para que el nombre de usuario sea amigable
-    name_map = {user_id: 'Usr'+str(alias) for alias, user_id in enumerate(sessions['userID'].unique())}
-    sessions['Alias'] = sessions['userID'].map(name_map)
-
-    levels.drop(['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition'],inplace=True, axis=1)
-    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion'],inplace=True, axis=1)
-    touchs.drop(['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound'],inplace=True, axis=1)
-    # Para el sonidos solo extraigo lo que necesito
-    sounds = sounds[['trialInstance','soundId','soundInstance']]
-
-
-    # Renombre cosas para que sea mas facil de identificar despues
-    sessions.rename(columns={'id':'sessionInstance'}, inplace=True)
-    levels.rename(columns={'sessionId':'sessionInstance','timeExit':'timeLevelExit','timeStarts':'timeLevelStarts'}, inplace=True)
-    trials.rename(columns={'timeExitTrial':'timeTrialExit'}, inplace=True)
-    touchs.rename(columns={'categorias':'categoriasTouched'}, inplace=True)
-    sounds.rename(columns={'soundId':'soundSourceId'}, inplace=True)
-
-
-    # Con toda la info ya en tablas bien nombradas mergeo
-
-    touchs = pd.merge(touchs, trials, on='trialInstance')
-    touchs = pd.merge(touchs, levels, on='levelInstance')
-    touchs = pd.merge(touchs, sessions, on='sessionInstance')
-
-    sounds = pd.merge(sounds, trials, on='trialInstance')
-    sounds = pd.merge(sounds, levels, on='levelInstance')
-    sounds = pd.merge(sounds, sessions, on='sessionInstance')
-
-    #Filtramos ahora por version del codigo:
-    if settings['FilterCodeVersion'] != 0:
-        touchs = touchs[touchs['codeVersion']==settings['FilterCodeVersion']]
-        sounds = sounds[sounds['codeVersion']==settings['FilterCodeVersion']]
-
-    if settings['FilterLevelVersion'] != 0:
-        touchs = touchs[touchs['levelVersion']==settings['FilterLevelVersion']]
-        sounds = sounds[sounds['levelVersion']==settings['FilterLevelVersion']]
-
-    if settings['FilterResourcesVersion'] != 0:
-        touchs = touchs[touchs['resourcesVersion']==settings['FilterResourcesVersion']]
-        sounds = sounds[sounds['resourcesVersion']==settings['FilterResourcesVersion']]
-
-    print ('recursos cargados del archivo')
-    return touchs, sounds
-
-
-
-def loadUmbral (settings):
-
-    """
-        Revisar diferencia entre este y el load general. Revisar si no esta obsoleto esto.
-    """
-    import sys
-    if not sys.version_info[:2] == (3, 4):
-        print ('Sos un boludo!, pero uno previsor')
-        print ('Este codigo esta pensado para correr en python 3.4')
-
-
-    import json
-    import pandas as pd
-    import numpy as np
-
-    filename = 'db.json'
-
-    with open(filename) as data_file:
-        db = json.load(data_file)
-
-    # Voy a armar dos tablas gigantes, una con toda la info de los touchs y otra con toda la info de los sounds
-
-    # Primero cargo la info de la estructura json (los otuchs y sounds vienen dentro de los trials)
-    sessions = pd.concat((pd.DataFrame(x) for x in db['SessionEnviables']), ignore_index=True)
-    levels = pd.concat((pd.DataFrame(x) for x in db['LevelEnviables']), ignore_index=True)
-    trials = pd.concat((pd.DataFrame(x) for x in db['TrialEnviables']), ignore_index=True)
-    touchs = pd.concat(pd.DataFrame(x) for x in list(trials['touchLog']) if x is not np.nan)
-    sounds = pd.concat(pd.DataFrame(x) for x in list(trials['soundLog']) if x is not np.nan)
-
-    # Borro info innecesaria para procesar los datos
-    sessions.drop(['class','idEnvio','status'],inplace=True, axis=1)
-    # agregamos un alias para que el nombre de usuario sea amigable
-    name_map = {user_id: 'Usr'+str(alias) for alias, user_id in enumerate(sessions['userID'].unique())}
-    sessions['Alias'] = sessions['userID'].map(name_map)
-
-    levels.drop(['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition'],inplace=True, axis=1)
-    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion'],inplace=True, axis=1)
-    touchs.drop(['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound'],inplace=True, axis=1)
-    # Para el sonidos solo extraigo lo que necesito
-    sounds = sounds[['trialInstance','soundId','soundInstance']]
-
-
-    # Renombre cosas para que sea mas facil de identificar despues
-    sessions.rename(columns={'id':'sessionInstance'}, inplace=True)
-    levels.rename(columns={'sessionId':'sessionInstance','timeExit':'timeLevelExit','timeStarts':'timeLevelStarts'}, inplace=True)
-    trials.rename(columns={'timeExitTrial':'timeTrialExit'}, inplace=True)
-    touchs.rename(columns={'categorias':'categoriasTouched'}, inplace=True)
-    sounds.rename(columns={'soundId':'soundSourceId'}, inplace=True)
-
-
-    # Con toda la info ya en tablas bien nombradas mergeo
-
-    touchs = pd.merge(touchs, trials, on='trialInstance')
-    touchs = pd.merge(touchs, levels, on='levelInstance')
-    touchs = pd.merge(touchs, sessions, on='sessionInstance')
-
-    sounds = pd.merge(sounds, trials, on='trialInstance')
-    sounds = pd.merge(sounds, levels, on='levelInstance')
-    sounds = pd.merge(sounds, sessions, on='sessionInstance')
-
-    #Filtramos ahora por version del codigo:
-    if settings['FilterCodeVersion'] != 0:
-        touchs = touchs[touchs['codeVersion']==settings['FilterCodeVersion']]
-        sounds = sounds[sounds['codeVersion']==settings['FilterCodeVersion']]
-
-    if settings['FilterLevelVersion'] != 0:
-        touchs = touchs[touchs['levelVersion']==settings['FilterLevelVersion']]
-        sounds = sounds[sounds['levelVersion']==settings['FilterLevelVersion']]
-
-    if settings['FilterResourcesVersion'] != 0:
-        touchs = touchs[touchs['resourcesVersion']==settings['FilterResourcesVersion']]
-        sounds = sounds[sounds['resourcesVersion']==settings['FilterResourcesVersion']]
-
-    print ('recursos cargados del archivo')
-    return touchs, sounds
-
-
-def loadUmbralLocal (settings):
-
-    """
-        Revisar diferencia entre este y el load general. Revisar si no esta obsoleto esto.
-    """
-
-    import sys
-    if not sys.version_info[:2] == (3, 4):
-        print ('Sos un boludo!, pero uno previsor')
-        print ('Este codigo esta pensado para correr en python 3.4')
+    from scripts.general import chkVersion
+    chkVersion()
 
     import pandas as pd
-    import numpy as np
     import os
+    import numpy as np
+    from IPython.display import display
+    import math
 
-    # Voy a armar dos tablas gigantes, una con toda la info de los touchs y otra con toda la info de los sounds
+    # Se arman archivos de configuracion
+    filtros = {}
+    if filtrarDatos == 'estandar':
+        filtros['sessions']=['class','idEnvio','status']
+        filtros['levels']=['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition']
+        filtros['trials']=['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion', 0]
+        filtros['touchs']=['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound']
+        filtros['sounds']=['categorias', 'fromStimuli', 'levelInstance', 'numberOfLoop', 'numberOfSoundInTrial', 'soundSecuenceInTrial', 'startTimeSinceTrial', 'stopByEnd', 'stopByExit', 'stopByUnselect', 'stopTime', 'tipoDeTrial', 'trialId', 'sessionInstance']
 
-    # Primero cargo la info de la estructura json (los otuchs y sounds vienen dentro de los trials)
+    renames = {}
+    if filtrarDatos == 'estandar':
+        renames['sessions'] = {'id':'sessionInstance'}
+        renames['levels'] = {'sessionId':'sessionInstance','timeExit':'timeLevelExit','timeStarts':'timeLevelStarts'}
+        renames['trials'] = {'timeExitTrial':'timeTrialExit','jsonMetaDataRta':'jsonMetaDataEstimulo'}
+        renames['touchs'] = {'categorias':'categoriasTouched'}
+        renames['sounds'] = {'soundId':'soundSourceId'}
+
+    listaUsuarios = {1449588595132:'Ioni2', 1449175277519:'Ioni1', 1449524935330:'Iael', 1450205094190:'RieraPruebas',1450227329559:'Lizaso',1450352899438:'Dario17del12'}
+
+    # Primero se carga la info de la estructura json (los touchs y sounds vienen dentro de los trials)
     if os.path.isfile('./Guardados/db.sessions'):
         sessions = pd.read_pickle ('./Guardados/db.sessions')
     else:
@@ -322,54 +179,112 @@ def loadUmbralLocal (settings):
         display ('Warning: no se encontro los trials buscados')
         return
 
-    prueba = pd.DataFrame(trials.iloc[0]['touchsLog'])
-    display (prueba)
-    touchs = pd.concat(pd.DataFrame(x) for x in trials['touchLog'].tolist() if x is not np.nan)
-    sounds = pd.concat(pd.DataFrame(x) for x in trials['soundLog'].tolist() if x is not np.nan)
+    display ('Numero de sesiones totales encontradas:: ' + str(sessions.index.size))
+    display ('Numero de levels totales encontrados: ' + str(levels.index.size))
+    display ('Numero de trials totales encontrados: ' + str(trials.index.size))
+    display ('Filtrando datos...')
 
-    # Borro info innecesaria para procesar los datos
-    sessions.drop(['class','idEnvio','status'],inplace=True, axis=1)
-    # agregamos un alias para que el nombre de usuario sea amigable
-    name_map = {user_id: 'Usr'+str(alias) for alias, user_id in enumerate(sessions['userID'].unique())}
-    sessions['Alias'] = sessions['userID'].map(name_map)
-
-    levels.drop(['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition'],inplace=True, axis=1)
-    trials.drop(['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion'],inplace=True, axis=1)
-    touchs.drop(['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound'],inplace=True, axis=1)
-    # Para el sonidos solo extraigo lo que necesito
-    sounds = sounds[['trialInstance','soundId','soundInstance']]
+    # Extraemos los datos de los touchs y sounds de dentro de los json de los trials
+    touchs = pd.concat(pd.DataFrame(x) for x in list(trials['touchLog']) if type(x)==list) # NOTA! : revisar que pasa si vienen mas de un json en un trial
+    sounds = pd.concat(pd.DataFrame(x) for x in list(trials['soundLog']) if type(x)==list) # NOTA! : revisar que pasa si vienen mas de un json en un trial
 
 
-    # Renombre cosas para que sea mas facil de identificar despues
-    sessions.rename(columns={'id':'sessionInstance'}, inplace=True)
-    levels.rename(columns={'sessionId':'sessionInstance','timeExit':'timeLevelExit','timeStarts':'timeLevelStarts'}, inplace=True)
-    trials.rename(columns={'timeExitTrial':'timeTrialExit'}, inplace=True)
-    touchs.rename(columns={'categorias':'categoriasTouched'}, inplace=True)
-    sounds.rename(columns={'soundId':'soundSourceId'}, inplace=True)
+    # Procesamos un poco los datos para eliminar info redundante o innecesaria, o para unificar nombres. Para eso se usan los filtros prefijados y configurables.
+    for column in sessions.columns:
+        if column in renames['sessions'].keys():
+            sessions.rename(columns={column:renames['sessions'][column]}, inplace=True)
+        if column in filtros['sessions']:
+            sessions.drop([column],inplace=True,axis=1)
+    for column in levels.columns:
+        if column in renames['levels'].keys():
+            levels.rename(columns={column:renames['levels'][column]}, inplace=True)
+        if column in filtros['levels']:
+            levels.drop([column],inplace=True,axis=1)
+    for column in trials.columns:
+        if column in renames['trials'].keys():
+            trials.rename(columns={column:renames['trials'][column]}, inplace=True)
+        if column in filtros['trials']:
+            trials.drop([column],inplace=True,axis=1)
+    for column in touchs.columns:
+        if column in renames['touchs'].keys():
+            touchs.rename(columns={column:renames['touchs'][column]}, inplace=True)
+        if column in filtros['touchs']:
+            touchs.drop([column],inplace=True,axis=1)
+    for column in sounds.columns:
+        if column in renames['sounds'].keys():
+            sounds.rename(columns={column:renames['sounds'][column]}, inplace=True)
+        if column in filtros['sounds']:
+            sounds.drop([column],inplace=True,axis=1)
 
-
-    # Con toda la info ya en tablas bien nombradas mergeo
+    # una vez bien formateada todas las tablas se mergean a travez de las instancias de sesion, level y trial
 
     touchs = pd.merge(touchs, trials, on='trialInstance')
     touchs = pd.merge(touchs, levels, on='levelInstance')
     touchs = pd.merge(touchs, sessions, on='sessionInstance')
-
     sounds = pd.merge(sounds, trials, on='trialInstance')
     sounds = pd.merge(sounds, levels, on='levelInstance')
     sounds = pd.merge(sounds, sessions, on='sessionInstance')
 
+    # Agregamos los alias para identificar a los usuarios.
+    touchs['Alias'] = touchs['userID'].map(listaUsuarios)
+    sounds['Alias'] = sounds['userID'].map(listaUsuarios)
+    # Completamos los usuarios sin dato con el userID
+    touchs.Alias.fillna(touchs.userID, inplace=True)
+    sounds.Alias.fillna(sounds.userID, inplace=True)
+    touchs['Alias'] = touchs['Alias'].astype(str)
+    sounds['Alias'] = sounds['Alias'].astype(str)
+
+
+    #Filtramos por usuarios si hay alguno determinado
+    if usuario:
+        if usuario in listaUsuarios.values():
+            touchs = touchs[touchs['Alias']==usuario]
+            sounds = sounds[sounds['Alias']==usuario]
+        else:
+            touchs = touchs[touchs['userID']==usuario]
+            sounds = sounds[sounds['userID']==usuario]
+
     #Filtramos ahora por version del codigo:
-    if settings['FilterCodeVersion'] != 0:
-        touchs = touchs[touchs['codeVersion']==settings['FilterCodeVersion']]
-        sounds = sounds[sounds['codeVersion']==settings['FilterCodeVersion']]
+    if not codeVersion == 0:
+        touchs = touchs[touchs['codeVersion']==codeVersion]
+        sounds = sounds[sounds['codeVersion']==codeVersion]
 
-    if settings['FilterLevelVersion'] != 0:
-        touchs = touchs[touchs['levelVersion']==settings['FilterLevelVersion']]
-        sounds = sounds[sounds['levelVersion']==settings['FilterLevelVersion']]
+    if not levelVersion == 0:
+        touchs = touchs[touchs['levelVersion']==levelVersion]
+        sounds = sounds[sounds['levelVersion']==levelVersion]
 
-    if settings['FilterResourcesVersion'] != 0:
-        touchs = touchs[touchs['resourcesVersion']==settings['FilterResourcesVersion']]
-        sounds = sounds[sounds['resourcesVersion']==settings['FilterResourcesVersion']]
+    if not resourcesVersion == 0:
+        touchs = touchs[touchs['resourcesVersion']==resourcesVersion]
+        sounds = sounds[sounds['resourcesVersion']==resourcesVersion]
 
-    print ('recursos cargados del archivo')
+    if filtrarXUsuarioRegistrado:
+        touchs = touchs[touchs['Alias'].isin(list(listaUsuarios.values()))]
+        sounds = sounds[sounds['Alias'].isin(list(listaUsuarios.values()))]
+
+    display ('Recursos cargados del archivo')
+    display ('Touchs seleccionados: ' + str(touchs.index.size))
+    display ('Sounds seleccionados: ' + str(sounds.index.size))
     return touchs, sounds
+
+
+def recreateDb ():
+
+    from scripts.general import chkVersion
+    chkVersion()
+
+    from scripts.extract import join
+    from IPython.display import display
+    import glob, os, time
+    from os import path
+    from datetime import datetime, timedelta
+
+    #os.chdir('/backups/')
+    for file in glob.glob("./backups/*.json"):
+        display (file)
+        fileCreation = datetime.fromtimestamp(path.getctime(file))
+        tiempolimite = datetime.now() - timedelta(days=14)
+        display (fileCreation > tiempolimite)
+        if fileCreation > tiempolimite:
+            join(file)
+
+    Display ('FIN!')

@@ -9,16 +9,25 @@ def buscarUmbral (touchs, ordenado=False):
 
     import pandas as pd
     from IPython.display import display
-    from Scripts import fechaLocal
+    from scripts.general import fechaLocal
 
     import numpy as np # importando numpy
     from scipy import stats # importando scipy.stats
 
+    # Definimos los levelversion compatibles
+    levelVersionCompatibles = [22]
+
     # Creamos un dataframe para guardar los datos
-    resumen = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita','DesviacionDeltaTita','CumpleCriterioCola','Session','Usuario','Level','LevelVersion','Identificador'])
+    resumen = pd.DataFrame(columns=['AnguloReferencia','MediaDeltaTita',
+                                    'DesviacionDeltaTita','CumpleCriterioCola',
+                                    'Session','Usuario','Level','LevelVersion',
+                                    'Identificador'])
 
     #Procesamos solo los datos de niveles completos
     touchs = touchs[touchs['levelCompleted']==True]
+
+    # Se filtra los datos de levelVersion no compatibles con este procesamientos
+    touchs = touchs[touchs['levelVersion'].isin(levelVersionCompatibles)]
 
     for usuario in touchs['Alias'].unique():
         touchsUsuario = touchs[touchs['Alias']==usuario]
@@ -58,7 +67,7 @@ def buscarUmbral (touchs, ordenado=False):
                 if not columnName in touchsLevelEnd.columns:
                     temp = pd.DataFrame(columns=[columnName])
                     for (i,r) in touchsLevelEnd.iterrows():
-                        e = r['jsonMetaDataRta']
+                        e = r['jsonMetaDataEstimulo']
                         temp.loc[i] = [e['infoConceptual']['deltaAngulo']]
                     touchsLevelEnd = pd.concat([touchsLevelEnd, temp], axis=1)
                 else:
@@ -69,7 +78,7 @@ def buscarUmbral (touchs, ordenado=False):
                 if not columnName in touchsLevelEnd.columns:
                     temp = pd.DataFrame(columns=[columnName])
                     for (i,r) in touchsLevelEnd.iterrows():
-                        e = r['jsonMetaDataRta']
+                        e = r['jsonMetaDataEstimulo']
                         temp.loc[i] = [e['infoConceptual']['direccionAnguloReferencia']]
                     touchsLevelEnd = pd.concat([touchsLevelEnd, temp], axis=1)
                 else:
@@ -133,6 +142,7 @@ def plotResumen (resumen, zoom=2):
         ax.scatter(x, y, marker='o', c=color)
         ax.legend()
 
+        """
         fig2, ax2 = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
 
         ax2.set_title("Visualizacion del overlap para el usuario " + user, va='bottom')
@@ -145,9 +155,7 @@ def plotResumen (resumen, zoom=2):
         for r,bar in zip(radii, bars):
             bar.set_facecolor( cm.jet(r/10.))
             bar.set_alpha(0.5)
-
-
-
+        """
 
     # Repetimos el plot pero con zoom
     fig = plt.figure(num=None, figsize=(10, 10), dpi=180, facecolor='w', edgecolor='k')
@@ -172,7 +180,6 @@ def plotResumen (resumen, zoom=2):
             ax.scatter(x, y, marker='o', c=color)
             ax.legend()
 
-        """
             fig3, ax3 = plt.subplots(figsize=(10, 10), subplot_kw=dict(polar=True))
 
             ax3.set_title("Visualizacion del overlap para el usuario " + user +" con zoom.", va='bottom')
@@ -186,9 +193,8 @@ def plotResumen (resumen, zoom=2):
             for r,bar in zip(radii, bars):
                 bar.set_facecolor( cm.jet(r/10.))
                 bar.set_alpha(0.5)
-        """
 
-def plotConvergencia (touchs):
+def plotConvergencia (touchs, completo=True):
 
     """
         Esta funcion grafica la convergencia del delta tita en funcion del del avance del level. Sirve solo para visualizar datos.
@@ -198,10 +204,11 @@ def plotConvergencia (touchs):
     import pandas as pd
 
     from IPython.display import display
-    from Scripts import fechaLocal
+    from scripts.general import fechaLocal
 
     #Procesamos solo los datos de niveles completos
-    touchs = touchs[touchs['levelCompleted']==True]
+    if completo:
+        touchs = touchs[touchs['levelCompleted']==True]
 
     for usuario in touchs['Alias'].unique():
         display ('Se hara la estadistica del usuario: '+usuario)
@@ -221,7 +228,7 @@ def plotConvergencia (touchs):
                 if not columnName in touchsLevel.columns:
                     temp = pd.DataFrame(columns=[columnName])
                     for (i,r) in touchsLevel.iterrows():
-                        e = r['jsonMetaDataRta']
+                        e = r['jsonMetaDataEstimulo']
                         temp.loc[i] = [e['infoConceptual']['deltaAngulo']]
                     touchsLevel = pd.concat([touchsLevel, temp], axis=1)
                 else:
@@ -232,7 +239,7 @@ def plotConvergencia (touchs):
                 if not columnName in touchsLevel.columns:
                     temp = pd.DataFrame(columns=[columnName])
                     for (i,r) in touchsLevel.iterrows():
-                        e = r['jsonMetaDataRta']
+                        e = r['jsonMetaDataEstimulo']
                         temp.loc[i] = [e['infoConceptual']['direccionAnguloReferencia']]
                     touchsLevel = pd.concat([touchsLevel, temp], axis=1)
                 else:
