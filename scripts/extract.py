@@ -113,9 +113,47 @@ def join (filename='db.json'):
     trialsJoin.to_pickle('./Guardados/db.trials')
 
 
+def loadLevels ():
+    """
+        Esta funcion carga la info de las sesiones y levels pero sin cargar la de los trials y touchs. Sirve para cuando
+        la info ya viene preprocesada en el programa online. Por ejemplo los analisis de umbral.
+    """
+    import os
+    import pandas as pd
+
+    from scripts.general import chkVersion
+    chkVersion()
+
+    makeSettings(basic=True,levels=True)
 
 
-def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersion=0, filtrarXUsuarioRegistrado=False, usuario=False):
+    # Primero se carga la info de la estructura json (los touchs y sounds vienen dentro de los trials)
+    if os.path.isfile('./Guardados/db.sessions'):
+        sessions = pd.read_pickle ('./Guardados/db.sessions')
+    else:
+        display ('Warning: no se encontro los session buscados')
+        return
+
+    if os.path.isfile('./Guardados/db.levels'):
+        levels = pd.read_pickle ('./Guardados/db.levels')
+    else:
+        display ('Warning: no se encontro los levels buscados')
+        return
+
+    sessions = estetizarTabla(sessions,'sessions')
+    levels = estetizarTabla(levels,'levels')
+
+    levels = pd.merge(levels, sessions, on='sessionInstance')
+
+    # Creamos los alias
+    levels = renombrarUsuarios(levels)
+    # Aplicamos los filtros level, code, etc
+    levels = aplicarFiltros(levels)
+
+    return levels
+
+
+def loadTouchs ():
 
     """
     Esta funcion extrae de la base de datos ya separada en registros de sesion,
@@ -139,26 +177,8 @@ def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersi
     import os
     import numpy as np
     from IPython.display import display
-    import math
 
-    # Se arman archivos de configuracion
-    filtros = {}
-    if filtrarDatos == 'estandar':
-        filtros['sessions']=['class','idEnvio','status']
-        filtros['levels']=['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition']
-        filtros['trials']=['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion', 0]
-        filtros['touchs']=['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound']
-        filtros['sounds']=['categorias', 'fromStimuli', 'levelInstance', 'numberOfLoop', 'numberOfSoundInTrial', 'soundSecuenceInTrial', 'startTimeSinceTrial', 'stopByEnd', 'stopByExit', 'stopByUnselect', 'stopTime', 'tipoDeTrial', 'trialId', 'sessionInstance']
-
-    renames = {}
-    if filtrarDatos == 'estandar':
-        renames['sessions'] = {'id':'sessionInstance'}
-        renames['levels'] = {'sessionId':'sessionInstance','timeExit':'timeLevelExit','timeStarts':'timeLevelStarts'}
-        renames['trials'] = {'timeExitTrial':'timeTrialExit','jsonMetaDataRta':'jsonMetaDataEstimulo'}
-        renames['touchs'] = {'categorias':'categoriasTouched'}
-        renames['sounds'] = {'soundId':'soundSourceId'}
-
-    listaUsuarios = {1449588595132:'Ioni2', 1449175277519:'Ioni1', 1449524935330:'Iael', 1450205094190:'RieraPruebas',1450227329559:'Lizaso',1450352899438:'Dario17del12'}
+    makeSettings(basic=True,levels=False)
 
     # Primero se carga la info de la estructura json (los touchs y sounds vienen dentro de los trials)
     if os.path.isfile('./Guardados/db.sessions'):
@@ -172,6 +192,9 @@ def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersi
     else:
         display ('Warning: no se encontro los levels buscados')
         return
+
+    display ('Numero de sesiones totales encontradas:: ' + str(sessions.index.size))
+    display ('Numero de levels totales encontrados: ' + str(levels.index.size))
 
     if os.path.isfile('./Guardados/db.trials'):
         trials = pd.read_pickle ('./Guardados/db.trials')
@@ -190,31 +213,11 @@ def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersi
 
 
     # Procesamos un poco los datos para eliminar info redundante o innecesaria, o para unificar nombres. Para eso se usan los filtros prefijados y configurables.
-    for column in sessions.columns:
-        if column in renames['sessions'].keys():
-            sessions.rename(columns={column:renames['sessions'][column]}, inplace=True)
-        if column in filtros['sessions']:
-            sessions.drop([column],inplace=True,axis=1)
-    for column in levels.columns:
-        if column in renames['levels'].keys():
-            levels.rename(columns={column:renames['levels'][column]}, inplace=True)
-        if column in filtros['levels']:
-            levels.drop([column],inplace=True,axis=1)
-    for column in trials.columns:
-        if column in renames['trials'].keys():
-            trials.rename(columns={column:renames['trials'][column]}, inplace=True)
-        if column in filtros['trials']:
-            trials.drop([column],inplace=True,axis=1)
-    for column in touchs.columns:
-        if column in renames['touchs'].keys():
-            touchs.rename(columns={column:renames['touchs'][column]}, inplace=True)
-        if column in filtros['touchs']:
-            touchs.drop([column],inplace=True,axis=1)
-    for column in sounds.columns:
-        if column in renames['sounds'].keys():
-            sounds.rename(columns={column:renames['sounds'][column]}, inplace=True)
-        if column in filtros['sounds']:
-            sounds.drop([column],inplace=True,axis=1)
+    sessions = estetizarTabla(sessions,'sessions')
+    levels = estetizarTabla(levels,'levels')
+    trials = estetizarTabla(trials,'trials')
+    touchs = estetizarTabla(touchs,'touchs')
+    sounds = estetizarTabla(sounds,'sounds')
 
     # una vez bien formateada todas las tablas se mergean a travez de las instancias de sesion, level y trial
 
@@ -225,41 +228,12 @@ def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersi
     sounds = pd.merge(sounds, levels, on='levelInstance')
     sounds = pd.merge(sounds, sessions, on='sessionInstance')
 
-    # Agregamos los alias para identificar a los usuarios.
-    touchs['Alias'] = touchs['userID'].map(listaUsuarios)
-    sounds['Alias'] = sounds['userID'].map(listaUsuarios)
-    # Completamos los usuarios sin dato con el userID
-    touchs.Alias.fillna(touchs.userID, inplace=True)
-    sounds.Alias.fillna(sounds.userID, inplace=True)
-    touchs['Alias'] = touchs['Alias'].astype(str)
-    sounds['Alias'] = sounds['Alias'].astype(str)
-
-
-    #Filtramos por usuarios si hay alguno determinado
-    if usuario:
-        if usuario in listaUsuarios.values():
-            touchs = touchs[touchs['Alias']==usuario]
-            sounds = sounds[sounds['Alias']==usuario]
-        else:
-            touchs = touchs[touchs['userID']==usuario]
-            sounds = sounds[sounds['userID']==usuario]
-
-    #Filtramos ahora por version del codigo:
-    if not codeVersion == 0:
-        touchs = touchs[touchs['codeVersion']==codeVersion]
-        sounds = sounds[sounds['codeVersion']==codeVersion]
-
-    if not levelVersion == 0:
-        touchs = touchs[touchs['levelVersion']==levelVersion]
-        sounds = sounds[sounds['levelVersion']==levelVersion]
-
-    if not resourcesVersion == 0:
-        touchs = touchs[touchs['resourcesVersion']==resourcesVersion]
-        sounds = sounds[sounds['resourcesVersion']==resourcesVersion]
-
-    if filtrarXUsuarioRegistrado:
-        touchs = touchs[touchs['Alias'].isin(list(listaUsuarios.values()))]
-        sounds = sounds[sounds['Alias'].isin(list(listaUsuarios.values()))]
+    # Creamos los alias
+    touchs = renombrarUsuarios(touchs)
+    sounds = renombrarUsuarios(sounds)
+    # Aplicamos los filtros level, code, etc
+    touchs = aplicarFiltros(touchs)
+    sounds = aplicarFiltros(sounds)
 
     display ('Recursos cargados del archivo')
     display ('Touchs seleccionados: ' + str(touchs.index.size))
@@ -268,7 +242,9 @@ def load (filtrarDatos='estandar', levelVersion=0, resourcesVersion=0, codeVersi
 
 
 def recreateDb ():
-
+    """
+        Funcion que reconstruye la base de datos acumulada en el tiempo a partir de los archivos de backup
+    """
     from scripts.general import chkVersion
     chkVersion()
 
@@ -288,3 +264,103 @@ def recreateDb ():
             join(file)
 
     Display ('FIN!')
+
+def aplicarFiltros (tabla):
+    import json
+    # Se arman archivos de configuracion
+    settings = json.load(open("./Settings/settings"))
+    filtros = settings['filtrosxVersion']
+    listaUsuarios = settings['listaUsuarios']
+
+    #Filtramos por usuarios si hay alguno determinado
+    if filtros['usuario']:
+        if usuario in listaUsuarios.values():
+            tabla = tabla[tabla['Alias']==usuario]
+        else:
+            tabla = tabla[tabla['userID']==usuario]
+
+    #Filtramos ahora por version del codigo:
+    if not filtros['codeVersion'] == 0:
+        tabla = tabla[tabla['codeVersion']==filtros['codeVersion']]
+
+    if not filtros['levelVersion'] == 0:
+        tabla = tabla[tabla['levelVersion']==filtros['levelVersion']]
+
+    if not filtros['resourcesVersion'] == 0:
+        tabla = tabla[tabla['resourcesVersion']==filtros['resourcesVersion']]
+
+    if filtros['filtrarXUsuarioRegistrado']:
+        tabla = tabla[tabla['Alias'].isin(list(listaUsuarios.values()))]
+
+    return tabla
+
+def renombrarUsuarios (tabla):
+
+    import json
+    # Se arman archivos de configuracion
+    settings = json.load(open("./Settings/settings"))
+    listaUsuarios = settings['listaUsuarios']
+
+    # Agregamos los alias para identificar a los usuarios.
+    tabla['Alias'] = tabla['userID'].map(listaUsuarios)
+    # Completamos los usuarios sin dato con el userID
+    tabla.Alias.fillna(tabla.userID, inplace=True)
+    tabla['Alias'] = tabla['Alias'].astype(str)
+    return tabla
+
+def estetizarTabla (tabla, nombreTabla):
+
+    import json
+    # Se arman archivos de configuracion
+    settings = json.load(open("./Settings/settings"))
+    filtros = settings['filtros']
+    renames = settings['renames']
+
+    for column in tabla.columns:
+        if column in renames[nombreTabla].keys():
+            tabla.rename(columns={column:renames[nombreTabla][column]}, inplace=True)
+        if column in filtros[nombreTabla]:
+            tabla.drop([column],inplace=True,axis=1)
+    return tabla
+
+
+def makeSettings (basic=True,levels=False):
+
+    import json
+
+    filtros = {}
+
+    filtros['sessions']=[]
+    filtros['levels']=[]
+    filtros['trials']=[]
+    filtros['touchs']=[]
+    filtros['sounds']=[]
+
+    if basic:
+        filtros['sessions']=filtros['sessions']+['class','idEnvio','status']
+        filtros['levels']=filtros['levels']+['class','exitTrialId','idEnvio','levelLength','status','trialsVisited','exitTrialPosition','idUser','sortOfTrials','startTrialPosition']
+        filtros['trials']=filtros['trials']+['class','distribucionEnPantalla','idEnvio','indexOfTrialInLevel','resourcesIdSelected','status','trialExitRecorded','trialsInLevel','userId','sessionId','soundLog','touchLog','timeInTrial','timeStopTrialInLevel','resourcesVersion', 0]
+        filtros['touchs']=filtros['touchs']+['levelInstance','numberOfSoundLoops','sessionInstance','soundIdSecuenceInTrial','soundInstance','soundRunning','timeLastStartSound','timeSinceTrialStarts','tipoDeTrial','trialId','timeLastStopSound']
+        filtros['sounds']=filtros['sounds']+['categorias', 'fromStimuli', 'levelInstance', 'numberOfLoop', 'numberOfSoundInTrial', 'soundSecuenceInTrial', 'startTimeSinceTrial', 'stopByEnd', 'stopByExit', 'stopByUnselect', 'stopTime', 'tipoDeTrial', 'trialId', 'sessionInstance']
+
+    if not levels:
+        filtros['levels']=filtros['levels']+['analisis']
+
+    renames = {}
+
+    renames['sessions'] = {'id':'sessionInstance'}
+    renames['levels'] = {'sessionId':'sessionInstance','timeExit':'timeLevelExit','timeStarts':'timeLevelStarts'}
+    renames['trials'] = {'timeExitTrial':'timeTrialExit','jsonMetaDataRta':'jsonMetaDataEstimulo'}
+    renames['touchs'] = {'categorias':'categoriasTouched'}
+    renames['sounds'] = {'soundId':'soundSourceId'}
+
+    listaUsuarios = {1449588595132:'Ioni2', 1449175277519:'Ioni1', 1449524935330:'Iael', 1450205094190:'RieraPruebas',1450227329559:'Lizaso',1450352899438:'Dario17del12'}
+    filtrosxVersion = {'levelVersion':0, 'resourcesVersion':0, 'codeVersion':0, 'filtrarXUsuarioRegistrado':False, 'usuario':False}
+
+    settings = {}
+    settings['filtros']=filtros
+    settings['renames']=renames
+    settings['listaUsuarios']=listaUsuarios
+    settings['filtrosxVersion']=filtrosxVersion
+
+    json.dump(settings, open("./Settings/settings",'w'))
