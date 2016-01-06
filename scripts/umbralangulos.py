@@ -26,13 +26,21 @@ def plotConvergenciaAngulos (levels, completos=True):
                 levelInfo = levelLevel.iloc[0]
                 analisisJson = levelInfo['analisis']
 
-                # Armamos el grafico
-                fig = plt.figure(figsize=(10,3))
-                ax = fig.add_subplot(111)
+                # Armamos el grafico de nivel
+                fig1 = plt.figure(figsize=(10,3))
+                ax1 = fig1.add_subplot(111)
                 title = 'Evolucion de la dificultad en funcion del trial \n' + 'Usuario: '+str(usuario) + ' en el nivel ' + str(levelInfo['levelTitle'])+', levelVersion: '+str(levelInfo['levelVersion'])
-                ax.set_title(title, fontsize=10, fontweight='bold')
-                ax.set_xlabel('Numero de trial')
-                ax.set_ylabel('Tita (grados)')
+                ax1.set_title(title, fontsize=10, fontweight='bold')
+                ax1.set_xlabel('Numero de trial')
+                ax1.set_ylabel('Nivel')
+
+                # Armamos el grafico de angulo
+                fig2 = plt.figure(figsize=(10,3))
+                ax2 = fig2.add_subplot(111)
+                title = 'Evolucion del angulo en funcion del trial \n' + 'Usuario: '+str(usuario) + ' en el nivel ' + str(levelInfo['levelTitle'])+', levelVersion: '+str(levelInfo['levelVersion'])
+                ax2.set_title(title, fontsize=10, fontweight='bold')
+                ax2.set_xlabel('Numero de trial')
+                ax2.set_ylabel('Angulo')
 
                 numeroDeCuadrante=0
                 for cuadrante in analisisJson['cuadrantes']:
@@ -55,20 +63,41 @@ def plotConvergenciaAngulos (levels, completos=True):
                     #display (angulosRef)
                     #display (angulos)
                     #display (angulosNivel)
+
+                    # Dibujamos los niveles
                     x = range(len(angulosNivel))
                     y = angulosNivel
-                    ax.plot(x,y, label="Cuadrante "+str(numeroDeCuadrante))
+                    ax1.plot(x,y, label="Cuadrante "+str(numeroDeCuadrante))
                     # marcamos aciertos y errores
                     x = [i for i in range(len(aciertos)) if aciertos[i]]
                     y = [angulosNivel[i] for i in range(len(aciertos)) if aciertos[i]]
-                    ax.plot(x,y,'go')
+                    ax1.plot(x,y,'go')
                     x = [i for i in range(len(aciertos)) if not aciertos[i]]
                     y = [angulosNivel[i] for i in range(len(aciertos)) if not aciertos[i]]
-                    ax.plot(x,y,'ro')
+                    ax1.plot(x,y,'ro')
                     # Marcamos el final si es convergencia o no.
                     if cuadrante['convergenciaAlcanzada']:
-                        ax.plot([len(angulosNivel)-1],angulosNivel[-1],'bs', markersize=10)
+                        ax1.plot([len(angulosNivel)-1],angulosNivel[-1],'bs', markersize=10)
                     else:
                         if len(angulosNivel) > 0: # Esto es porque hay datos malos, no deberia hacer falta en gral
-                            ax.plot([len(angulosNivel)-1],angulosNivel[-1],'rs', markersize=10)
-                    ax.legend()
+                            ax1.plot([len(angulosNivel)-1],angulosNivel[-1],'rs', markersize=10)
+                    ax1.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+                    # Dibujamos los angulos
+                    x = range(len(angulos))
+                    y = angulos
+                    ax2.plot(x,y, label="Cuadrante "+str(numeroDeCuadrante))
+                    # marcamos aciertos y errores
+                    x = [i for i in range(len(aciertos)) if aciertos[i]]
+                    y = [angulos[i] for i in range(len(aciertos)) if aciertos[i]]
+                    ax2.plot(x,y,'go')
+                    x = [i for i in range(len(aciertos)) if not aciertos[i]]
+                    y = [angulos[i] for i in range(len(aciertos)) if not aciertos[i]]
+                    ax2.plot(x,y,'ro')
+                    # Marcamos el final si es convergencia o no.
+                    if cuadrante['convergenciaAlcanzada']:
+                        ax2.plot([len(angulos)-1],angulos[-1],'bs', markersize=10)
+                    else:
+                        if len(angulos) > 0: # Esto es porque hay datos malos, no deberia hacer falta en gral
+                            ax2.plot([len(angulos)-1],angulos[-1],'rs', markersize=10)
+                    ax2.legend(loc='center left', bbox_to_anchor=(1, 0.5))

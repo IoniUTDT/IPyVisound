@@ -303,7 +303,7 @@ def renombrarUsuarios (tabla):
     listaUsuarios = settings['listaUsuarios']
 
     # Agregamos los alias para identificar a los usuarios.
-    tabla['Alias'] = tabla['userID'].map(listaUsuarios)
+    tabla['Alias'] = tabla['userID'].apply(str).map(listaUsuarios)
     # Completamos los usuarios sin dato con el userID
     tabla.Alias.fillna(tabla.userID, inplace=True)
     tabla['Alias'] = tabla['Alias'].astype(str)
