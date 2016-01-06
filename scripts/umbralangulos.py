@@ -51,10 +51,10 @@ def plotConvergenciaAngulos (levels, completos=True):
                         angulos = angulos + [historial['angulo']['angulo']]
                         angulosRef = angulosRef + [historial['angulo']['anguloRef']]
                         angulosNivel = angulosNivel + [historial['angulo']['nivel']]
-                    display (aciertos)
-                    display (angulosRef)
-                    display (angulos)
-                    display (angulosNivel)
+                    #display (aciertos)
+                    #display (angulosRef)
+                    #display (angulos)
+                    #display (angulosNivel)
                     x = range(len(angulosNivel))
                     y = angulosNivel
                     ax.plot(x,y, label="Cuadrante "+str(numeroDeCuadrante))
@@ -65,4 +65,10 @@ def plotConvergenciaAngulos (levels, completos=True):
                     x = [i for i in range(len(aciertos)) if not aciertos[i]]
                     y = [angulosNivel[i] for i in range(len(aciertos)) if not aciertos[i]]
                     ax.plot(x,y,'ro')
+                    # Marcamos el final si es convergencia o no.
+                    if cuadrante['convergenciaAlcanzada']:
+                        ax.plot([len(angulosNivel)-1],angulosNivel[-1],'bs', markersize=10)
+                    else:
+                        if len(angulosNivel) > 0: # Esto es porque hay datos malos, no deberia hacer falta en gral
+                            ax.plot([len(angulosNivel)-1],angulosNivel[-1],'rs', markersize=10)
                     ax.legend()
