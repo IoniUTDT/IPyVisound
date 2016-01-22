@@ -12,7 +12,7 @@ def plotConvergenciaAngulos (levels, completos=True):
 
     mostrarRefrencia = True
     mostrarNivel = False
-    mostrarAngulo = True
+    mostrarAngulo = False
 
     if completos:
         levels = levels[levels['levelCompleted']]
