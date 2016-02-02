@@ -248,7 +248,91 @@ def levelsToDF (levels, completo=True):
     return analisisUmbralAngulosDF
 
 
-def plotConvergenciaXCuadrantes (dataframe, agruparXusuario=False) :
+
+def plotConvergenciaXReferencia (dataframe) :
+    """
+        este script grafica como evoluciona la aproximacion a los angulos rectos en funcion de la referencia
+    """
+
+    import matplotlib.pyplot as plt
+    from scripts.general import fechaLocal
+    from IPython.display import display
+
+    from scripts.general import chkVersion
+    chkVersion()
+
+    # Cargamos una tabla de colores
+    tableau20 = [(31, 119, 180), (255, 187, 120),
+        (152, 223, 138), (255, 152, 150),
+        (197, 176, 213), (196, 156, 148),
+        (247, 182, 210), (199, 199, 199),
+        (219, 219, 141), (158, 218, 229)]
+    # Scale the RGB values to the [0, 1] range, which is the format matplotlib accepts.
+    for i in range(len(tableau20)):
+        r, g, b = tableau20[i]
+        tableau20[i] = (r / 255., g / 255., b / 255.)
+
+    colores = []
+    for color in tableau20:
+        colores = colores + [color] + [color] + [color] + [color]
+
+
+    # Se hace un grafico para cada referencia donde se juntan las cuadro convergencias de todos los usuarios
+    listaReferencias = dataframe['anguloDeReferencia'].unique()
+    listaReferencias.sort()
+    for referencia in listaReferencias:
+        # Filtramos los datos correspondientes a una referencia
+        dfRef = dataframe[dataframe['anguloDeReferencia']==referencia]
+        # Creamos el grafico
+        fig = plt.figure(figsize=(10,3))
+        ax = fig.add_subplot(111)
+        title = 'Evolucion del angulo en funcion del trial \n' + ' en la referencia: ' + str(referencia)
+        ax.set_title(title, fontsize=10, fontweight='bold')
+        ax.set_xlabel('Numero de trial')
+        ax.set_ylabel('Angulo')
+        ax.set_color_cycle(colores)
+
+
+        # Buscamos el conjunto de las cuatro convergencias para cada levelInstance
+
+        for instance in dfRef['levelInstance'].unique():
+            # filtramos los datos x intancia
+            dfRefInst = dfRef[dfRef['levelInstance'] == instance]
+
+            # Buscamos la info de cada cuadrante
+            for cuadrante in [1,2,3,4]:
+                dfRefInstCuad = dfRefInst[dfRefInst['cuadranteNumero']==cuadrante]
+                # nos asegurmos que esten ordenados los datos
+                dfRefInstCuad.sort(['indiceEnHistorial'])
+
+                # correjimos los numeros para que quede todo centrado alrededor del 90
+                if cuadrante == 1:
+                    #dfRefInstCuad['anguloReferidoPlot'] = dfRefInstCuad['anguloReferido']
+                    dfRefInstCuad['ultimoMEANAnguloPlot'] = 90 - dfRefInstCuad['ultimoMEANAngulo']
+                if cuadrante == 2:
+                    #dfRefInstCuad['anguloReferidoPlot'] = dfRefInstCuad['anguloReferido']
+                    dfRefInstCuad['ultimoMEANAnguloPlot'] = dfRefInstCuad['ultimoMEANAngulo'] - 90
+                if cuadrante == 3:
+                    #dfRefInstCuad['anguloReferidoPlot'] = dfRefInstCuad['anguloReferido'] - 180
+                    dfRefInstCuad['ultimoMEANAnguloPlot'] = 270 - dfRefInstCuad['ultimoMEANAngulo']
+                if cuadrante == 4:
+                    #dfRefInstCuad['anguloReferidoPlot'] = dfRefInstCuad['anguloReferido'] - 180
+                    dfRefInstCuad['ultimoMEANAnguloPlot'] = dfRefInstCuad['ultimoMEANAngulo'] - 270
+
+                # Cargamos los datos a graficar
+                x = dfRefInstCuad['indiceEnHistorial']
+                y = dfRefInstCuad['anguloReferido']
+                Label = "Cuadrante: " + str(cuadrante) + " User: " + dfRefInstCuad['Alias'].iloc[0]
+                ax.plot(x,y,label=Label)
+                ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+        # Graficamos una linea roja
+        xmin, xmax = ax.get_xlim()
+        ax.plot ([0,xmax] , [90,90] , 'r-')
+        ax.plot ([0,xmax] , [270,270] , 'r-')
+
+
+def plotConvergenciaXCuadrantes (dataframe) :
 
     """
         Este script grafica cada convergencia uniendo todas las convergencias correspondientes a un mismo cuadrante
