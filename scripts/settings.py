@@ -28,13 +28,17 @@ def makeSettings (basic=True,levels=False):
     renames['touchs'] = {'categorias':'categoriasTouched'}
     renames['sounds'] = {'soundId':'soundSourceId'}
 
-    listaUsuarios = {1449588595132:'Ioni2', 1449175277519:'Ioni1', 1449524935330:'Iael', 1450205094190:'RieraPruebas',1450227329559:'Lizaso',1450352899438:'Dario17del12',1452113723326:'IoniUmbralCompletoV2'}
+    listaUsuarios = {1453759265938:'Ioni umbral1',1449588595132:'Ioni2', 1449175277519:'Ioni1', 1449524935330:'Iael', 1450205094190:'RieraPruebas',1450227329559:'Lizaso',1450352899438:'Dario17del12',1452113723326:'IoniUmbralCompletoV2'}
     filtrosxVersion = {'levelVersion':0, 'resourcesVersion':0, 'codeVersion':15, 'filtrarXUsuarioRegistrado':False, 'usuario':False}
+    sessionsExcluidas = [1453850214530,1454346850384]
+    usersExcluidos = [1454092615094,1454090054097]
 
     settings = {}
     settings['filtros']=filtros
     settings['renames']=renames
     settings['listaUsuarios']=listaUsuarios
     settings['filtrosxVersion']=filtrosxVersion
+    settings['sessionsExcluidas']=sessionsExcluidas
+    settings['usersExcluidos']=usersExcluidos
 
     json.dump(settings, open("./Settings/settings",'w'))

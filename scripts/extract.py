@@ -53,64 +53,70 @@ def join (filename='db.json'):
     with open(filename) as data_file:
         db = json.load(data_file)
 
-    sessionsNuevos = pd.concat((pd.DataFrame(x) for x in db['SessionEnviables']), ignore_index=True)
-    levelsNuevos = pd.concat((pd.DataFrame(x) for x in db['LevelEnviables']), ignore_index=True)
-    trialsNuevos = pd.concat((pd.DataFrame(x) for x in db['TrialEnviables']), ignore_index=True)
+    if db['SessionEnviables']!=[]:
+        sessionsNuevos = pd.concat((pd.DataFrame(x) for x in db['SessionEnviables']), ignore_index=True)
+
+        if os.path.isfile('./Guardados/db.sessions'):
+            sessions = pd.read_pickle ('./Guardados/db.sessions')
+            sessionsExists = True
+            display ('Sessions tiene '+str(sessions.index.size)+' entradas')
+        else:
+            display ('Warning: no se encontro los session buscados')
+            sessionsExists = False
+
+        if sessionsExists:
+            sessionsJoin = pd.concat([sessions, sessionsNuevos], axis=0, ignore_index=True)
+            sessionsJoin.drop_duplicates(cols='id', inplace=True)
+            display ('Se agregaron '+ str(sessionsJoin.index.size - sessions.index.size)+' registros al registro de sesiones.')
+        else:
+            sessionsJoin = sessionsNuevos
+            display ('Se creo un archivo nuevo con registro de sesiones')
+
+        sessionsJoin.to_pickle('./Guardados/db.sessions')
+
+    if db['LevelEnviables']!=[]:
+        levelsNuevos = pd.concat((pd.DataFrame(x) for x in db['LevelEnviables']), ignore_index=True)
+
+        if os.path.isfile('./Guardados/db.levels'):
+            levels = pd.read_pickle ('./Guardados/db.levels')
+            levelsExists = True
+            display ('Levels tiene '+str(levels.index.size)+' entradas')
+        else:
+            display ('Warning: no se encontro los levels buscados')
+            levelsExists = False
+
+        if levelsExists:
+            levelsJoin = pd.concat([levels, levelsNuevos], axis=0, ignore_index=True)
+            levelsJoin.drop_duplicates(cols='levelInstance', inplace=True)
+            display ('Se agregaron '+ str(levelsJoin.index.size - levels.index.size)+' registros al registro de levels.')
+        else:
+            levelsJoin = levelsNuevos
+            display ('Se creo un archivo nuevo con registro de levels')
+
+        levelsJoin.to_pickle('./Guardados/db.levels')
+
+    if db['TrialEnviables']!=[]:
+        trialsNuevos = pd.concat((pd.DataFrame(x) for x in db['TrialEnviables']), ignore_index=True)
+
+        if os.path.isfile('./Guardados/db.trials'):
+            trials = pd.read_pickle ('./Guardados/db.trials')
+            trialsExists = True
+            display ('Trials tiene '+str(trials.index.size)+' entradas')
+        else:
+            display ('Warning: no se encontro los trials buscados')
+            trialsExists = False
+
+        if trialsExists:
+            trialsJoin = pd.concat([trials, trialsNuevos], axis=0, ignore_index=True)
+            trialsJoin.drop_duplicates(cols='trialInstance', inplace=True)
+            display ('Se agregaron '+ str(trialsJoin.index.size - trials.index.size)+' registros al registro de trials.')
+        else:
+            trialsJoin = trialsNuevos
+            display ('Se creo un archivo nuevo con registro de trials')
+
+        trialsJoin.to_pickle('./Guardados/db.trials')
 
     display ('Datos del json cargados')
-
-    if os.path.isfile('./Guardados/db.sessions'):
-        sessions = pd.read_pickle ('./Guardados/db.sessions')
-        sessionsExists = True
-        display ('Sessions tiene '+str(sessions.index.size)+' entradas')
-    else:
-        display ('Warning: no se encontro los session buscados')
-        sessionsExists = False
-
-    if os.path.isfile('./Guardados/db.levels'):
-        levels = pd.read_pickle ('./Guardados/db.levels')
-        levelsExists = True
-        display ('Levels tiene '+str(levels.index.size)+' entradas')
-    else:
-        display ('Warning: no se encontro los levels buscados')
-        levelsExists = False
-
-    if os.path.isfile('./Guardados/db.trials'):
-        trials = pd.read_pickle ('./Guardados/db.trials')
-        trialsExists = True
-        display ('Trials tiene '+str(trials.index.size)+' entradas')
-    else:
-        display ('Warning: no se encontro los trials buscados')
-        trialsExists = False
-
-    if sessionsExists:
-        sessionsJoin = pd.concat([sessions, sessionsNuevos], axis=0, ignore_index=True)
-        sessionsJoin.drop_duplicates(cols='id', inplace=True)
-        display ('Se agregaron '+ str(sessionsJoin.index.size - sessions.index.size)+' registros al registro de sesiones.')
-    else:
-        sessionsJoin = sessionsNuevos
-        display ('Se creo un archivo nuevo con registro de sesiones')
-    sessionsJoin.to_pickle('./Guardados/db.sessions')
-
-
-    if levelsExists:
-        levelsJoin = pd.concat([levels, levelsNuevos], axis=0, ignore_index=True)
-        levelsJoin.drop_duplicates(cols='levelInstance', inplace=True)
-        display ('Se agregaron '+ str(levelsJoin.index.size - levels.index.size)+' registros al registro de levels.')
-    else:
-        levelsJoin = levelsNuevos
-        display ('Se creo un archivo nuevo con registro de levels')
-    levelsJoin.to_pickle('./Guardados/db.levels')
-
-
-    if trialsExists:
-        trialsJoin = pd.concat([trials, trialsNuevos], axis=0, ignore_index=True)
-        trialsJoin.drop_duplicates(cols='trialInstance', inplace=True)
-        display ('Se agregaron '+ str(trialsJoin.index.size - trials.index.size)+' registros al registro de trials.')
-    else:
-        trialsJoin = trialsNuevos
-        display ('Se creo un archivo nuevo con registro de trials')
-    trialsJoin.to_pickle('./Guardados/db.trials')
 
 
 def loadLevels ():
@@ -150,6 +156,7 @@ def loadLevels ():
     levels = renombrarUsuarios(levels)
     # Aplicamos los filtros level, code, etc
     levels = aplicarFiltros(levels)
+
 
     return levels
 
@@ -272,6 +279,8 @@ def aplicarFiltros (tabla):
     settings = json.load(open("./Settings/settings"))
     filtros = settings['filtrosxVersion']
     listaUsuarios = settings['listaUsuarios']
+    sessionsExcluidas = settings['sessionsExcluidas']
+    usersExcluidos = settings['usersExcluidos']
 
     #Filtramos por usuarios si hay alguno determinado
     if filtros['usuario']:
@@ -292,6 +301,13 @@ def aplicarFiltros (tabla):
 
     if filtros['filtrarXUsuarioRegistrado']:
         tabla = tabla[tabla['Alias'].isin(list(listaUsuarios.values()))]
+
+    # Excluimos la sessiones o usuarios que no son datos buenos.
+    for sessionAExcluir in sessionsExcluidas:
+        tabla = tabla[tabla['sessionInstance'] != sessionAExcluir]
+    for userAexcluir in usersExcluidos:
+        tabla = tabla[tabla['userID'] != userAexcluir]
+
 
     return tabla
 
