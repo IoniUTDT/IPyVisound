@@ -294,8 +294,7 @@ def plotConvergenciaXReferencia (dataframe) :
 
 
         # Buscamos el conjunto de las cuatro convergencias para cada levelInstance
-
-        for instance in dfRef['levelInstance'].unique():
+        for i,instance in enumerate(dfRef['levelInstance'].unique()) :
             # filtramos los datos x intancia
             dfRefInst = dfRef[dfRef['levelInstance'] == instance]
 
@@ -323,8 +322,18 @@ def plotConvergenciaXReferencia (dataframe) :
                 x = dfRefInstCuad['indiceEnHistorial']
                 y = dfRefInstCuad['anguloReferido']
                 Label = "Cuadrante: " + str(cuadrante) + " User: " + dfRefInstCuad['Alias'].iloc[0]
-                ax.plot(x,y,label=Label)
+                tamano = (dfRef['levelInstance'].unique().size - i) / (0.25 * dfRef['levelInstance'].unique().size)
+
+                ax.plot(x,y,label=Label, lw=tamano)
+                # Agregamos la marca de la convergencia
+                x = dfRefInstCuad['indiceEnHistorial'].iloc[-1]
+                y = dfRefInstCuad['anguloReferido'].iloc[-1]
+                if dfRefInstCuad['convergenciaAlcanzada'].iloc[-1]:
+                    ax.plot(x,y,'bs', markersize=10)
+                else:
+                    ax.plot(x,y,'rs', markersize=10)
                 ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
 
         # Graficamos una linea roja
         xmin, xmax = ax.get_xlim()
@@ -416,6 +425,23 @@ def plotConvergenciaXCuadrantes (dataframe) :
                     y = dfUserCuadranteReferenciaInstance['anguloReferido']
 
                     # Agregamos la linea
-                    Label = "Referencia "+str(dfUserCuadranteReferenciaInstance['anguloDeReferencia'].iloc[0]) + " mean(Angulo): " + str(dfUserCuadranteReferenciaInstance['ultimoMEANAngulo'].iloc[0])
+                    if i == 1:
+                        mean = 90 - dfUserCuadranteReferenciaInstance['ultimoMEANAngulo'].iloc[-1]
+                    if i == 2:
+                        mean = dfUserCuadranteReferenciaInstance['ultimoMEANAngulo'].iloc[-1] - 90
+                    if i == 3:
+                        mean = 270 - dfUserCuadranteReferenciaInstance['ultimoMEANAngulo'].iloc[-1]
+                    if i == 4:
+                        mean = dfUserCuadranteReferenciaInstance['ultimoMEANAngulo'].iloc[-1] - 270
+
+                    Label = "Referencia "+str(dfUserCuadranteReferenciaInstance['anguloDeReferencia'].iloc[0]) + " media al objetivo (grados): " + str(mean)
                     ax.plot(x,y,label=Label, lw=(dfUserCuadranteReferenciaInstance['anguloDeReferencia'].iloc[0]+45)/90*5)
                     ax.legend(loc='center left', bbox_to_anchor=(1, 0.5),prop={'size':8})
+
+                    # Agregamos la marca de la convergencia
+                    x = dfUserCuadranteReferenciaInstance['indiceEnHistorial'].iloc[-1]
+                    y = dfUserCuadranteReferenciaInstance['anguloReferido'].iloc[-1]
+                    if dfUserCuadranteReferenciaInstance['convergenciaAlcanzada'].iloc[-1]:
+                        ax.plot(x,y,'bs', markersize=10)
+                    else:
+                        ax.plot(x,y,'rs', markersize=10)
