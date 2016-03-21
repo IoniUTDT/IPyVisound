@@ -87,9 +87,9 @@ def join (filename='db.json'):
         with open(filename, 'wb+') as f:
             pickle.dump(enviosUnificados, f)
 
-    updateUsers()
+    joinUsers()
 
-def updateUsers():
+def joinUsers():
 
     from IPython.display import display
     import os
@@ -104,7 +104,7 @@ def updateUsers():
             sessiones = pickle.load(f)
     else:
         display ('ERROR! : No se encontro el archivo ' + filename + ' con el registro de las sessiones.')
-        # return
+        return
 
 
     newUsersId = set([json.loads(session['contenido'])['session']['user']['id'] for session in sessiones])
@@ -116,9 +116,6 @@ def updateUsers():
             alias = pickle.load(f)
     else:
         alias = {}
-
-    for aliaKey, alis in alias.items():
-        pass
 
     usersId = [alia['id'] for aliaKey, alia in alias.items()]
 
@@ -169,4 +166,4 @@ def listOfUsers ():
     else:
         display ('ERROR : No se ha encontrado el archivo ' + filename)
 
-    display (alias)
+    return alias

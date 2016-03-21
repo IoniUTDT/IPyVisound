@@ -16,7 +16,7 @@ def plotParalelismos (soloCompletados = True):
         display ('ERROR : No se ha encontrado el archivo ' + filename)
 
     # Cargamos los registros de convergencia para umbral paralelismo
-    filename = './Guardados/db.' + 'CONVERGENCIAPARALELISMO'
+    filename = './Guardados/db.' + 'CONVERGENCIA'
     if os.path.isfile(filename):
         with open(filename, 'rb') as f:
             convergencias = pickle.load(f)
@@ -43,7 +43,7 @@ def plotParalelismos (soloCompletados = True):
     for levelInstance in convergenciasByLevelInstance.keys():
 
         # Armamos el grafico
-        fig = plt.figure(figsize=(20, 10))
+        fig = plt.figure(figsize=(20, 20))
         ax = plt.subplot(111)
         ax.set_xlabel('Numero de trial')
         ax.set_ylabel('Delta Tita (grados)')
@@ -55,7 +55,7 @@ def plotParalelismos (soloCompletados = True):
             usuario = alias[convergencia['session']['session']['user']['id']]['alias']
             levelInstance = convergencia['session']['levelInstance']
             dinamica = convergencia['dinamica']['identificador']
-            referencia = convergencia['dinamica']['anguloDeReferencia']
+            referencia = convergencia['dinamica']['referencia']
 
             # Extraemos los puntos a graficar
             y = [elemento['estimulo']['desviacion'] for elemento in convergencia['dinamica']['historial']]
@@ -68,6 +68,13 @@ def plotParalelismos (soloCompletados = True):
             # Graficamos
             ax.plot(x,y,label=dinamica)
 
+            aciertos = [elemento['acertado'] for elemento in convergencia['dinamica']['historial']]
+
+            for i in x:
+                if aciertos[i]:
+                    ax.plot(i,y[i],'bx')
+                else:
+                    ax.plot(i,y[i],'rx')
 
             # Agregamos el punto finalo que marca la convergencia alcanzada
             if convergencia['dinamica']['convergenciaAlcanzada']:
@@ -79,8 +86,10 @@ def plotParalelismos (soloCompletados = True):
             else:
                 ax.plot([len(y)-1],y[-1],'rs', markersize=10)
 
+            ax.set_title(experimento + ' angulo de referencia: ' + str(referencia) + '\n' + ' correspondiente a ' + usuario + ' en la fecha ' + str(fechaLocal(levelInstance)), va='bottom')
+
 
         # Agregamos decorados
         ax.plot(ax.get_xlim(),[0,0],'r')
-        ax.set_title(experimento + ' angulo de referencia: ' + str(referencia) + '\n' + ' correspondiente a ' + usuario + ' en la fecha ' + str(fechaLocal(levelInstance)), va='bottom')
+        #ax.set_title(experimento + ' angulo de referencia: ' + str(referencia) + '\n' + ' correspondiente a ' + usuario + ' en la fecha ' + str(fechaLocal(levelInstance)), va='bottom')
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
