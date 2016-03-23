@@ -37,13 +37,14 @@ def downloadFile ():
 def join (filename='db.json'):
 
     from scripts.general import chkVersion
+    import scripts.constants
     chkVersion()
 
     """
     Este codigo sirve para ir acumulando los datos brutos tal cual salen de la base datos que se descarga, de forma de poder limpiar y reducir el tamaño del archivo online mas o menos seguido
     sin perder la coherencia de los datos. Esto es necesario porque el json-server no se banca bien manejar archivos muy grandes (empieza a tener delay) y el volumen de datos que se genera crece rapido.
 
-    La idea es que separa en archivos separados las listas de registros separados por categoria para que despues puedan ser procesados segun corresponda
+    La idea es que guarda en archivos separados las listas de registros segun la categoria de envio para que despues puedan ser procesados segun corresponda
     """
 
     from IPython.display import display
@@ -68,6 +69,10 @@ def join (filename='db.json'):
         filename = './Guardados/db.' + tipoDeEnvio
         enviosNuevos = [envio for envio in data if envio['tipoDeEnvio'] == tipoDeEnvio]
 
+        # Sacamos el formato json a los envios
+        for envio in enviosNuevos:
+            envio['contenido'] = json.loads(envio['contenido'])
+
         if os.path.isfile(filename):
             with open(filename, 'rb') as f:
                 enviosViejos = pickle.load(f)
@@ -91,14 +96,16 @@ def join (filename='db.json'):
 
 def joinUsers():
 
+    """
+        Esta funcion busca los usuarios nuevos en la lista de sessiones guardadas y compara con la lista de usuarios almacenada en la base de datos alias. Si encuentra que alguno no esta pregunta el alias y si ignorarlo o no y lo incluye
+    """
     from IPython.display import display
     import os
     import pickle
-    import json
+    from scripts.constants import PATHALIAS, PATHSESSSION
+    from scripts.general import fechaLocal
 
-
-
-    filename = './Guardados/db.' + 'NEWSESION'
+    filename = PATHSESSSION
     if os.path.isfile(filename):
         with open(filename, 'rb') as f:
             sessiones = pickle.load(f)
@@ -106,45 +113,59 @@ def joinUsers():
         display ('ERROR! : No se encontro el archivo ' + filename + ' con el registro de las sessiones.')
         return
 
+    newUsersId = set([session['contenido']['userId'] for session in sessiones])
 
-    newUsersId = set([json.loads(session['contenido'])['session']['user']['id'] for session in sessiones])
-
-    filename = './Guardados/db.' + 'Alias'
+    filename = PATHALIAS
 
     if os.path.isfile(filename):
         with open(filename, 'rb') as f:
-            alias = pickle.load(f)
+            users= pickle.load(f)
     else:
-        alias = {}
+        users = []
 
-    usersId = [alia['id'] for aliaKey, alia in alias.items()]
+    usersId = [user['id'] for user in users]
 
     for newUserId in newUsersId:
         if not newUserId in usersId:
+            # Creamos el usuario
             newUser = {}
             newUser['id'] = newUserId
-            newUser['alias'] = str(newUserId)
-            newUser['ignore'] = False
-            alias[newUserId] = newUser
+            # Preguntamos datos del usuario
+            display ('Usuario creado el '+str(fechaLocal(newUser['id'])))
+            response = input("Ingrese un alias o enter para continuar:\n")
+            if response != "":
+                newUser['alias'] = response
+            else:
+                newUser['alias'] = str(newUser['id'])
+            response = input("Presiones 'si' para descartar este usuario del procesamiento de datos:\n")
+            if response == "si":
+                newUser['ignore'] = True
+            else:
+                newUser['ignore'] = False
+            users = users + [newUser]
 
     with open(filename, 'wb') as f:
-        pickle.dump(alias, f)
+        pickle.dump(users, f)
 
-def updateUser (userId, newAlias, ignore = False):
+def updateUser (userId, newAlias, ignore):
 
+    """
+        Esta funcion sirve para modificar a mano algun usuario en particular
+    """
     from IPython.display import display
     import os
     import pickle
+    from scripts.constants import PATHALIAS
 
-    filename = './Guardados/db.' + 'Alias'
+    filename = PATHALIAS
 
     if os.path.isfile(filename):
         with open(filename, 'rb') as f:
-            alias = pickle.load(f)
+            users = pickle.load(f)
     else:
         display ('ERROR : No se ha encontrado el archivo ' + filename)
 
-    user = alias[userId]
+    user = users[users['id']==userId]
 
     user['alias'] = newAlias
     user['ignore'] = ignore
@@ -154,16 +175,117 @@ def updateUser (userId, newAlias, ignore = False):
 
 def listOfUsers ():
 
+    """
+        devuelve la lista de usuarios almacenada en el alias
+    """
     from IPython.display import display
     import os
     import pickle
+    from scripts.constants import PATHALIAS
 
-    filename = './Guardados/db.' + 'Alias'
+    filename = PATHALIAS
 
     if os.path.isfile(filename):
         with open(filename, 'rb') as f:
-            alias = pickle.load(f)
+            users = pickle.load(f)
     else:
         display ('ERROR : No se ha encontrado el archivo ' + filename)
 
-    return alias
+    return users
+
+def updateListOfUsers ():
+
+    """
+        Detecta que usuarios no tienen alias y propone modificarlo en forma semiautomartica
+    """
+    from IPython.display import display
+    from scripts.general import fechaLocal
+    import os
+    import pickle
+    from scripts.constants import PATHALIAS
+
+    users = listOfUsers()
+    for user in users:
+        if user['alias']==str(user['id']):
+            display ('Usuario creado el '+str(fechaLocal(user['id'])))
+            response = input("Ingrese un alias o enter para continuar:")
+            if response!= "":
+                user['alias'] = response
+            response = input("Presiones 'si' para descartar este usuario del procesamiento de datos")
+            if response=="si":
+                user['ignore'] = True
+
+    filename = PATHALIAS
+    with open(filename, 'wb') as f:
+        pickle.dump(users, f)
+
+def pandasUtilPiloto(completos=True):
+
+    from IPython.display import display
+    from scripts.constants import PATHSESSSION, PATHCONVERGENCIAS
+    import os
+    import pickle
+    import pandas
+
+    # Cargamos los usuarios
+    users = listOfUsers()
+
+    # Cargamos la base de datos de sessiones
+    filename = PATHSESSSION
+    if os.path.isfile(filename):
+        with open(filename, 'rb') as f:
+            sessions = pickle.load(f)
+    else:
+        display ('ERROR! : No se encontro el archivo ' + filename)
+        return
+
+    # Cargamos la base de datos de convergencias
+    filename = PATHCONVERGENCIAS
+    if os.path.isfile(filename):
+        with open(filename, 'rb') as f:
+            dinamicas = pickle.load(f)
+    else:
+        display ('ERROR! : No se encontro el archivo ' + filename)
+        return
+
+    # Extraemos la info util de cada tabla
+
+    # Users...
+    users_df = pandas.DataFrame (users)
+    users_df.rename(columns={'id': 'userId'}, inplace=True)
+    users_df = users_df[users_df['ignore']==False]
+
+    # Sessiones...
+    newSessions = []
+    for session in sessions:
+        newSession = {}
+        newSession['sessionInstance'] = session ['contenido']['sessionInstance']
+        newSession['userId'] = session['contenido']['userId']
+        if 'plataforma' in session['contenido'].keys():
+            newSession['plataforma'] = session['contenido']['plataforma']
+        newSessions = newSessions + [newSession]
+    sessions_df = pandas.DataFrame (newSessions)
+
+    df = pandas.merge(users_df, sessions_df, on='userId')
+
+    # Dinamicas...
+    newDinamicas = []
+    for dinamica in dinamicas:
+        newDinamica = {}
+        newDinamica['sessionInstance'] = dinamica['contenido']['expLog']['session']['sessionInstance']
+        newDinamica['levelInstance'] = dinamica['contenido']['expLog']['levelInstance']
+        newDinamica['expName'] = dinamica['contenido']['expLog']['expName']
+        newDinamica['convergenciaAlcanzada'] = dinamica['contenido']['dinamica']['convergenciaAlcanzada']
+        newDinamica['convergenciaFinalizada'] = dinamica['contenido']['dinamica']['convergenciaFinalizada']
+        newDinamica['historial'] = dinamica['contenido']['dinamica']['historial']
+        newDinamica['identificador'] = dinamica['contenido']['dinamica']['identificador']
+        newDinamica['referencia'] = dinamica['contenido']['dinamica']['referencia']
+        newDinamica['tamanoVentanaAnalisisConvergencia'] = dinamica['contenido']['dinamica']['tamanoVentanaAnalisisConvergencia']
+        newDinamica['ultimaSD'] = dinamica['contenido']['dinamica']['ultimaSD']
+        newDinamica['ultimoMEAN'] = dinamica['contenido']['dinamica']['ultimoMEAN']
+        newDinamicas = newDinamicas + [newDinamica]
+    dinamicas_df = pandas.DataFrame(newDinamicas)
+
+    df = pandas.merge(df,dinamicas_df, on='sessionInstance')
+
+    return df
