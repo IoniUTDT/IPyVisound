@@ -1,15 +1,19 @@
-def plotByUser (completado=True, expList=['UmbralAngulosPiloto', 'UmbralParalelismoPiloto']):
+def plotByUser (alias=["Todos"], completado=True, expList=['UmbralAngulosPiloto', 'UmbralParalelismoPiloto']):
 
     from scripts.db import pandasUtilPiloto
     from IPython.display import display
 
     db = pandasUtilPiloto()
 
-    users = db['userId'].unique()
+    if alias == ["Todos"]:
+        users = db['alias'].unique()
+    else:
+        users = alias
+
 
     for user in users:
 
-        userDb = db[db['userId']==user]
+        userDb = db[db['alias']==user]
         userAlias = userDb.iloc[0]['alias']
 
         if completado:
@@ -20,7 +24,8 @@ def plotByUser (completado=True, expList=['UmbralAngulosPiloto', 'UmbralParaleli
             if exp in expList:
                 plotConvergenciaVersionPiloto (userDb, exp)
 
-def plotConvergenciaVersionPiloto (db, expName):
+
+def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False):
 
     from IPython.display import display
     import matplotlib.pyplot as plt
@@ -31,7 +36,10 @@ def plotConvergenciaVersionPiloto (db, expName):
     dbInfo = db.iloc[0]
     # Armamos el grafico
     colormap = plt.cm.nipy_spectral #I suggest to use nipy_spectral, Set1,Paired
-    fig = plt.figure(figsize=(20, 20))
+    if fromStadistics:
+        fig = plt.figure(figsize=(20, 10))
+    else:
+        fig = plt.figure(figsize=(20, 20))
     ax = plt.subplot(111)
     ax.set_xlabel('Numero de trial')
     ax.set_ylabel('señal (grados)')
@@ -44,8 +52,7 @@ def plotConvergenciaVersionPiloto (db, expName):
     size = len(db['alias'])
     colors = iter(cm.Paired(np.linspace(0, 1, size)))
     # inicializamos los levelInstance graficoados
-    levelDraws = []
-
+    levelColors = {}
     # Procesamos la info de cada convergencia
     for index, row in db.iterrows():
         # La desviacion significa cosas diferentes segun el experimento. En el caso de paralelismo significa la desviacion respecto a la refrebcia, es decir que converge a 0
@@ -55,42 +62,45 @@ def plotConvergenciaVersionPiloto (db, expName):
         if expName == 'UmbralAngulosPiloto':
             y = [elemento['estimulo']['desviacion']-90-row['referencia'] for elemento in row['historial']]
         x = range (len(y))
+        # Construimos el label diferentes segun sea un grafico para un solo usuario o para varios
         label = ''
         if len(db['alias'].unique()) != 1:
             label = label + ' Usuario: ' + row['alias']
         label = label + ' referencia: ' + str(row['referencia'])
 
         # Graficamos
-        if row['levelInstance'] in levelDraws:
+        if row['levelInstance'] in levelColors.keys():
+            color = levelColors[row['levelInstance']]
             ax.plot(x,y,color=color)
         else:
             color=next(colors)
             ax.plot(x,y,label=label,color=color)
-            levelDraws = levelDraws + [row['levelInstance']]
+            levelColors[row['levelInstance']] = color
 
         # Agregamos las marcas
         aciertos = [elemento['acertado'] for elemento in row['historial']]
         for i in x:
             if aciertos[i]:
-                ax.plot(i,y[i],'bx')
+                ax.plot(i,y[i],'bo')
             else:
-                ax.plot(i,y[i],'rx')
+                ax.plot(i,y[i],'ro')
 
-        # Agregamos el punto finalo que marca la convergencia alcanzada
-        if row['convergenciaAlcanzada']:
-            # Calculamos el valor medio de la cantidad de estimulos usados en el programa
-            n = row['tamanoVentanaAnalisisConvergencia']
-            mean = sum(y[-n:]) / float(n)
-            ax.plot([len(y)-n-1,len(y)-1],[mean,mean],'r--')
-            ax.plot([len(y)-1],y[-1],'bs', markersize=10)
-        else:
-            ax.plot([len(y)-1],y[-1],'rs', markersize=10)
-
+        if not fromStadistics:
+            # Agregamos el punto finalo que marca la convergencia alcanzada
+            if row['convergenciaAlcanzada']:
+                # Calculamos el valor medio de la cantidad de estimulos usados en el programa
+                n = row['tamanoVentanaAnalisisConvergencia']
+                mean = sum(y[-n:]) / float(n)
+                ax.plot([len(y)-n-1,len(y)-1],[mean,mean],'r--')
+                ax.plot([len(y)-1],y[-1],'bs', markersize=10)
+            else:
+                ax.plot([len(y)-1],y[-1],'rs', markersize=10)
 
 
     ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.show(block=False)
 
-
+"""
 def plotAllByUser (userAlias=[], soloCompletados = True):
 
 
@@ -116,9 +126,9 @@ def plotAllByUser (userAlias=[], soloCompletados = True):
 
         for i in x:
             if aciertos[i]:
-                ax.plot(i,y[i],'bx')
+                ax.plot(i,y[i],'bo')
             else:
-                ax.plot(i,y[i],'rx')
+                ax.plot(i,y[i],'ro')
 
         # Agregamos el punto finalo que marca la convergencia alcanzada
         if convergencia['dinamica']['convergenciaAlcanzada']:
@@ -137,3 +147,4 @@ def plotAllByUser (userAlias=[], soloCompletados = True):
         ax.plot(ax.get_xlim(),[0,0],'r')
         #ax.set_title(experimento + ' angulo de referencia: ' + str(referencia) + '\n' + ' correspondiente a ' + usuario + ' en la fecha ' + str(fechaLocal(levelInstance)), va='bottom')
         ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+"""

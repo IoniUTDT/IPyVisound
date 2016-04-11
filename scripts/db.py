@@ -147,7 +147,7 @@ def joinUsers():
     with open(filename, 'wb') as f:
         pickle.dump(users, f)
 
-def updateUser (userId, newAlias, ignore):
+def updateUser (user):
 
     """
         Esta funcion sirve para modificar a mano algun usuario en particular
@@ -164,14 +164,37 @@ def updateUser (userId, newAlias, ignore):
             users = pickle.load(f)
     else:
         display ('ERROR : No se ha encontrado el archivo ' + filename)
-
-    user = users[users['id']==userId]
-
-    user['alias'] = newAlias
-    user['ignore'] = ignore
+    #display(users)
+    #display(type(user))
+    if isinstance(user, int):
+        for eachuser in users:
+            if eachuser['id'] == user:
+                display ("Se va a modificar el usuario: " + eachuser['alias'])
+                response = input("Ingrese el nuevo alias o presione enter para no cambiarlo:")
+                if response != "":
+                    eachuser['alias'] = response
+                display ("Desea que el usuario " + eachuser['alias'] + " sea ignorado.")
+                response = input("(si/NO)")
+                if response == "si":
+                    eachuser['ignore'] = True
+                else:
+                    eachuser['ignore'] = False
+    if isinstance (user , str):
+        for eachuser in users:
+            if eachuser['alias'] == user:
+                display ("Se va a modificar el usuario: " + eachuser['alias'])
+                response = input("Ingrese el nuevo alias o presione enter para no cambiarlo:")
+                if response != "":
+                    eachuser['alias'] = response
+                display ("Desea que el usuario " + eachuser['alias'] + " sea ignorado.")
+                response = input("(si/NO)")
+                if response == "si":
+                    eachuser['ignore'] = True
+                else:
+                    eachuser['ignore'] = False
 
     with open(filename, 'wb') as f:
-        pickle.dump(alias, f)
+        pickle.dump(users, f)
 
 def listOfUsers ():
 
@@ -192,6 +215,28 @@ def listOfUsers ():
         display ('ERROR : No se ha encontrado el archivo ' + filename)
 
     return users
+
+
+def listOfUsersClean ():
+
+    """
+        devuelve la lista de usuarios almacenada en el alias solo si son de los utiles
+    """
+    from IPython.display import display
+
+    users = listOfUsers()
+    usersClean = [user for user in users if user['ignore']==False]
+    return usersClean
+
+def listOfUsersCleanAlias ():
+
+    """
+        devuelve la lista de alias almacenada en el alias solo si son de los utiles
+    """
+    from IPython.display import display
+
+    usersClean = listOfUsersClean()
+    return [user['alias'] for user in usersClean]
 
 def updateListOfUsers ():
 
