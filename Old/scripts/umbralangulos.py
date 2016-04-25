@@ -341,6 +341,59 @@ def plotConvergenciaXReferencia (dataframe) :
         ax.plot ([0,xmax] , [270,270] , 'r-')
 
 
+def plotUmbralVsReferencia (dataframe) :
+    """
+        Muestra cuanto vale el umbral en funcion de la orientacion del angulo (toma como referencia el lado fijo)
+        El cuadrante 1 se complementa con el 3 y el 2 con el 4.
+    """
+
+    import matplotlib.pyplot as plt
+    from scripts.general import fechaLocal
+    from IPython.display import display
+    import pandas as pd
+    import numpy as np
+
+    from scripts.general import chkVersion
+    chkVersion()
+
+    display(dataframe.keys())
+
+    # Iteramos sobre los usuarios
+    for user in dataframe['Alias'].unique():
+
+        # Armamos los graficos
+        fig, graficos = plt.subplots(2, 1, subplot_kw=dict(projection='polar'))
+        fig.set_size_inches(10,20)
+        graficos[0].set_title('Aproximacion desde angulos agudos')
+        graficos[1].set_title('Aproximacion desde angulos obtusos')
+        fig.suptitle('Nivel de umbral (en grados) de deteccion de angulos rectos\n en funcion de la oriertacion del lado fijo \n usuario: '+user)
+
+        dataByUser=dataframe[dataframe['Alias']==user]
+        # Iteramos sobre las referencias
+        referencias = dataByUser['anguloDeReferencia'].unique()
+        referencias.sort()
+        umbralC1 = []
+        umbralC2 = []
+        umbralC3 = []
+        umbralC4 = []
+        for referencia in referencias:
+            dataByUserByRef = dataByUser[dataByUser['anguloDeReferencia']==referencia]
+            #display (dataByUserByRef[dataByUserByRef['cuadranteNumero']==3])
+            umbralC1 = umbralC1 + [90 - float(dataByUserByRef[dataByUserByRef['cuadranteNumero']==1]['anguloReferido'].tail(1))]
+            umbralC2 = umbralC2 + [float(dataByUserByRef[dataByUserByRef['cuadranteNumero']==2]['anguloReferido'].tail(1)) - 90]
+            umbralC3 = umbralC3 + [270 - float(dataByUserByRef[dataByUserByRef['cuadranteNumero']==3]['anguloReferido'].tail(1))]
+            umbralC4 = umbralC4 + [float(dataByUserByRef[dataByUserByRef['cuadranteNumero']==4]['anguloReferido'].tail(1)) - 270]
+
+        referenciasRadianes = [value * np.pi / 180 + np.pi/2 for value in referencias]
+        referenciasRadianes2 = [value * np.pi / 180 + np.pi + np.pi/2 for value in referencias]
+        graficos[0].plot(referenciasRadianes,umbralC1)
+        graficos[0].plot(referenciasRadianes2,umbralC4)
+        graficos[1].plot(referenciasRadianes,umbralC2)
+        graficos[1].plot(referenciasRadianes2,umbralC3)
+
+        fig.savefig('AngulosUmbral'+user+'.png')
+        plt.show()
+
 def plotConvergenciaXCuadrantes (dataframe) :
 
     """
@@ -454,7 +507,7 @@ def plotConvergenciaXCuadrantes (dataframe) :
                 if i == 4: media = media - 270
                 Label = " Valor medio de todas las curvas (cuadrante: " + str(i) + ")" + "\n Distancia media (a partir del trial 10) al objetivo: " + str(media)
                 ax.plot(x,y,label=Label, lw=3, color = colores[i-1])
-                ax.legend(loc='center left', bbox_to_anchor=(1, 0.5),prop={'size':8})
+                lgd = ax.legend(loc='center left', bbox_to_anchor=(1, 0.5),prop={'size':8})
 
         # Agregamos una linea de referencia
         xmin, xmax = ax.get_xlim()
@@ -466,6 +519,8 @@ def plotConvergenciaXCuadrantes (dataframe) :
         ax.annotate('Cuadrante 2', xy=(xmax/2, 135))
         ax.annotate('Cuadrante 3', xy=(xmax/2, 225))
         ax.annotate('Cuadrante 4', xy=(xmax/2, 315))
+
+        figC.savefig('XCuadrante'+usuario, bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 def plotHistogramas (dataframe, agruparUsuarios=True):
     import matplotlib.pyplot as plt

@@ -247,6 +247,11 @@ def cuantitativeStatsPlotParalelismo(stats):
     out = []
     n = []
 
+    umbralTot = []
+    errTot = []
+    nTot = []
+
+
     # Hacemos los calculos para cada referencia
     for referencia in stats['referencia'].unique():
         dbCat=db[db['referencia']==referencia]
@@ -272,15 +277,21 @@ def cuantitativeStatsPlotParalelismo(stats):
         err = err + [np.std(datos)]
         out = out + [len(dbCat['meanValue']) - len(datos)]
         n = n + [len(datos)]
+        #conjunto total
+        datos = dbCat['meanValue']
+        umbralTot = umbralTot + [np.mean(datos)]
+        errTot = errTot + [np.std(datos)]
+        nTot = nTot + [len(datos)]
 
 
     # Hacemos el grafico, ejemplo extraido de : http://matplotlib.org/examples/api/barchart_demo.html
     ind = np.arange(len(etiquetas))  # the x locations for the groups
-    width = 0.25       # the width of the bars
+    width = 0.20       # the width of the bars
     fig, ax = plt.subplots()
     rects1 = ax.bar(ind, umbralPos, width, color='lime', yerr=errPos)
     rects2 = ax.bar(ind + width, umbralNeg, width, color='lightgreen', yerr=errNeg)
     rects3 = ax.bar(ind + 2*width, umbral, width, color='green', yerr=err)
+    rects4 = ax.bar(ind + 3*width, umbralTot, width, color='green', yerr=errTot)
 
     # add some text for labels, title and axes ticks
     ax.set_ylabel('Angulo de separacion')
@@ -310,9 +321,13 @@ def cuantitativeStatsPlotParalelismo(stats):
         ax.text(ind[i] + width/2. + 2*width, umbral[i] + 0.05,
                 'out='+str(out[i]),
                 ha='center', va='bottom')
+        # Para el total sin outs
+        ax.text(ind[i] + width/2. + 3*width, umbralTot[i] + 0.15,
+                'n='+str(nTot[i]),
+                ha='center', va='bottom')
 
 
-    ax.legend((rects1[0], rects2[0], rects3[0]), ('Aproximacion positiva', 'Aproximacion negativa', 'Aproximacion total'), loc='center left', bbox_to_anchor=(1, 0.5))
+    ax.legend((rects1[0], rects2[0], rects3[0], rects4[0]), ('Aproximacion positiva', 'Aproximacion negativa', 'Aproximacion total', 'Total con outsiders'), loc='center left', bbox_to_anchor=(1, 0.5))
 
 
     plt.show()
@@ -343,6 +358,10 @@ def cuantitativeStatsPlotAngulos(stats):
     out = []
     n = []
 
+    umbralTot = []
+    errTot = []
+    nTot = []
+
     # Hacemos los calculos para cada referencia
     for referencia in stats['referencia'].unique():
         dbCat=db[db['referencia']==referencia]
@@ -350,7 +369,7 @@ def cuantitativeStatsPlotAngulos(stats):
         # Acercamiento positivo
         datos = dbCat[dbCat['identificador']=='1er Cuad.']['meanValue']
         datos = datos[is_outlier(datos)==False]
-        datos = [dato - referencia for dato in datos]
+        datos = [-(dato - referencia  - 90) for dato in datos]
         umbralPos = umbralPos + [np.mean(datos)]
         errPos = errPos + [np.std(datos)]
         outliersPos = outliersPos + [len(dbCat[dbCat['identificador']=='1er Cuad.']['meanValue']) - len(datos)]
@@ -358,28 +377,39 @@ def cuantitativeStatsPlotAngulos(stats):
         # Acercamiento negativo
         datos = dbCat[dbCat['identificador']=='2do Cuad.']['meanValue']
         datos = datos[is_outlier(datos)==False]
-        datos = [dato - referencia for dato in datos]
+        datos = [dato - referencia  - 90  for dato in datos]
         umbralNeg = umbralNeg + [np.mean(datos)]
         errNeg = errNeg + [np.std(datos)]
         outliersNeg = outliersNeg + [len(dbCat[dbCat['identificador']=='2do Cuad.']['meanValue']) - len(datos)]
         nNeg = nNeg + [len(datos)]
-        #conjunto
+        #conjunto sin outisiders
         datos = dbCat['meanValue']
+        # Cambiamos el signo segun corresponda
+        datos = [dato - referencia - 90 for dato in datos]
+        datos = [-dato if dato < 0 else dato for dato in datos]
+        datos = np.array(datos)
         datos = datos[is_outlier(datos)==False]
-        datos = [dato - referencia for dato in datos]
         umbral = umbral + [np.mean(datos)]
         err = err + [np.std(datos)]
         out = out + [len(dbCat['meanValue']) - len(datos)]
         n = n + [len(datos)]
-
+        # conjunto total!
+        datos = dbCat['meanValue']
+        # Cambiamos el signo segun corresponda
+        datos = [dato - referencia - 90 for dato in datos]
+        datos = [-dato if dato < 0 else dato for dato in datos]
+        umbralTot = umbralTot + [np.mean(datos)]
+        errTot = errTot + [np.std(datos)]
+        nTot = nTot + [len(datos)]
 
     # Hacemos el grafico, ejemplo extraido de : http://matplotlib.org/examples/api/barchart_demo.html
     ind = np.arange(len(etiquetas))  # the x locations for the groups
-    width = 0.25       # the width of the bars
+    width = 0.20       # the width of the bars
     fig, ax = plt.subplots()
     rects1 = ax.bar(ind, umbralPos, width, color='lime', yerr=errPos)
     rects2 = ax.bar(ind + width, umbralNeg, width, color='lightgreen', yerr=errNeg)
     rects3 = ax.bar(ind + 2*width, umbral, width, color='green', yerr=err)
+    rects4 = ax.bar(ind + 3*width, umbralTot, width, color='green', yerr=errTot)
 
     # add some text for labels, title and axes ticks
     ax.set_ylabel('Angulo')
@@ -409,9 +439,13 @@ def cuantitativeStatsPlotAngulos(stats):
         ax.text(ind[i] + width/2. + 2*width, umbral[i] + 5,
                 'out='+str(out[i]),
                 ha='center', va='bottom')
+        # Para el total con out
+        ax.text(ind[i] + width/2. + 3*width, umbralTot[i] + 10,
+                'n='+str(nTot[i]),
+                ha='center', va='bottom')
 
 
-    ax.legend((rects1[0], rects2[0], rects3[0]), ('Aproximacion desde los agudos', 'Aproximacion desde los graves', 'Conjunto'), loc='center left', bbox_to_anchor=(1, 0.5))
+    ax.legend((rects1[0], rects2[0], rects3[0], rects4[0]), ('Aproximacion desde los agudos', 'Aproximacion desde los graves', 'Conjunto', 'Conjunto con Outsiders'), loc='center left', bbox_to_anchor=(1, 0.5))
 
 
     plt.show()
