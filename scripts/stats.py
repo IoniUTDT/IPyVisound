@@ -217,8 +217,9 @@ def cualitativeStatsPlot(stats):
     plt.title('Grado de detección segun experimento y orientación (N= '+str((deteccionesCorrectas[0]+deteccionesIncorrectas[0]+sinDetecciones[0])/2)+')')
     plt.xticks(ind + width/2., etiqueta, rotation='vertical')
     plt.yticks(np.arange(0, len(deteccionesCorrectas) + len (deteccionesIncorrectas) + len(sinDetecciones) + 1, 1))
-    plt.legend([p1[0],p2[0],p3[0]], ['Interpreta la señal correctamete (p=0.05)','Interpreta la señal incorrectamente (p=0.9)','No interpreta la señal (0.05<p<0.9)'], loc='center left', bbox_to_anchor=(1, 0.5))
+    lgd = plt.legend([p1[0],p2[0],p3[0]], ['Interpreta la señal correctamete (p=0.05)','Interpreta la señal incorrectamente (p=0.9)','No interpreta la señal (0.05<p<0.9)'], loc='center left', bbox_to_anchor=(1, 0.5))
 
+    plt.savefig('StatsResumen.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
     plt.show()
 
 def cuantitativeStatsPlotParalelismo(stats):
@@ -285,8 +286,8 @@ def cuantitativeStatsPlotParalelismo(stats):
 
 
     # Hacemos el grafico, ejemplo extraido de : http://matplotlib.org/examples/api/barchart_demo.html
-    ind = np.arange(len(etiquetas))  # the x locations for the groups
-    width = 0.20       # the width of the bars
+    ind = np.arange(len(etiquetas))*1.5  # the x locations for the groups
+    width = 0.35       # the width of the bars
     fig, ax = plt.subplots()
     rects1 = ax.bar(ind, umbralPos, width, color='lime', yerr=errPos)
     rects2 = ax.bar(ind + width, umbralNeg, width, color='lightgreen', yerr=errNeg)
@@ -295,40 +296,40 @@ def cuantitativeStatsPlotParalelismo(stats):
 
     # add some text for labels, title and axes ticks
     ax.set_ylabel('Angulo de separacion')
-    ax.set_title('Umbral de deteccion del angulo de separacion en funcion de la orientacion')
+    ax.set_title('Umbral de deteccion de no paralelismo')
     ax.set_xticks(ind + width)
     ax.set_xticklabels(etiquetas)
 
     for i in range(len(etiquetas)):
         # Ponemos el cabezal de los n para pos
-        ax.text(ind[i] + width/2., umbralPos[i] + 0.15,
+        ax.text(ind[i] + width/2., umbralPos[i] + 0.35,
                 'n='+str(nPos[i]),
                 ha='center', va='bottom')
         ax.text(ind[i] + width/2., umbralPos[i] + 0.05,
                 'out='+str(outliersPos[i]),
                 ha='center', va='bottom')
         # Para los neg
-        ax.text(ind[i] + width/2. + width, umbralNeg[i] + 0.15,
+        ax.text(ind[i] + width/2. + width, umbralNeg[i] + 0.35,
                 'n='+str(nNeg[i]),
                 ha='center', va='bottom')
         ax.text(ind[i] + width/2. + width, umbralNeg[i] + 0.05,
                 'out='+str(outliersNeg[i]),
                 ha='center', va='bottom')
         # Para el total
-        ax.text(ind[i] + width/2. + 2*width, umbral[i] + 0.15,
+        ax.text(ind[i] + width/2. + 2*width, umbral[i] + 0.35,
                 'n='+str(n[i]),
                 ha='center', va='bottom')
         ax.text(ind[i] + width/2. + 2*width, umbral[i] + 0.05,
                 'out='+str(out[i]),
                 ha='center', va='bottom')
         # Para el total sin outs
-        ax.text(ind[i] + width/2. + 3*width, umbralTot[i] + 0.15,
+        ax.text(ind[i] + width/2. + 3*width, umbralTot[i] + 0.35,
                 'n='+str(nTot[i]),
                 ha='center', va='bottom')
 
 
-    ax.legend((rects1[0], rects2[0], rects3[0], rects4[0]), ('Aproximacion positiva', 'Aproximacion negativa', 'Aproximacion total', 'Total con outsiders'), loc='center left', bbox_to_anchor=(1, 0.5))
-
+    lgd = ax.legend((rects1[0], rects2[0], rects3[0], rects4[0]), ('Aproximacion positiva', 'Aproximacion negativa', 'Aproximacion total', 'Total con outsiders'), loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.savefig('ResumenParalelismo.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
     plt.show()
 
@@ -403,8 +404,8 @@ def cuantitativeStatsPlotAngulos(stats):
         nTot = nTot + [len(datos)]
 
     # Hacemos el grafico, ejemplo extraido de : http://matplotlib.org/examples/api/barchart_demo.html
-    ind = np.arange(len(etiquetas))  # the x locations for the groups
-    width = 0.20       # the width of the bars
+    ind = np.arange(len(etiquetas))*1.5  # the x locations for the groups
+    width = 0.35       # the width of the bars
     fig, ax = plt.subplots()
     rects1 = ax.bar(ind, umbralPos, width, color='lime', yerr=errPos)
     rects2 = ax.bar(ind + width, umbralNeg, width, color='lightgreen', yerr=errNeg)
@@ -445,7 +446,8 @@ def cuantitativeStatsPlotAngulos(stats):
                 ha='center', va='bottom')
 
 
-    ax.legend((rects1[0], rects2[0], rects3[0], rects4[0]), ('Aproximacion desde los agudos', 'Aproximacion desde los graves', 'Conjunto', 'Conjunto con Outsiders'), loc='center left', bbox_to_anchor=(1, 0.5))
+    lgd = ax.legend((rects1[0], rects2[0], rects3[0], rects4[0]), ('Aproximacion desde los agudos', 'Aproximacion desde los graves', 'Conjunto', 'Conjunto con Outsiders'), loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.savefig('ResumenAngulos.png', bbox_extra_artists=(lgd,), bbox_inches='tight')
 
 
     plt.show()
