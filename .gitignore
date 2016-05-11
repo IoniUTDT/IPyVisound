@@ -38,4 +38,4 @@ Thumbs.db
 
 *.ipynb
 *.pyc
-backups
+# backups

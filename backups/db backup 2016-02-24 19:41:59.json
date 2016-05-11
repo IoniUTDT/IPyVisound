@@ -1,0 +1,13 @@
+{
+  "Status": [
+    "on"
+  ],
+  "Envio": [
+    {
+      "instance": 1456348782892,
+      "contenido": "{\"session\":{\"user\":{\"id\":1456254676474},\"sessionInstance\":1456348782856,\"codeVersion\":16,\"levelVersion\":0,\"resourcesVersion\":136},\"levelInstance\":0,\"expName\":\"UmbralParalelismo\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "id": 1
+    }
+  ]
+}

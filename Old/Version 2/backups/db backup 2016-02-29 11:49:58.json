@@ -1,0 +1,55 @@
+{
+  "Status": [
+    "on"
+  ],
+  "Envio": [
+    {
+      "instance": 1456757046219,
+      "contenido": "{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":0,\"expName\":\"UmbralParalelismo\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "id": 1
+    },
+    {
+      "instance": 1456757046303,
+      "contenido": "{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":0,\"expName\":\"UmbralAngulos\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "id": 2
+    },
+    {
+      "instance": 1456757049551,
+      "contenido": "{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":1456757049551,\"expName\":\"UmbralParalelismo\"}",
+      "tipoDeEnvio": "NEWLEVELPARALELISMO",
+      "id": 3
+    },
+    {
+      "instance": 1456757052605,
+      "contenido": "{\"session\":{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":1456757049551,\"expName\":\"UmbralParalelismo\"},\"dinamica\":{\"identificador\":\"Acercamiento Positivo\",\"nivelEstimulo\":39,\"saltosActivos\":4,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":false,\"historial\":[],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":1,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIAPARALELISMOV1",
+      "id": 4
+    },
+    {
+      "instance": 1456757052608,
+      "contenido": "{\"session\":{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":1456757049551,\"expName\":\"UmbralParalelismo\"},\"dinamica\":{\"identificador\":\"Acercamiento Negativo\",\"nivelEstimulo\":39,\"saltosActivos\":4,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":false,\"historial\":[],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":1,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIAPARALELISMOV1",
+      "id": 5
+    },
+    {
+      "instance": 1456757056550,
+      "contenido": "{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":1456757056550,\"expName\":\"UmbralAngulos\"}",
+      "tipoDeEnvio": "NEWLEVELANGULOS",
+      "id": 6
+    },
+    {
+      "instance": 1456757059742,
+      "contenido": "{\"session\":{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":1456757056550,\"expName\":\"UmbralAngulos\"},\"dinamica\":{\"identificador\":\"2do Cuad.\",\"nivelEstimulo\":19,\"saltosActivos\":2,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":false,\"historial\":[],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":1,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIAANGULOSV1",
+      "id": 7
+    },
+    {
+      "instance": 1456757059741,
+      "contenido": "{\"session\":{\"session\":{\"user\":{\"id\":1456624904968},\"sessionInstance\":1456757046070,\"codeVersion\":17,\"levelVersion\":0,\"resourcesVersion\":137},\"levelInstance\":1456757056550,\"expName\":\"UmbralAngulos\"},\"dinamica\":{\"identificador\":\"1er Cuad.\",\"nivelEstimulo\":19,\"saltosActivos\":2,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":false,\"historial\":[],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":1,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIAANGULOSV1",
+      "id": 8
+    }
+  ]
+}
