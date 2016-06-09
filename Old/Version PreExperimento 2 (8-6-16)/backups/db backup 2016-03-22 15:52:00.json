@@ -1,0 +1,119 @@
+{
+  "Status": [
+    "on"
+  ],
+  "Envio": [
+    {
+      "instance": 1458574590107,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1458574589957,\"codeVersion\":21,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 1
+    },
+    {
+      "instance": 1458576337082,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1458576337037,\"codeVersion\":21,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 2
+    },
+    {
+      "instance": 1458576364831,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1458576364805,\"codeVersion\":21,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 3
+    },
+    {
+      "instance": 1458576367073,
+      "contenido": "{\"session\":{\"userId\":1458573387223,\"sessionInstance\":1458576364805,\"codeVersion\":21,\"resourcesVersion\":1},\"levelInstance\":1458576367072,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 4
+    },
+    {
+      "instance": 1458576388902,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1458576388873,\"codeVersion\":21,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 5
+    },
+    {
+      "instance": 1458576389879,
+      "contenido": "{\"session\":{\"userId\":1458573387223,\"sessionInstance\":1458576388873,\"codeVersion\":21,\"resourcesVersion\":1},\"levelInstance\":1458576389878,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 6
+    },
+    {
+      "instance": 1458576405725,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1458573387223,\"sessionInstance\":1458576388873,\"codeVersion\":21,\"resourcesVersion\":1},\"levelInstance\":1458576389878,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"1er Cuad.\",\"nivelEstimulo\":2,\"saltosActivos\":1,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":6,\"referencia\":180,\"desviacion\":225,\"nivelSenal\":1,\"anguloFormado\":45},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0.372678,\"ultimoMEAN\":1.8333334,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 7
+    },
+    {
+      "instance": 1458576405729,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1458573387223,\"sessionInstance\":1458576388873,\"codeVersion\":21,\"resourcesVersion\":1},\"levelInstance\":1458576389878,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"2do Cuad.\",\"nivelEstimulo\":2,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 8
+    },
+    {
+      "instance": 1458671873110,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1458671872957,\"codeVersion\":22,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 9
+    },
+    {
+      "instance": 1458672445296,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1458672445233,\"codeVersion\":22,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 10
+    },
+    {
+      "instance": 1458672548256,
+      "contenido": "{\"userId\":1458672548150,\"sessionInstance\":1458672548115,\"codeVersion\":22,\"resourcesVersion\":1}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 11
+    },
+    {
+      "instance": 1458672552907,
+      "contenido": "{\"session\":{\"userId\":1458672548150,\"sessionInstance\":1458672548115,\"codeVersion\":22,\"resourcesVersion\":1},\"levelInstance\":1458672552906,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 12
+    },
+    {
+      "instance": 1458672558790,
+      "contenido": "{\"session\":{\"userId\":1458672548150,\"sessionInstance\":1458672548115,\"codeVersion\":22,\"resourcesVersion\":1},\"levelInstance\":1458672558790,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 13
+    },
+    {
+      "instance": 1458672562963,
+      "contenido": "{\"session\":{\"userId\":1458672548150,\"sessionInstance\":1458672548115,\"codeVersion\":22,\"resourcesVersion\":1},\"levelInstance\":1458672562962,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 14
+    },
+    {
+      "instance": 1458672577327,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1458672548150,\"sessionInstance\":1458672548115,\"codeVersion\":22,\"resourcesVersion\":1},\"levelInstance\":1458672562962,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"1er Cuad.\",\"nivelEstimulo\":2,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":6,\"referencia\":180,\"desviacion\":225,\"nivelSenal\":1,\"anguloFormado\":45},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 15
+    },
+    {
+      "instance": 1458672577331,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1458672548150,\"sessionInstance\":1458672548115,\"codeVersion\":22,\"resourcesVersion\":1},\"levelInstance\":1458672562962,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"2do Cuad.\",\"nivelEstimulo\":2,\"saltosActivos\":1,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":50,\"idTrial\":8,\"referencia\":180,\"desviacion\":315,\"nivelSenal\":1,\"anguloFormado\":135},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":50,\"idTrial\":8,\"referencia\":180,\"desviacion\":315,\"nivelSenal\":1,\"anguloFormado\":135},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0.47140452,\"ultimoMEAN\":1.6666666,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 16
+    }
+  ]
+}

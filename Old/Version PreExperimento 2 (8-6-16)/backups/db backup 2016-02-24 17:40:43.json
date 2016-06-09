@@ -1,0 +1,43 @@
+{
+  "Status": [
+    "on"
+  ],
+  "Envio": [
+    {
+      "instance": 1456261781824,
+      "contenido": "{session:{user:{id:1456257089521},userID:0,sessionInstance:1456261781764,codeVersion:16,levelVersion:0,resourcesVersion:136},levelInstance:0,expName:UmbralParalelismo}",
+      "tipoDeEnvio": "NEWSESION",
+      "id": 1
+    },
+    {
+      "instance": 1456261812826,
+      "contenido": "{session:{user:{id:1456257089521},userID:0,sessionInstance:1456261812792,codeVersion:16,levelVersion:0,resourcesVersion:136},levelInstance:0,expName:UmbralParalelismo}",
+      "tipoDeEnvio": "NEWSESION",
+      "id": 2
+    },
+    {
+      "instance": 1456261819980,
+      "contenido": "{session:{user:{id:1456257089521},userID:0,sessionInstance:1456261812792,codeVersion:16,levelVersion:0,resourcesVersion:136},levelInstance:1456261819980,expName:UmbralParalelismo}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "id": 3
+    },
+    {
+      "instance": 1456262008751,
+      "contenido": "{session:{session:{user:{id:1456257089521},userID:0,sessionInstance:1456261812792,codeVersion:16,levelVersion:0,resourcesVersion:136},levelInstance:1456261819980,expName:UmbralParalelismo},dinamica:{identificador:Acercamiento Negativo,nivelEstimulo:7,saltosActivos:2,convergenciaAlcanzada:false,convergenciaFinalizada:true,historial:[{estimulo:{idResource:102,idTrial:80,referencia:0,desviacion:-30.000000000000014,nivelSenal:39},acertado:true},{estimulo:{idResource:98,idTrial:76,referencia:0,desviacion:-13.197553546056815,nivelSenal:35},acertado:true},{estimulo:{idResource:94,idTrial:72,referencia:0,desviacion:-5.805847320034562,nivelSenal:31},acertado:false},{estimulo:{idResource:97,idTrial:75,referencia:0,desviacion:-10.748218268035806,nivelSenal:34},acertado:true},{estimulo:{idResource:94,idTrial:72,referencia:0,desviacion:-5.805847320034562,nivelSenal:31},acertado:true},{estimulo:{idResource:91,idTrial:69,referencia:0,desviacion:-3.1361349632986615,nivelSenal:28},acertado:true},{estimulo:{idResource:88,idTrial:66,referencia:0,desviacion:-1.6940408463868726,nivelSenal:25},acertado:true},{estimulo:{idResource:85,idTrial:63,referencia:0,desviacion:-0.9150672476826864,nivelSenal:22},acertado:true},{estimulo:{idResource:82,idTrial:60,referencia:0,desviacion:-0.4942903647025406,nivelSenal:19},acertado:true},{estimulo:{idResource:79,idTrial:57,referencia:0,desviacion:-0.2670000103888465,nivelSenal:16},acertado:true},{estimulo:{idResource:76,idTrial:54,referencia:0,desviacion:-0.14422495488162151,nivelSenal:13},acertado:true},{estimulo:{idResource:73,idTrial:51,referencia:0,desviacion:-0.07790575580994313,nivelSenal:10},acertado:true},{estimulo:{idResource:70,idTrial:48,referencia:0,desviacion:-0.04208222351880865,nivelSenal:7},acertado:true},{estimulo:{idResource:67,idTrial:45,referencia:0,desviacion:-0.02273148521409954,nivelSenal:4},acertado:true},{estimulo:{idResource:64,idTrial:42,referencia:0,desviacion:-0.012278828845816044,nivelSenal:1},acertado:false},{estimulo:{idResource:66,idTrial:44,referencia:0,desviacion:-0.01851274660755362,nivelSenal:3},acertado:false},{estimulo:{idResource:68,idTrial:46,referencia:0,desviacion:-0.02791160225938558,nivelSenal:5},acertado:false},{estimulo:{idResource:70,idTrial:48,referencia:0,desviacion:-0.04208222351880865,nivelSenal:7},acertado:true}],listaEstimulos:[],anguloDeReferencia:0,ultimaSD:2.1408722,ultimoMEAN:4.5,proporcionAciertos:2,proporcionTotal:3,tamanoVentanaAnalisisConvergencia:6,sdEsperada:1}}",
+      "tipoDeEnvio": "CONVERGENCIAPARALELISMO",
+      "id": 4
+    },
+    {
+      "instance": 1456262008744,
+      "contenido": "{session:{session:{user:{id:1456257089521},userID:0,sessionInstance:1456261812792,codeVersion:16,levelVersion:0,resourcesVersion:136},levelInstance:1456261819980,expName:UmbralParalelismo},dinamica:{identificador:Acercamiento Positivo,nivelEstimulo:15,saltosActivos:1,convergenciaAlcanzada:true,convergenciaFinalizada:true,historial:[{estimulo:{idResource:62,idTrial:40,referencia:0,desviacion:30.000000000000014,nivelSenal:39},acertado:true},{estimulo:{idResource:58,idTrial:36,referencia:0,desviacion:13.197553546056815,nivelSenal:35},acertado:true},{estimulo:{idResource:54,idTrial:32,referencia:0,desviacion:5.805847320034562,nivelSenal:31},acertado:true},{estimulo:{idResource:50,idTrial:28,referencia:0,desviacion:2.5540993628795516,nivelSenal:27},acertado:true},{estimulo:{idResource:46,idTrial:24,referencia:0,desviacion:1.123595436785083,nivelSenal:23},acertado:true},{estimulo:{idResource:42,idTrial:20,referencia:0,desviacion:0.4942903647025406,nivelSenal:19},acertado:true},{estimulo:{idResource:38,idTrial:16,referencia:0,desviacion:0.21744745184872435,nivelSenal:15},acertado:true},{estimulo:{idResource:34,idTrial:12,referencia:0,desviacion:0.09565914630757162,nivelSenal:11},acertado:false},{estimulo:{idResource:37,idTrial:15,referencia:0,desviacion:0.1770913575869975,nivelSenal:14},acertado:false},{estimulo:{idResource:40,idTrial:18,referencia:0,desviacion:0.3278447502674765,nivelSenal:17},acertado:true},{estimulo:{idResource:40,idTrial:18,referencia:0,desviacion:0.3278447502674765,nivelSenal:17},acertado:false},{estimulo:{idResource:42,idTrial:20,referencia:0,desviacion:0.4942903647025406,nivelSenal:19},acertado:false},{estimulo:{idResource:44,idTrial:22,referencia:0,desviacion:0.7452398259799382,nivelSenal:21},acertado:true},{estimulo:{idResource:44,idTrial:22,referencia:0,desviacion:0.7452398259799382,nivelSenal:21},acertado:true},{estimulo:{idResource:42,idTrial:20,referencia:0,desviacion:0.4942903647025406,nivelSenal:19},acertado:true},{estimulo:{idResource:40,idTrial:18,referencia:0,desviacion:0.3278447502674765,nivelSenal:17},acertado:true},{estimulo:{idResource:38,idTrial:16,referencia:0,desviacion:0.21744745184872435,nivelSenal:15},acertado:true},{estimulo:{idResource:36,idTrial:14,referencia:0,desviacion:0.14422495488162151,nivelSenal:13},acertado:false},{estimulo:{idResource:37,idTrial:15,referencia:0,desviacion:0.1770913575869975,nivelSenal:14},acertado:false},{estimulo:{idResource:38,idTrial:16,referencia:0,desviacion:0.21744745184872435,nivelSenal:15},acertado:true},{estimulo:{idResource:38,idTrial:16,referencia:0,desviacion:0.21744745184872435,nivelSenal:15},acertado:true},{estimulo:{idResource:37,idTrial:15,referencia:0,desviacion:0.1770913575869975,nivelSenal:14},acertado:false}],listaEstimulos:[],anguloDeReferencia:0,ultimaSD:0.745356,ultimoMEAN:14.333333,proporcionAciertos:2,proporcionTotal:3,tamanoVentanaAnalisisConvergencia:6,sdEsperada:1}}",
+      "tipoDeEnvio": "CONVERGENCIAPARALELISMO",
+      "id": 5
+    },
+    {
+      "instance": 1456346407205,
+      "contenido": "{session:{user:{id:1456254676474},sessionInstance:1456346406779,codeVersion:16,levelVersion:0,resourcesVersion:136},levelInstance:0,expName:UmbralParalelismo}",
+      "tipoDeEnvio": "NEWSESION",
+      "id": 6
+    }
+  ]
+}

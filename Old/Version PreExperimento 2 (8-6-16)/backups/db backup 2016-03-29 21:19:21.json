@@ -1,0 +1,224 @@
+{
+  "Status": [
+    "on"
+  ],
+  "Envio": [
+    {
+      "instance": 1459264178792,
+      "contenido": "{\"userId\":1458573387223,\"sessionInstance\":1459264178755,\"codeVersion\":22,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 1
+    },
+    {
+      "instance": 1459264438887,
+      "contenido": "{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 2
+    },
+    {
+      "instance": 1459264447106,
+      "contenido": "{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264447105,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 3
+    },
+    {
+      "instance": 1459264455367,
+      "contenido": "{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264455367,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 4
+    },
+    {
+      "instance": 1459264501814,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264455367,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"2do Cuad.\",\"nivelEstimulo\":0,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":50,\"idTrial\":8,\"referencia\":180,\"desviacion\":315,\"nivelSenal\":1,\"anguloFormado\":135},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":49,\"idTrial\":7,\"referencia\":180,\"desviacion\":270,\"nivelSenal\":0,\"anguloFormado\":90},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":49,\"idTrial\":7,\"referencia\":180,\"desviacion\":270,\"nivelSenal\":0,\"anguloFormado\":90},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 5
+    },
+    {
+      "instance": 1459264501807,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264455367,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"1er Cuad.\",\"nivelEstimulo\":0,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":6,\"referencia\":180,\"desviacion\":225,\"nivelSenal\":1,\"anguloFormado\":45},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":49,\"idTrial\":7,\"referencia\":180,\"desviacion\":270,\"nivelSenal\":0,\"anguloFormado\":90},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":49,\"idTrial\":7,\"referencia\":180,\"desviacion\":270,\"nivelSenal\":0,\"anguloFormado\":90},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":49,\"idTrial\":7,\"referencia\":180,\"desviacion\":270,\"nivelSenal\":0,\"anguloFormado\":90},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":49,\"idTrial\":7,\"referencia\":180,\"desviacion\":270,\"nivelSenal\":0,\"anguloFormado\":90},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0.7637626,\"ultimoMEAN\":0.5,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 6
+    },
+    {
+      "instance": 1459264504386,
+      "contenido": "{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264504386,\"expName\":\"UmbralParalelismoTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialParalelismo",
+      "id": 7
+    },
+    {
+      "instance": 1459264553633,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264504386,\"expName\":\"UmbralParalelismoTutorial\"},\"dinamica\":{\"identificador\":\"Acercamiento Positivo\",\"nivelEstimulo\":1,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":54,\"idTrial\":12,\"referencia\":10,\"desviacion\":24.999999999999996,\"nivelSenal\":2},\"acertado\":true},{\"estimulo\":{\"idResource\":53,\"idTrial\":11,\"referencia\":10,\"desviacion\":11.180339887498945,\"nivelSenal\":1},\"acertado\":true},{\"estimulo\":{\"idResource\":52,\"idTrial\":10,\"referencia\":10,\"desviacion\":4.999999999999999,\"nivelSenal\":0},\"acertado\":true},{\"estimulo\":{\"idResource\":52,\"idTrial\":10,\"referencia\":10,\"desviacion\":4.999999999999999,\"nivelSenal\":0},\"acertado\":false},{\"estimulo\":{\"idResource\":53,\"idTrial\":11,\"referencia\":10,\"desviacion\":11.180339887498945,\"nivelSenal\":1},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":10}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialParalelismo",
+      "id": 8
+    },
+    {
+      "instance": 1459264553637,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264504386,\"expName\":\"UmbralParalelismoTutorial\"},\"dinamica\":{\"identificador\":\"Acercamiento Negativo\",\"nivelEstimulo\":0,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":57,\"idTrial\":15,\"referencia\":10,\"desviacion\":-24.999999999999996,\"nivelSenal\":2},\"acertado\":true},{\"estimulo\":{\"idResource\":56,\"idTrial\":14,\"referencia\":10,\"desviacion\":-11.180339887498945,\"nivelSenal\":1},\"acertado\":true},{\"estimulo\":{\"idResource\":55,\"idTrial\":13,\"referencia\":10,\"desviacion\":-4.999999999999999,\"nivelSenal\":0},\"acertado\":true},{\"estimulo\":{\"idResource\":55,\"idTrial\":13,\"referencia\":10,\"desviacion\":-4.999999999999999,\"nivelSenal\":0},\"acertado\":true},{\"estimulo\":{\"idResource\":55,\"idTrial\":13,\"referencia\":10,\"desviacion\":-4.999999999999999,\"nivelSenal\":0},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":10}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialParalelismo",
+      "id": 9
+    },
+    {
+      "instance": 1459264556982,
+      "contenido": "{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264556981,\"expName\":\"UmbralParalelismoPiloto\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 10
+    },
+    {
+      "instance": 1459264600080,
+      "contenido": "{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264600080,\"expName\":\"UmbralAngulosPiloto\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "expAngulosPiloto",
+      "id": 11
+    },
+    {
+      "instance": 1459264598054,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264556981,\"expName\":\"UmbralParalelismoPiloto\"},\"dinamica\":{\"identificador\":\"Acercamiento Positivo\",\"nivelEstimulo\":39,\"saltosActivos\":1,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":92,\"idTrial\":50,\"referencia\":0,\"desviacion\":12.317194609707842,\"nivelSenal\":34},\"acertado\":true},{\"estimulo\":{\"idResource\":87,\"idTrial\":45,\"referencia\":0,\"desviacion\":6.06853132213664,\"nivelSenal\":29},\"acertado\":false},{\"estimulo\":{\"idResource\":91,\"idTrial\":49,\"referencia\":0,\"desviacion\":10.691192817177699,\"nivelSenal\":33},\"acertado\":false},{\"estimulo\":{\"idResource\":95,\"idTrial\":53,\"referencia\":0,\"desviacion\":18.83513453034762,\"nivelSenal\":37},\"acertado\":false},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":93,\"idTrial\":51,\"referencia\":0,\"desviacion\":14.19049171105174,\"nivelSenal\":35},\"acertado\":false},{\"estimulo\":{\"idResource\":96,\"idTrial\":54,\"referencia\":0,\"desviacion\":21.69973187066353,\"nivelSenal\":38},\"acertado\":true},{\"estimulo\":{\"idResource\":96,\"idTrial\":54,\"referencia\":0,\"desviacion\":21.69973187066353,\"nivelSenal\":38},\"acertado\":false},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0.4714045,\"ultimoMEAN\":38.666668,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 12
+    },
+    {
+      "instance": 1459264598058,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264556981,\"expName\":\"UmbralParalelismoPiloto\"},\"dinamica\":{\"identificador\":\"Acercamiento Negativo\",\"nivelEstimulo\":39,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":132,\"idTrial\":90,\"referencia\":0,\"desviacion\":-12.317194609707842,\"nivelSenal\":34},\"acertado\":true},{\"estimulo\":{\"idResource\":127,\"idTrial\":85,\"referencia\":0,\"desviacion\":-6.06853132213664,\"nivelSenal\":29},\"acertado\":true},{\"estimulo\":{\"idResource\":122,\"idTrial\":80,\"referencia\":0,\"desviacion\":-2.989891251594587,\"nivelSenal\":24},\"acertado\":true},{\"estimulo\":{\"idResource\":117,\"idTrial\":75,\"referencia\":0,\"desviacion\":-1.4730828963101408,\"nivelSenal\":19},\"acertado\":true},{\"estimulo\":{\"idResource\":112,\"idTrial\":70,\"referencia\":0,\"desviacion\":-0.7257699484033636,\"nivelSenal\":14},\"acertado\":false},{\"estimulo\":{\"idResource\":116,\"idTrial\":74,\"referencia\":0,\"desviacion\":-1.27862015492762,\"nivelSenal\":18},\"acertado\":true},{\"estimulo\":{\"idResource\":116,\"idTrial\":74,\"referencia\":0,\"desviacion\":-1.27862015492762,\"nivelSenal\":18},\"acertado\":true},{\"estimulo\":{\"idResource\":112,\"idTrial\":70,\"referencia\":0,\"desviacion\":-0.7257699484033636,\"nivelSenal\":14},\"acertado\":false},{\"estimulo\":{\"idResource\":115,\"idTrial\":73,\"referencia\":0,\"desviacion\":-1.109828581054225,\"nivelSenal\":17},\"acertado\":false},{\"estimulo\":{\"idResource\":118,\"idTrial\":76,\"referencia\":0,\"desviacion\":-1.697121080907965,\"nivelSenal\":20},\"acertado\":false},{\"estimulo\":{\"idResource\":121,\"idTrial\":79,\"referencia\":0,\"desviacion\":-2.595193539281806,\"nivelSenal\":23},\"acertado\":false},{\"estimulo\":{\"idResource\":124,\"idTrial\":82,\"referencia\":0,\"desviacion\":-3.968502649632263,\"nivelSenal\":26},\"acertado\":false},{\"estimulo\":{\"idResource\":127,\"idTrial\":85,\"referencia\":0,\"desviacion\":-6.06853132213664,\"nivelSenal\":29},\"acertado\":false},{\"estimulo\":{\"idResource\":130,\"idTrial\":88,\"referencia\":0,\"desviacion\":-9.279840700412796,\"nivelSenal\":32},\"acertado\":true},{\"estimulo\":{\"idResource\":130,\"idTrial\":88,\"referencia\":0,\"desviacion\":-9.279840700412796,\"nivelSenal\":32},\"acertado\":false},{\"estimulo\":{\"idResource\":132,\"idTrial\":90,\"referencia\":0,\"desviacion\":-12.317194609707842,\"nivelSenal\":34},\"acertado\":false},{\"estimulo\":{\"idResource\":134,\"idTrial\":92,\"referencia\":0,\"desviacion\":-16.348694762256773,\"nivelSenal\":36},\"acertado\":false},{\"estimulo\":{\"idResource\":136,\"idTrial\":94,\"referencia\":0,\"desviacion\":-21.69973187066353,\"nivelSenal\":38},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":135,\"idTrial\":93,\"referencia\":0,\"desviacion\":-18.83513453034762,\"nivelSenal\":37},\"acertado\":false},{\"estimulo\":{\"idResource\":136,\"idTrial\":94,\"referencia\":0,\"desviacion\":-21.69973187066353,\"nivelSenal\":38},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0.74535596,\"ultimoMEAN\":38.333332,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 13
+    },
+    {
+      "instance": 1459264614656,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264600080,\"expName\":\"UmbralAngulosPiloto\"},\"dinamica\":{\"identificador\":\"1er Cuad.\",\"nivelEstimulo\":13,\"saltosActivos\":1,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":382,\"idTrial\":340,\"referencia\":90,\"desviacion\":100,\"nivelSenal\":13,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":382,\"idTrial\":340,\"referencia\":90,\"desviacion\":100,\"nivelSenal\":13,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":382,\"idTrial\":340,\"referencia\":90,\"desviacion\":100,\"nivelSenal\":13,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":382,\"idTrial\":340,\"referencia\":90,\"desviacion\":100,\"nivelSenal\":13,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":382,\"idTrial\":340,\"referencia\":90,\"desviacion\":100,\"nivelSenal\":13,\"anguloFormado\":10},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":382,\"idTrial\":340,\"referencia\":90,\"desviacion\":100,\"nivelSenal\":13,\"anguloFormado\":10},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":13,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":90}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expAngulosPiloto",
+      "id": 14
+    },
+    {
+      "instance": 1459264614666,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264600080,\"expName\":\"UmbralAngulosPiloto\"},\"dinamica\":{\"identificador\":\"2do Cuad.\",\"nivelEstimulo\":13,\"saltosActivos\":1,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":406,\"idTrial\":364,\"referencia\":90,\"desviacion\":240,\"nivelSenal\":11,\"anguloFormado\":150},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":407,\"idTrial\":365,\"referencia\":90,\"desviacion\":250,\"nivelSenal\":12,\"anguloFormado\":160},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":407,\"idTrial\":365,\"referencia\":90,\"desviacion\":250,\"nivelSenal\":12,\"anguloFormado\":160},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":406,\"idTrial\":364,\"referencia\":90,\"desviacion\":240,\"nivelSenal\":11,\"anguloFormado\":150},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":405,\"idTrial\":363,\"referencia\":90,\"desviacion\":230,\"nivelSenal\":10,\"anguloFormado\":140},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":404,\"idTrial\":362,\"referencia\":90,\"desviacion\":220,\"nivelSenal\":9,\"anguloFormado\":130},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":403,\"idTrial\":361,\"referencia\":90,\"desviacion\":210,\"nivelSenal\":8,\"anguloFormado\":120},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":402,\"idTrial\":360,\"referencia\":90,\"desviacion\":200,\"nivelSenal\":7,\"anguloFormado\":110},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":403,\"idTrial\":361,\"referencia\":90,\"desviacion\":210,\"nivelSenal\":8,\"anguloFormado\":120},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":404,\"idTrial\":362,\"referencia\":90,\"desviacion\":220,\"nivelSenal\":9,\"anguloFormado\":130},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":405,\"idTrial\":363,\"referencia\":90,\"desviacion\":230,\"nivelSenal\":10,\"anguloFormado\":140},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":406,\"idTrial\":364,\"referencia\":90,\"desviacion\":240,\"nivelSenal\":11,\"anguloFormado\":150},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":406,\"idTrial\":364,\"referencia\":90,\"desviacion\":240,\"nivelSenal\":11,\"anguloFormado\":150},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":407,\"idTrial\":365,\"referencia\":90,\"desviacion\":250,\"nivelSenal\":12,\"anguloFormado\":160},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":407,\"idTrial\":365,\"referencia\":90,\"desviacion\":250,\"nivelSenal\":12,\"anguloFormado\":160},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":406,\"idTrial\":364,\"referencia\":90,\"desviacion\":240,\"nivelSenal\":11,\"anguloFormado\":150},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":405,\"idTrial\":363,\"referencia\":90,\"desviacion\":230,\"nivelSenal\":10,\"anguloFormado\":140},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":406,\"idTrial\":364,\"referencia\":90,\"desviacion\":240,\"nivelSenal\":11,\"anguloFormado\":150},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":407,\"idTrial\":365,\"referencia\":90,\"desviacion\":250,\"nivelSenal\":12,\"anguloFormado\":160},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":408,\"idTrial\":366,\"referencia\":90,\"desviacion\":260,\"nivelSenal\":13,\"anguloFormado\":170},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0.372678,\"ultimoMEAN\":12.833333,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":90}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expAngulosPiloto",
+      "id": 15
+    },
+    {
+      "instance": 1459264615193,
+      "contenido": "{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264615193,\"expName\":\"UmbralParalelismoPiloto\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 16
+    },
+    {
+      "instance": 1459264616670,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264615193,\"expName\":\"UmbralParalelismoPiloto\"},\"dinamica\":{\"identificador\":\"Acercamiento Negativo\",\"nivelEstimulo\":39,\"saltosActivos\":5,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":false,\"historial\":[],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":30}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 17
+    },
+    {
+      "instance": 1459264616668,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264438868,\"sessionInstance\":1459264438837,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264615193,\"expName\":\"UmbralParalelismoPiloto\"},\"dinamica\":{\"identificador\":\"Acercamiento Positivo\",\"nivelEstimulo\":39,\"saltosActivos\":5,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":false,\"historial\":[],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":30}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 18
+    },
+    {
+      "instance": 1459264921224,
+      "contenido": "{\"userId\":1459264921127,\"sessionInstance\":1459264921108,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 19
+    },
+    {
+      "instance": 1459264931497,
+      "contenido": "{\"session\":{\"userId\":1459264921127,\"sessionInstance\":1459264921108,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264931496,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 20
+    },
+    {
+      "instance": 1459264960353,
+      "contenido": "{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 21
+    },
+    {
+      "instance": 1459264961623,
+      "contenido": "{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264961622,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 22
+    },
+    {
+      "instance": 1459264972755,
+      "contenido": "{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264972754,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 23
+    },
+    {
+      "instance": 1459264989946,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264972754,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"1er Cuad.\",\"nivelEstimulo\":1,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":6,\"referencia\":180,\"desviacion\":225,\"nivelSenal\":1,\"anguloFormado\":45},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":47,\"idTrial\":5,\"referencia\":180,\"desviacion\":190,\"nivelSenal\":2,\"anguloFormado\":10},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 24
+    },
+    {
+      "instance": 1459264989955,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264972754,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"identificador\":\"2do Cuad.\",\"nivelEstimulo\":2,\"saltosActivos\":1,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":50,\"idTrial\":8,\"referencia\":180,\"desviacion\":315,\"nivelSenal\":1,\"anguloFormado\":135},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":true},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false},{\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":51,\"idTrial\":9,\"referencia\":180,\"desviacion\":350,\"nivelSenal\":2,\"anguloFormado\":170},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0.372678,\"ultimoMEAN\":1.8333334,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":180}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 25
+    },
+    {
+      "instance": 1459264992036,
+      "contenido": "{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264992035,\"expName\":\"UmbralParalelismoTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialParalelismo",
+      "id": 26
+    },
+    {
+      "instance": 1459265006770,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264992035,\"expName\":\"UmbralParalelismoTutorial\"},\"dinamica\":{\"identificador\":\"Acercamiento Negativo\",\"nivelEstimulo\":1,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":57,\"idTrial\":15,\"referencia\":10,\"desviacion\":-24.999999999999996,\"nivelSenal\":2},\"acertado\":false},{\"estimulo\":{\"idResource\":57,\"idTrial\":15,\"referencia\":10,\"desviacion\":-24.999999999999996,\"nivelSenal\":2},\"acertado\":true},{\"estimulo\":{\"idResource\":57,\"idTrial\":15,\"referencia\":10,\"desviacion\":-24.999999999999996,\"nivelSenal\":2},\"acertado\":false},{\"estimulo\":{\"idResource\":57,\"idTrial\":15,\"referencia\":10,\"desviacion\":-24.999999999999996,\"nivelSenal\":2},\"acertado\":true},{\"estimulo\":{\"idResource\":57,\"idTrial\":15,\"referencia\":10,\"desviacion\":-24.999999999999996,\"nivelSenal\":2},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":10}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialParalelismo",
+      "id": 27
+    },
+    {
+      "instance": 1459265006761,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459264992035,\"expName\":\"UmbralParalelismoTutorial\"},\"dinamica\":{\"identificador\":\"Acercamiento Positivo\",\"nivelEstimulo\":2,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":54,\"idTrial\":12,\"referencia\":10,\"desviacion\":24.999999999999996,\"nivelSenal\":2},\"acertado\":false},{\"estimulo\":{\"idResource\":54,\"idTrial\":12,\"referencia\":10,\"desviacion\":24.999999999999996,\"nivelSenal\":2},\"acertado\":false},{\"estimulo\":{\"idResource\":54,\"idTrial\":12,\"referencia\":10,\"desviacion\":24.999999999999996,\"nivelSenal\":2},\"acertado\":true},{\"estimulo\":{\"idResource\":54,\"idTrial\":12,\"referencia\":10,\"desviacion\":24.999999999999996,\"nivelSenal\":2},\"acertado\":false},{\"estimulo\":{\"idResource\":54,\"idTrial\":12,\"referencia\":10,\"desviacion\":24.999999999999996,\"nivelSenal\":2},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":0,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":10}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialParalelismo",
+      "id": 28
+    },
+    {
+      "instance": 1459265008666,
+      "contenido": "{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459265008665,\"expName\":\"UmbralParalelismoPiloto\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 29
+    },
+    {
+      "instance": 1459265024047,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459265008665,\"expName\":\"UmbralParalelismoPiloto\"},\"dinamica\":{\"identificador\":\"Acercamiento Positivo\",\"nivelEstimulo\":36,\"saltosActivos\":1,\"convergenciaAlcanzada\":false,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":97,\"idTrial\":55,\"referencia\":0,\"desviacion\":24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":92,\"idTrial\":50,\"referencia\":0,\"desviacion\":12.317194609707842,\"nivelSenal\":34},\"acertado\":true},{\"estimulo\":{\"idResource\":87,\"idTrial\":45,\"referencia\":0,\"desviacion\":6.06853132213664,\"nivelSenal\":29},\"acertado\":false},{\"estimulo\":{\"idResource\":91,\"idTrial\":49,\"referencia\":0,\"desviacion\":10.691192817177699,\"nivelSenal\":33},\"acertado\":true},{\"estimulo\":{\"idResource\":91,\"idTrial\":49,\"referencia\":0,\"desviacion\":10.691192817177699,\"nivelSenal\":33},\"acertado\":false},{\"estimulo\":{\"idResource\":94,\"idTrial\":52,\"referencia\":0,\"desviacion\":16.348694762256773,\"nivelSenal\":36},\"acertado\":true},{\"estimulo\":{\"idResource\":94,\"idTrial\":52,\"referencia\":0,\"desviacion\":16.348694762256773,\"nivelSenal\":36},\"acertado\":true},{\"estimulo\":{\"idResource\":91,\"idTrial\":49,\"referencia\":0,\"desviacion\":10.691192817177699,\"nivelSenal\":33},\"acertado\":true},{\"estimulo\":{\"idResource\":88,\"idTrial\":46,\"referencia\":0,\"desviacion\":6.991481920498817,\"nivelSenal\":30},\"acertado\":false},{\"estimulo\":{\"idResource\":90,\"idTrial\":48,\"referencia\":0,\"desviacion\":9.279840700412796,\"nivelSenal\":32},\"acertado\":false},{\"estimulo\":{\"idResource\":92,\"idTrial\":50,\"referencia\":0,\"desviacion\":12.317194609707842,\"nivelSenal\":34},\"acertado\":true},{\"estimulo\":{\"idResource\":92,\"idTrial\":50,\"referencia\":0,\"desviacion\":12.317194609707842,\"nivelSenal\":34},\"acertado\":true},{\"estimulo\":{\"idResource\":90,\"idTrial\":48,\"referencia\":0,\"desviacion\":9.279840700412796,\"nivelSenal\":32},\"acertado\":false},{\"estimulo\":{\"idResource\":91,\"idTrial\":49,\"referencia\":0,\"desviacion\":10.691192817177699,\"nivelSenal\":33},\"acertado\":false},{\"estimulo\":{\"idResource\":92,\"idTrial\":50,\"referencia\":0,\"desviacion\":12.317194609707842,\"nivelSenal\":34},\"acertado\":false},{\"estimulo\":{\"idResource\":93,\"idTrial\":51,\"referencia\":0,\"desviacion\":14.19049171105174,\"nivelSenal\":35},\"acertado\":false},{\"estimulo\":{\"idResource\":94,\"idTrial\":52,\"referencia\":0,\"desviacion\":16.348694762256773,\"nivelSenal\":36},\"acertado\":false},{\"estimulo\":{\"idResource\":95,\"idTrial\":53,\"referencia\":0,\"desviacion\":18.83513453034762,\"nivelSenal\":37},\"acertado\":true},{\"estimulo\":{\"idResource\":95,\"idTrial\":53,\"referencia\":0,\"desviacion\":18.83513453034762,\"nivelSenal\":37},\"acertado\":true},{\"estimulo\":{\"idResource\":94,\"idTrial\":52,\"referencia\":0,\"desviacion\":16.348694762256773,\"nivelSenal\":36},\"acertado\":true},{\"estimulo\":{\"idResource\":93,\"idTrial\":51,\"referencia\":0,\"desviacion\":14.19049171105174,\"nivelSenal\":35},\"acertado\":false},{\"estimulo\":{\"idResource\":94,\"idTrial\":52,\"referencia\":0,\"desviacion\":16.348694762256773,\"nivelSenal\":36},\"acertado\":false},{\"estimulo\":{\"idResource\":95,\"idTrial\":53,\"referencia\":0,\"desviacion\":18.83513453034762,\"nivelSenal\":37},\"acertado\":false},{\"estimulo\":{\"idResource\":96,\"idTrial\":54,\"referencia\":0,\"desviacion\":21.69973187066353,\"nivelSenal\":38},\"acertado\":true},{\"estimulo\":{\"idResource\":96,\"idTrial\":54,\"referencia\":0,\"desviacion\":21.69973187066353,\"nivelSenal\":38},\"acertado\":true},{\"estimulo\":{\"idResource\":95,\"idTrial\":53,\"referencia\":0,\"desviacion\":18.83513453034762,\"nivelSenal\":37},\"acertado\":true}],\"listaEstimulos\":[],\"ultimaSD\":1.0671873,\"ultimoMEAN\":36.833332,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 30
+    },
+    {
+      "instance": 1459265024064,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1459264960295,\"sessionInstance\":1459264960287,\"codeVersion\":30,\"resourcesVersion\":1,\"plataforma\":\"Desktop\"},\"levelInstance\":1459265008665,\"expName\":\"UmbralParalelismoPiloto\"},\"dinamica\":{\"identificador\":\"Acercamiento Negativo\",\"nivelEstimulo\":39,\"saltosActivos\":2,\"convergenciaAlcanzada\":true,\"convergenciaFinalizada\":true,\"historial\":[{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":132,\"idTrial\":90,\"referencia\":0,\"desviacion\":-12.317194609707842,\"nivelSenal\":34},\"acertado\":true},{\"estimulo\":{\"idResource\":127,\"idTrial\":85,\"referencia\":0,\"desviacion\":-6.06853132213664,\"nivelSenal\":29},\"acertado\":false},{\"estimulo\":{\"idResource\":131,\"idTrial\":89,\"referencia\":0,\"desviacion\":-10.691192817177699,\"nivelSenal\":33},\"acertado\":false},{\"estimulo\":{\"idResource\":135,\"idTrial\":93,\"referencia\":0,\"desviacion\":-18.83513453034762,\"nivelSenal\":37},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":true},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":false},{\"estimulo\":{\"idResource\":137,\"idTrial\":95,\"referencia\":0,\"desviacion\":-24.999999999999986,\"nivelSenal\":39},\"acertado\":false}],\"listaEstimulos\":[],\"ultimaSD\":0,\"ultimoMEAN\":39,\"proporcionAciertos\":2,\"tamanoVentanaAnalisisConvergencia\":6,\"sdEsperada\":0.5,\"referencia\":0}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "expUmbralParalelismoPiloto",
+      "id": 31
+    }
+  ]
+}
