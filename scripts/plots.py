@@ -77,6 +77,10 @@ def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLe
             label = label + ' Usuario: ' + row['alias']
         label = label + ' referencia: ' + str(row['referencia'])
 
+        senalesNoCeroNiTest = [elemento for elemento in row['historial'] if elemento['trialType']=='REAL_TRIAL_ESTIMULO']
+        label = label + ' \n Valor final: ' + str(senalesNoCeroNiTest[-1]['estimulo']['desviacion'])
+
+
         # Graficamos
         if row['levelInstance'] in levelColors.keys():
             color = levelColors[row['levelInstance']]
