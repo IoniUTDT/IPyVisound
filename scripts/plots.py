@@ -5,8 +5,6 @@ def plotByUser (alias=["Todos"], completado=True, expList=['UmbralAngulosPiloto'
 
     db = pandasUtilPiloto()
 
-    display(db)
-
     if alias == ["Todos"]:
         users = db['alias'].unique()
     else:
@@ -24,11 +22,10 @@ def plotByUser (alias=["Todos"], completado=True, expList=['UmbralAngulosPiloto'
         exps = userDb['expName'].unique()
         for exp in exps:
             if exp in expList:
-                display (userDb['historial'])
                 plotConvergenciaVersionPiloto (userDb, exp)
 
 
-def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLevelSession = [1465499974725]):
+def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLevelInstance = [1465499974725,1466028783553,1466028660936,1466028551014,1466028543250,1466027507789,1466027464069,1466027418273,1466027187076]):
 
     from IPython.display import display
     import matplotlib.pyplot as plt
@@ -59,7 +56,7 @@ def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLe
     # Procesamos la info de cada convergencia
     for index, row in db.iterrows():
 
-        if row['levelInstance'] in excludedLevelSession:
+        if row['levelInstance'] in excludedLevelInstance:
             continue
         # La desviacion significa cosas diferentes segun el experimento. En el caso de paralelismo significa la desviacion respecto a la refrebcia, es decir que converge a 0
         # En el caso de los angulos deberia converger a 90 + referencia, por lo que para graficar y que converja todo junto conviene modificar los datos
@@ -70,6 +67,7 @@ def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLe
         #    y = [elemento['estimulo']['desviacion']-90-row['referencia'] for elemento in row['historial']]
         #
         y = [elemento['nivelEstimulo'] for elemento in row['historial']]
+        estimuloReal = [elemento['estimulo']['nivelSenal'] for elemento in row['historial']]
         x = range (len(y))
         # Construimos el label diferentes segun sea un grafico para un solo usuario o para varios
         label = ''
@@ -102,6 +100,11 @@ def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLe
         ax.plot([i for i in x if tipo[i]=='REAL_TRIAL_CERO'],[y[i] for i in x if tipo[i]=='REAL_TRIAL_CERO'],'8', color='black', markersize=20, fillstyle = 'none', label='Señal cero', mew = 3)
         ax.plot([i for i in x if tipo[i]=='REAL_TRIAL_ESTIMULO'],[y[i] for i in x if tipo[i]=='REAL_TRIAL_ESTIMULO'],'8', color='green', markersize=20, fillstyle = 'none', label='Señal nivel', mew = 3)
         ax.plot([i for i in x if tipo[i]=='TEST_EASY_Trial'],[y[i] for i in x if tipo[i]=='TEST_EASY_Trial'],'8', color='cyan', markersize=20, fillstyle = 'none', label='Señal test', mew = 3)
+        # Agregamos las marcas de los niveles reales
+        textos = zip(estimuloReal,x,y,tipo)
+        for elemento in textos:
+            if elemento[3] =='TEST_EASY_Trial':
+                ax.annotate(elemento[0],(elemento[1],elemento[2]))
 
         if not fromStadistics:
             # Agregamos el punto finalo que marca la convergencia alcanzada
