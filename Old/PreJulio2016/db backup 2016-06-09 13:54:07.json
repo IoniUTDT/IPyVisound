@@ -1,0 +1,392 @@
+{
+  "Status": [
+    "on"
+  ],
+  "Envio": [
+    {
+      "instance": 1464825513506,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464825513406,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 1
+    },
+    {
+      "instance": 1465412174353,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465412171515,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"},\"levelInstance\":1465412174352,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 2
+    },
+    {
+      "instance": 1465412209493,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465412202309,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"},\"levelInstance\":1465412209492,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 3
+    },
+    {
+      "instance": 1464822183333,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464822183286,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 4
+    },
+    {
+      "instance": 1464822336956,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464822335402,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464822336955,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 5
+    },
+    {
+      "instance": 1465432281586,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465432248631,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465432281585,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 6
+    },
+    {
+      "instance": 1465430528297,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465430528199,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 7
+    },
+    {
+      "instance": 1465429509018,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465429496604,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465429509018,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 8
+    },
+    {
+      "instance": 1464826483091,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464826473460,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464826483088,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 9
+    },
+    {
+      "instance": 1465432335950,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465432248631,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465432281585,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"trialType\":\"REAL_TRIAL_CERO\",\"identificador\":\"Dinamica, 180.0 grados\",\"nivelEstimulo\":9,\"saltosActivos\":1,\"levelFinalizadoCorrectamente\":true,\"trialsPorNivel\":10,\"historial\":[{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":72,\"idTrial\":30,\"anguloFijo\":175,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":265},\"acertado\":true,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":74,\"idTrial\":32,\"anguloFijo\":172.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":262.5},\"acertado\":true,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":69,\"idTrial\":27,\"anguloFijo\":182.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":272.5},\"acertado\":true,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":68,\"idTrial\":26,\"anguloFijo\":180,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":270},\"acertado\":true,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":70,\"idTrial\":28,\"anguloFijo\":177.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":267.5},\"acertado\":true,\"confianza\":-1}],\"seriesEstimulos\":[],\"estimulosCeros\":[{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":68,\"idTrial\":26,\"anguloFijo\":180,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":270},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":69,\"idTrial\":27,\"anguloFijo\":182.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":272.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":70,\"idTrial\":28,\"anguloFijo\":177.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":267.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":71,\"idTrial\":29,\"anguloFijo\":185,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":275},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":72,\"idTrial\":30,\"anguloFijo\":175,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":265},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":73,\"idTrial\":31,\"anguloFijo\":187.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":277.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":74,\"idTrial\":32,\"anguloFijo\":172.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":262.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":75,\"idTrial\":33,\"anguloFijo\":190,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":280},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":76,\"idTrial\":34,\"anguloFijo\":170,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":260}],\"proporcionAciertos\":2,\"referencia\":180,\"estimuloActivo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":70,\"idTrial\":28,\"anguloFijo\":177.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":267.5}}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 10
+    },
+    {
+      "instance": 1464822095308,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464821978768,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464822095305,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 11
+    },
+    {
+      "instance": 1464826473495,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464826473460,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 12
+    },
+    {
+      "instance": 1465432361439,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465432361362,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 13
+    },
+    {
+      "instance": 1464825525747,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464825525715,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 14
+    },
+    {
+      "instance": 1465432368785,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465432361362,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465432368784,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 15
+    },
+    {
+      "instance": 1465412500180,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465412500116,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 16
+    },
+    {
+      "instance": 1464821897905,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464821894839,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464821897904,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 17
+    },
+    {
+      "instance": 1464826436535,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464826436508,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 18
+    },
+    {
+      "instance": 1464821929314,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464821929287,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 19
+    },
+    {
+      "instance": 1464821894972,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464821894839,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 20
+    },
+    {
+      "instance": 1464825529579,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464825525715,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464825529578,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 21
+    },
+    {
+      "instance": 1464826441601,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464826436508,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464826441601,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 22
+    },
+    {
+      "instance": 1464825533343,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464825525715,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464825533343,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 23
+    },
+    {
+      "instance": 1465409886411,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465409823021,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1465409886409,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 24
+    },
+    {
+      "instance": 1464821905260,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464821894839,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464821905259,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 25
+    },
+    {
+      "instance": 1465429496717,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465429496604,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 26
+    },
+    {
+      "instance": 1464826379587,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464826379518,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 27
+    },
+    {
+      "instance": 1465431740329,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465431740251,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 28
+    },
+    {
+      "instance": 1465431748173,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465431740251,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465431748170,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 29
+    },
+    {
+      "instance": 1465430564218,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465430528199,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465430539287,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"trialType\":\"REAL_TRIAL_ESTIMULO\",\"identificador\":\"Dinamica, 180.0 grados\",\"nivelEstimulo\":9,\"saltosActivos\":1,\"levelFinalizadoCorrectamente\":true,\"trialsPorNivel\":10,\"historial\":[{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":73,\"idTrial\":31,\"anguloFijo\":187.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":277.5},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":69,\"idTrial\":27,\"anguloFijo\":182.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":272.5},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":76,\"idTrial\":34,\"anguloFijo\":170,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":260},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1}],\"seriesEstimulos\":[],\"estimulosCeros\":[{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":68,\"idTrial\":26,\"anguloFijo\":180,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":270},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":69,\"idTrial\":27,\"anguloFijo\":182.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":272.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":70,\"idTrial\":28,\"anguloFijo\":177.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":267.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":71,\"idTrial\":29,\"anguloFijo\":185,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":275},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":72,\"idTrial\":30,\"anguloFijo\":175,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":265},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":73,\"idTrial\":31,\"anguloFijo\":187.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":277.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":74,\"idTrial\":32,\"anguloFijo\":172.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":262.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":75,\"idTrial\":33,\"anguloFijo\":190,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":280},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":76,\"idTrial\":34,\"anguloFijo\":170,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":260}],\"proporcionAciertos\":2,\"referencia\":180,\"estimuloActivo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003}}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 30
+    },
+    {
+      "instance": 1464822335427,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464822335402,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 31
+    },
+    {
+      "instance": 1465412183066,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465412171515,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"},\"levelInstance\":1465412183066,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 32
+    },
+    {
+      "instance": 1465412171610,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465412171515,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 33
+    },
+    {
+      "instance": 1464825574692,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464825574673,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 34
+    },
+    {
+      "instance": 1465409823140,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465409823021,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 35
+    },
+    {
+      "instance": 1465429803865,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465429789073,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465429803862,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 36
+    },
+    {
+      "instance": 1464821931969,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464821929287,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464821931968,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 37
+    },
+    {
+      "instance": 1464822733920,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464822733895,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 38
+    },
+    {
+      "instance": 1464822251073,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464822183286,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464822251068,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 39
+    },
+    {
+      "instance": 1465410552231,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465410552185,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 40
+    },
+    {
+      "instance": 1465432249784,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465432248631,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465432249783,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 41
+    },
+    {
+      "instance": 1465430539287,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465430528199,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465430539287,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 42
+    },
+    {
+      "instance": 1465412509176,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465412500116,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"},\"levelInstance\":1465412509175,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 43
+    },
+    {
+      "instance": 1464825600313,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464825574673,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464825600309,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 44
+    },
+    {
+      "instance": 1465412202344,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465412202309,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 45
+    },
+    {
+      "instance": 1465432248663,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465432248631,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 46
+    },
+    {
+      "instance": 1465432263910,
+      "contenido": "{\"expLog\":{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465432248631,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465432249783,\"expName\":\"UmbralAngulosTutorial\"},\"dinamica\":{\"trialType\":\"REAL_TRIAL_ESTIMULO\",\"identificador\":\"Dinamica, 180.0 grados\",\"nivelEstimulo\":9,\"saltosActivos\":1,\"levelFinalizadoCorrectamente\":true,\"trialsPorNivel\":10,\"historial\":[{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":73,\"idTrial\":31,\"anguloFijo\":187.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":277.5},\"acertado\":true,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":48,\"idTrial\":5,\"anguloFijo\":180,\"desviacion\":169.99999999999997,\"nivelSenal\":10,\"anguloLadoMovil\":350},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":73,\"idTrial\":31,\"anguloFijo\":187.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":277.5},\"acertado\":true,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":75,\"idTrial\":33,\"anguloFijo\":190,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":280},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1},{\"tipoDeTrial\":null,\"estimulo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003},\"acertado\":false,\"confianza\":-1}],\"seriesEstimulos\":[],\"estimulosCeros\":[{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":68,\"idTrial\":26,\"anguloFijo\":180,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":270},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":69,\"idTrial\":27,\"anguloFijo\":182.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":272.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":70,\"idTrial\":28,\"anguloFijo\":177.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":267.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":71,\"idTrial\":29,\"anguloFijo\":185,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":275},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":72,\"idTrial\":30,\"anguloFijo\":175,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":265},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":73,\"idTrial\":31,\"anguloFijo\":187.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":277.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":74,\"idTrial\":32,\"anguloFijo\":172.5,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":262.5},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":75,\"idTrial\":33,\"anguloFijo\":190,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":280},{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":76,\"idTrial\":34,\"anguloFijo\":170,\"desviacion\":90,\"nivelSenal\":0,\"anguloLadoMovil\":260}],\"proporcionAciertos\":2,\"referencia\":180,\"estimuloActivo\":{\"class\":\"com.turin.tur.main.experiments.UmbralAngulos$EstimuloAngulo\",\"idResource\":67,\"idTrial\":24,\"anguloFijo\":180,\"desviacion\":10.000000000000028,\"nivelSenal\":10,\"anguloLadoMovil\":190.00000000000003}}}",
+      "tipoDeEnvio": "CONVERGENCIA",
+      "tag": "TutorialAngulo",
+      "id": 47
+    },
+    {
+      "instance": 1465429789103,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465429789073,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 48
+    },
+    {
+      "instance": 1464822735161,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464822733895,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464822735160,\"expName\":\"UmbralAngulosTutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "TutorialAngulo",
+      "id": 49
+    },
+    {
+      "instance": 1465430530582,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465430528199,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465430530581,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 50
+    },
+    {
+      "instance": 1464826438127,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1464826436508,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"},\"levelInstance\":1464826438126,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 51
+    },
+    {
+      "instance": 1465429499144,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465429496604,\"codeVersion\":31,\"resourcesVersion\":5,\"plataforma\":\"Desktop\"},\"levelInstance\":1465429499143,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 52
+    },
+    {
+      "instance": 1465490493764,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1465490493628,\"codeVersion\":31,\"resourcesVersion\":6,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 53
+    },
+    {
+      "instance": 1465412178649,
+      "contenido": "{\"session\":{\"userId\":1464821894839,\"sessionInstance\":1465412171515,\"codeVersion\":31,\"resourcesVersion\":4,\"plataforma\":\"Desktop\"},\"levelInstance\":1465412178649,\"expName\":\"Tutorial\"}",
+      "tipoDeEnvio": "NEWLEVEL",
+      "tag": "Tutorial",
+      "id": 54
+    },
+    {
+      "instance": 1464821978805,
+      "contenido": "{\"userId\":1464821894839,\"sessionInstance\":1464821978768,\"codeVersion\":31,\"resourcesVersion\":3,\"plataforma\":\"Desktop\"}",
+      "tipoDeEnvio": "NEWSESION",
+      "tag": "Visound",
+      "id": 55
+    }
+  ]
+}

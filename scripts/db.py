@@ -1,3 +1,11 @@
+import scripts.constants as cts
+
+from scripts.general import chkVersion
+from IPython.display import display
+
+chkVersion()
+
+
 def downloadFile ():
 
     """
@@ -9,36 +17,26 @@ def downloadFile ():
     import urllib
     import os
 
-    from scripts.general import chkVersion
-    chkVersion()
-
-    url='http://turintur.dynu.com/db'
-    filenameTemp = 'temp.json'
-    filename = 'db.json'
     timestamp = time.time()
     st = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
-    filenameBackup = './backups/' + filename[:-5] + ' backup ' + st + '.json'
+    filenameBackup = cts.PathDirDbBackUp + cts.FileNameLocalDb[:-5] + ' backup ' + st + '.json'
 
     print ('Starting download, please wait')
 
     # Bajamos el archivo
-    urllib.request.urlretrieve(url, filenameTemp)
+    urllib.request.urlretrieve(cts.URLserver, cts.FileNameLocalDbTemp)
 
 
     # Renombramos el archivo viejo y dejamos el descargado con el nombre que corresponde si se descargo bien
-    if os.path.isfile(filenameTemp):
-        if os.path.isfile(filename):
-            os.rename(filename,filenameBackup)
-        os.rename(filenameTemp,filename)
+    if os.path.isfile(cts.FileNameLocalDbTemp):
+        if os.path.isfile(cts.FileNameLocalDb):
+            os.rename(cts.FileNameLocalDb,filenameBackup)
+        os.rename(cts.FileNameLocalDbTemp,cts.FileNameLocalDb)
 
     print ('Donload finish')
 
 
-def join (filename='db.json'):
-
-    from scripts.general import chkVersion
-    import scripts.constants
-    chkVersion()
+def join (filename=cts.FileNameLocalDb):
 
     """
     Este codigo sirve para ir acumulando los datos brutos tal cual salen de la base datos que se descarga, de forma de poder limpiar y reducir el tamaño del archivo online mas o menos seguido
@@ -47,7 +45,6 @@ def join (filename='db.json'):
     La idea es que guarda en archivos separados las listas de registros segun la categoria de envio para que despues puedan ser procesados segun corresponda
     """
 
-    from IPython.display import display
     import json
     import os
     import pickle
@@ -57,24 +54,22 @@ def join (filename='db.json'):
         db = json.load(data_file)
 
     # Seleccionamos los datos
-    data = db['Envio']
+    data = db[cts.Db_Envios_Key]
 
     # Buscamos la lista de todas las categorias de envios
-    tiposDeEnvio = set([envio['tipoDeEnvio'] for envio in data])
-
-
+    tiposDeEnvio = set([envio[cts.Db_Envios_TipoDeEnvioKey] for envio in data])
 
     # La info guardada en esta parte esta pensada como una lista de envios segun el tipo
     for tipoDeEnvio in tiposDeEnvio:
-        filename = './Guardados/db.' + tipoDeEnvio
-        enviosNuevos = [envio for envio in data if envio['tipoDeEnvio'] == tipoDeEnvio]
+        filenameDatos = cts.PathDirDatosLocal + tipoDeEnvio
+        enviosNuevos = [envio for envio in data if envio[cts.Db_Envios_TipoDeEnvioKey] == tipoDeEnvio]
 
         # Sacamos el formato json a los envios
-        for envio in enviosNuevos:
-            envio['contenido'] = json.loads(envio['contenido'])
+        #for envio in enviosNuevos:
+        #    envio['objeto'] = json.loads(envio['objeto'])
 
-        if os.path.isfile(filename):
-            with open(filename, 'rb') as f:
+        if os.path.isfile(filenameDatos):
+            with open(filenameDatos, 'rb') as f:
                 enviosViejos = pickle.load(f)
             enviosExists = True
             display (tipoDeEnvio + ' tiene '+str(len(enviosViejos))+' entradas.')
@@ -83,13 +78,13 @@ def join (filename='db.json'):
             enviosExists = False
 
         if enviosExists:
-            enviosUnificados = enviosViejos + [envioNuevo for envioNuevo in enviosNuevos if not envioNuevo['instance'] in set([envioViejo['instance'] for envioViejo in enviosViejos])]
+            enviosUnificados = enviosViejos + [envioNuevo for envioNuevo in enviosNuevos if not envioNuevo[cts.Db_Envios_InstanceKey] in set([envioViejo[cts.Db_Envios_InstanceKey] for envioViejo in enviosViejos])]
         else:
             enviosUnificados = enviosNuevos
 
         display (tipoDeEnvio + ' paso a tener '+str(len(enviosUnificados))+' entradas.')
 
-        with open(filename, 'wb+') as f:
+        with open(filenameDatos, 'wb+') as f:
             pickle.dump(enviosUnificados, f)
 
     joinUsers()
@@ -99,52 +94,47 @@ def joinUsers():
     """
         Esta funcion busca los usuarios nuevos en la lista de sessiones guardadas y compara con la lista de usuarios almacenada en la base de datos alias. Si encuentra que alguno no esta pregunta el alias y si ignorarlo o no y lo incluye
     """
-    from IPython.display import display
     import os
     import pickle
-    from scripts.constants import PATHALIAS, PATHSESSSION
     from scripts.general import fechaLocal
 
-    filename = PATHSESSSION
-    if os.path.isfile(filename):
-        with open(filename, 'rb') as f:
+    if os.path.isfile(cts.PATHSESSSION):
+        with open(cts.PATHSESSSION, 'rb') as f:
             sessiones = pickle.load(f)
     else:
-        display ('ERROR! : No se encontro el archivo ' + filename + ' con el registro de las sessiones.')
+        display ('ERROR! : No se encontro el archivo ' + cts.PATHSESSSION + ' con el registro de las sessiones.')
         return
 
-    newUsersId = set([session['contenido']['userId'] for session in sessiones])
+    newUsersId = set([session[cts.Db_Envios_Contenido][cts.Db_Sesion_User][cts.Db_Sesion_User_Id] for session in sessiones])
 
-    filename = PATHALIAS
-
-    if os.path.isfile(filename):
-        with open(filename, 'rb') as f:
+    if os.path.isfile(cts.PATHALIAS):
+        with open(cts.PATHALIAS, 'rb') as f:
             users= pickle.load(f)
     else:
         users = []
 
-    usersId = [user['id'] for user in users]
+    usersId = [user[cts.Db_Users_id] for user in users]
 
     for newUserId in newUsersId:
         if not newUserId in usersId:
             # Creamos el usuario
             newUser = {}
-            newUser['id'] = newUserId
+            newUser[cts.Db_Users_id] = newUserId
             # Preguntamos datos del usuario
-            display ('Usuario creado el '+str(fechaLocal(newUser['id'])))
+            display ('Usuario creado el '+str(fechaLocal(newUser[cts.Db_Users_id])))
             response = input("Ingrese un alias o enter para continuar:\n")
             if response != "":
-                newUser['alias'] = response
+                newUser[cts.Db_Users_Alias] = response
             else:
-                newUser['alias'] = str(newUser['id'])
+                newUser[cts.Db_Users_Alias] = str(newUser[cts.Db_Users_i])
             response = input("Presiones 'si' para descartar este usuario del procesamiento de datos:\n")
             if response == "si":
-                newUser['ignore'] = True
+                newUser[cts.Db_Users_Ignore] = True
             else:
-                newUser['ignore'] = False
+                newUser[cts.Db_Users_Ignore] = False
             users = users + [newUser]
 
-    with open(filename, 'wb') as f:
+    with open(cts.PATHALIAS, 'wb') as f:
         pickle.dump(users, f)
 
 def updateUser (user):
@@ -152,48 +142,39 @@ def updateUser (user):
     """
         Esta funcion sirve para modificar a mano algun usuario en particular
     """
-    from IPython.display import display
     import os
     import pickle
-    from scripts.constants import PATHALIAS
 
-    filename = PATHALIAS
-
-    if os.path.isfile(filename):
-        with open(filename, 'rb') as f:
+    if os.path.isfile(cts.PATHALIAS):
+        with open(cts.PATHALIAS, 'rb') as f:
             users = pickle.load(f)
     else:
-        display ('ERROR : No se ha encontrado el archivo ' + filename)
-    #display(users)
-    #display(type(user))
-    if isinstance(user, int):
-        for eachuser in users:
-            if eachuser['id'] == user:
-                display ("Se va a modificar el usuario: " + eachuser['alias'])
-                response = input("Ingrese el nuevo alias o presione enter para no cambiarlo:")
-                if response != "":
-                    eachuser['alias'] = response
-                display ("Desea que el usuario " + eachuser['alias'] + " sea ignorado.")
-                response = input("(si/NO)")
-                if response == "si":
-                    eachuser['ignore'] = True
-                else:
-                    eachuser['ignore'] = False
-    if isinstance (user , str):
-        for eachuser in users:
-            if eachuser['alias'] == user:
-                display ("Se va a modificar el usuario: " + eachuser['alias'])
-                response = input("Ingrese el nuevo alias o presione enter para no cambiarlo:")
-                if response != "":
-                    eachuser['alias'] = response
-                display ("Desea que el usuario " + eachuser['alias'] + " sea ignorado.")
-                response = input("(si/NO)")
-                if response == "si":
-                    eachuser['ignore'] = True
-                else:
-                    eachuser['ignore'] = False
+        display ('ERROR : No se ha encontrado el archivo ' + cts.PATHALIAS)
+    
+    
+    for eachuser in users:
+        cambiar = False
 
-    with open(filename, 'wb') as f:
+        if isinstance(user, int):
+            if eachuser[cts.Db_Users_id] == user:
+                cambiar = True
+        if isinstance (user , str):            
+            if eachuser[cts.Db_Users_Alias] == user:
+                cambiar = True
+
+        if cambiar:
+            display ("Se va a modificar el usuario: " + eachuser[cts.Db_Users_Alias])
+            response = input("Ingrese el nuevo alias o presione enter para no cambiarlo:")
+            if response != "":
+                eachuser[cts.Db_Users_Alias] = response
+            display ("Desea que el usuario " + eachuser[cts.Db_Users_Alias] + " sea ignorado.")
+            response = input("(si/NO)")
+            if response == "si":
+                eachuser[cts.Db_Users_Ignore] = True
+            else:
+                eachuser[cts.Db_Users_Ignore] = False
+
+    with open(cts.PATHALIAS, 'wb') as f:
         pickle.dump(users, f)
 
 def listOfUsers ():
@@ -201,18 +182,14 @@ def listOfUsers ():
     """
         devuelve la lista de usuarios almacenada en el alias
     """
-    from IPython.display import display
     import os
     import pickle
-    from scripts.constants import PATHALIAS
-
-    filename = PATHALIAS
-
-    if os.path.isfile(filename):
-        with open(filename, 'rb') as f:
+    
+    if os.path.isfile(cts.PATHALIAS):
+        with open(cts.PATHALIAS, 'rb') as f:
             users = pickle.load(f)
     else:
-        display ('ERROR : No se ha encontrado el archivo ' + filename)
+        display ('ERROR : No se ha encontrado el archivo ' + cts.PATHALIA)
 
     return users
 
@@ -222,10 +199,8 @@ def listOfUsersClean ():
     """
         devuelve la lista de usuarios almacenada en el alias solo si son de los utiles
     """
-    from IPython.display import display
-
     users = listOfUsers()
-    usersClean = [user for user in users if user['ignore']==False]
+    usersClean = [user for user in users if user[cts.Db_Users_Ignore]==False]
     return usersClean
 
 def listOfUsersCleanAlias ():
@@ -233,35 +208,30 @@ def listOfUsersCleanAlias ():
     """
         devuelve la lista de alias almacenada en el alias solo si son de los utiles
     """
-    from IPython.display import display
-
     usersClean = listOfUsersClean()
-    return [user['alias'] for user in usersClean]
+    return [user[cts.Db_Users_Alias] for user in usersClean]
 
 def updateListOfUsers ():
 
     """
         Detecta que usuarios no tienen alias y propone modificarlo en forma semiautomartica
     """
-    from IPython.display import display
     from scripts.general import fechaLocal
     import os
     import pickle
-    from scripts.constants import PATHALIAS
-
+    
     users = listOfUsers()
     for user in users:
-        if user['alias']==str(user['id']):
-            display ('Usuario creado el '+str(fechaLocal(user['id'])))
+        if user[cts.Db_Users_Alias]==str(user[cts.Db_Sesion_User_Id]):
+            display ('Usuario creado el '+str(fechaLocal(user[cts.Db_Sesion_User_Id])))
             response = input("Ingrese un alias o enter para continuar:")
             if response!= "":
-                user['alias'] = response
+                user[cts.Db_Users_Alias] = response
             response = input("Presiones 'si' para descartar este usuario del procesamiento de datos")
             if response=="si":
-                user['ignore'] = True
+                user[cts.Db_Users_Ignore] = True
 
-    filename = PATHALIAS
-    with open(filename, 'wb') as f:
+    with open(cts.PATHALIAS, 'wb') as f:
         pickle.dump(users, f)
 
 def pandasUtilPiloto(completos=True):
