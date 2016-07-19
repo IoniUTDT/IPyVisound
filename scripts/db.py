@@ -234,10 +234,8 @@ def updateListOfUsers ():
     with open(cts.PATHALIAS, 'wb') as f:
         pickle.dump(users, f)
 
-def pandasUtilPiloto(completos=True):
+def pandasTransferencia(completos=True):
 
-    from IPython.display import display
-    from scripts.constants import PATHSESSSION, PATHCONVERGENCIAS
     import os
     import pickle
     import pandas
@@ -246,62 +244,76 @@ def pandasUtilPiloto(completos=True):
     users = listOfUsers()
 
     # Cargamos la base de datos de sessiones
-    filename = PATHSESSSION
-    if os.path.isfile(filename):
-        with open(filename, 'rb') as f:
+    if os.path.isfile(cts.PATHSESSSION):
+        with open(cts.PATHSESSSION, 'rb') as f:
             sessions = pickle.load(f)
     else:
-        display ('ERROR! : No se encontro el archivo ' + filename)
+        display ('ERROR! : No se encontro el archivo ' + cts.PATHSESSSION)
         return
 
     # Cargamos la base de datos de convergencias
-    filename = PATHCONVERGENCIAS
-    if os.path.isfile(filename):
-        with open(filename, 'rb') as f:
-            dinamicas = pickle.load(f)
+    if os.path.isfile(cts.PATHRESULTS):
+        with open(cts.PATHRESULTS, 'rb') as f:
+            resultados_db = pickle.load(f)
     else:
-        display ('ERROR! : No se encontro el archivo ' + filename)
+        display ('ERROR! : No se encontro el archivo ' + cts.PATHRESULTS)
         return
 
     # Extraemos la info util de cada tabla
 
-    # Users...
+    # Creamos una lista de usuarios
     users_df = pandas.DataFrame (users)
-    users_df.rename(columns={'id': 'userId'}, inplace=True)
-    users_df = users_df[users_df['ignore']==False]
+    users_df.rename(columns={cts.Db_Users_id: cts.P_UserId}, inplace=True)
+    users_df = users_df[users_df[cts.Db_Users_Ignore]==False]
 
-    # Sessiones...
-    newSessions = []
-    for session in sessions:
-        newSession = {}
-        newSession['sessionInstance'] = session ['contenido']['sessionInstance']
-        newSession['userId'] = session['contenido']['userId']
-        if 'plataforma' in session['contenido'].keys():
-            newSession['plataforma'] = session['contenido']['plataforma']
-        newSessions = newSessions + [newSession]
-    sessions_df = pandas.DataFrame (newSessions)
+    # Para cada sesion agregamos la lista de resultados
+    resultados = []
+    respuestas = []
+    for resultado_db in resultados_db:
+        resultado = {}
+        # Recuperamos la info del nivel:
+        # resultado[cts.P_LevelIdentificador] = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_NivelLog][cts.Db_Resultados_NivelLog_LevelIdentificador] (Esto no conviene hacerlo aca porque si llega a mezclar niveles o algo no es info que venga del nivel posta)
+        resultado[cts.P_LevelInstance] = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_NivelLog][cts.Db_Resultados_NivelLog_LevelInstance]
+        # Recuperamos la info de la sesion
+        sessionData = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_NivelLog][cts.Db_Resultados_NivelLog_Sesion]
+        resultado[cts.P_SessionInstance] = sessionData[cts.Db_Sesion_Instance]
+        resultado[cts.P_UserId] = sessionData[cts.Db_Sesion_User][cts.Db_Sesion_User_Id]
+        resultado[cts.P_FaseActiva] = sessionData[cts.Db_Sesion_User][cts.Db_Sesion_User_Fase]
+        resultado[cts.P_OrientacionEntrenamiento] = sessionData[cts.Db_Sesion_User][cts.Db_Sesion_User_Eleccion]
+        resultado[cts.P_CodeVersion]  = sessionData[cts.Db_Sesion_CodeVersion]
+        # Recuperamos la info util de los resultados
+        resultadosData = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_Dinamica]
+        resultado[cts.P_LevelIdentificador] = resultadosData[cts.Db_Resultados_Dinamica_IdentificadorLevel]
+        resultado[cts.P_LevelFinalizado] = resultadosData[cts.Db_Resultados_Dinamica_Finalizado]
+        resultado[cts.P_Referencia] = resultadosData[cts.Db_Resultados_Dinamica_Referencia]
 
-    df = pandas.merge(users_df, sessions_df, on='userId')
+        # Buscamos y creamos una entrada por cada elemento del historial y lo agregamos
+        
+        historial = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_Dinamica][cts.Db_Resultados_Dinamica_Historial]
+        for entrada in historial:
+            respuesta = {}
+            respuesta[cts.P_LevelInstance] = resultado[cts.P_LevelInstance]
+            respuesta[cts.P_RtaCorrecta] = entrada[cts.Db_Historial_RtaCorrecta]
+            respuesta[cts.P_NivelConfianza] = entrada[cts.Db_Historial_Confianza]
+            respuesta[cts.P_NivelEstimuloDinamica] = entrada[cts.Db_Historial_EstimuloDinamica]
+            respuesta[cts.P_TiempoRespuesta] = entrada[cts.Db_Historial_TiempoRta]
+            respuesta[cts.P_TiempoRespuestaConfianza] = entrada[cts.Db_Historial_TiempoConfianza]
+            respuesta[cts.P_NumeroDeLoopsAudio] = entrada[cts.Db_Historial_loops]
+            respuesta[cts.P_TipoDeTrial] = entrada[cts.Db_Historial_TipoDeTrial]
+            respuesta[cts.P_AnguloFijo] = entrada[cts.Db_Historial_Recurso][cts.Db_Historial_Recurso_AnguloFijo]
+            respuesta[cts.P_Desviacion] = entrada[cts.Db_Historial_Recurso][cts.Db_Historial_Recurso_Desviacion]
+            respuesta[cts.P_NivelEstimuloEstimulo] = entrada[cts.Db_Historial_Recurso][cts.Db_Historial_Recurso_Estimulo]
+            respuesta[cts.P_IdEstimulos] = entrada[cts.Db_Historial_Recurso][cts.Db_Historial_Recurso_Id]
 
-    # Dinamicas...
-    newDinamicas = []
-    for dinamica in dinamicas:
-        newDinamica = {}
-        newDinamica['sessionInstance'] = dinamica['contenido']['expLog']['session']['sessionInstance']
-        newDinamica['levelInstance'] = dinamica['contenido']['expLog']['levelInstance']
-        newDinamica['expName'] = dinamica['contenido']['expLog']['expName']
-        # newDinamica['convergenciaAlcanzada'] = dinamica['contenido']['dinamica']['convergenciaAlcanzada']    // Esta linea quedo obsoltea con el nuevo formato
-        # newDinamica['tipoDeTrial'] = dinamica['contenido']['dinamica']['trialType']
-        newDinamica['levelFinalizadoCorrectamente'] = dinamica['contenido']['dinamica']['levelFinalizadoCorrectamente']
-        newDinamica['historial'] = dinamica['contenido']['dinamica']['historial']
-        newDinamica['identificador'] = dinamica['contenido']['dinamica']['identificador']
-        newDinamica['referencia'] = dinamica['contenido']['dinamica']['referencia']
-        #newDinamica['tamanoVentanaAnalisisConvergencia'] = dinamica['contenido']['dinamica']['tamanoVentanaAnalisisConvergencia']
-        #newDinamica['ultimaSD'] = dinamica['contenido']['dinamica']['ultimaSD']
-        #newDinamica['ultimoMEAN'] = dinamica['contenido']['dinamica']['ultimoMEAN']
-        newDinamicas = newDinamicas + [newDinamica]
-    dinamicas_df = pandas.DataFrame(newDinamicas)
 
-    df = pandas.merge(df,dinamicas_df, on='sessionInstance')
+            respuestas = respuestas + [respuesta]
+   
+        resultados = resultados + [resultado]
+
+    resultados_pandas = pandas.DataFrame(resultados)
+    respuestas_pandas = pandas.DataFrame(respuestas)
+
+    df = pandas.merge(users_df,resultados_pandas, on=cts.P_UserId)
+    df = pandas.merge(df,respuestas_pandas, on=cts.P_LevelInstance)
 
     return df

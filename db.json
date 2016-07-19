@@ -8,20 +8,76 @@
       "objeto": {
         "class": "com.turin.tur.main.diseno.Session",
         "user": {
-          "id": 1468685795245,
-          "faseDeExperimentoActiva": "Intro",
-          "levelsJugados": [],
-          "eleccion": "P60"
+          "id": 1468873066039,
+          "faseDeExperimentoActiva": "TestInicial",
+          "levelJugado": [
+            {
+              "identificador": "Ejemplos",
+              "contexto": "Tutorial",
+              "Instance": 1468873106728
+            },
+            {
+              "identificador": "ParalelismoTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468873147775
+            },
+            {
+              "identificador": "AngulosTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468873191175
+            }
+          ],
+          "eleccion": "A120"
         },
-        "sessionInstance": 1468685795243,
+        "sessionInstance": 1468873688799,
         "codeVersion": 31,
         "resourcesVersion": 25,
         "plataforma": "Desktop"
       },
       "tipo": "SESION",
-      "instance": 1468685795294,
-      "origen": 1468685795245,
+      "instance": 1468873716682,
+      "origen": 1468873066039,
       "id": 1
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468873793382,
+          "faseDeExperimentoActiva": "Intro",
+          "levelJugado": [],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468873793381,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468873793436,
+      "origen": 1468873793382,
+      "id": 2
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468873793382,
+          "faseDeExperimentoActiva": "Intro",
+          "levelJugado": [],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468873806918,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468873826787,
+      "origen": 1468873793382,
+      "id": 3
     },
     {
       "estadoEnvio": "ENVIANDO",
@@ -29,29 +85,120 @@
         "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
         "sesion": {
           "user": {
-            "id": 1468685795245,
+            "id": 1468873793382,
             "faseDeExperimentoActiva": "Tutorial",
-            "levelsJugados": [
+            "levelJugado": [
               {
                 "identificador": "Ejemplos",
                 "contexto": "Tutorial",
-                "Instance": 1468685808480
+                "Instance": 1468873925043
               }
             ],
-            "eleccion": "P60"
+            "eleccion": "A60"
           },
-          "sessionInstance": 1468685795243,
+          "sessionInstance": 1468873806918,
           "codeVersion": 31,
           "resourcesVersion": 25,
           "plataforma": "Desktop"
         },
         "identificadorNivel": "Ejemplos",
-        "instance": 1468685800284
+        "instance": 1468873839159
       },
-      "tipo": "NIVEL",
-      "instance": 1468685800284,
+      "tipo": "INICIONIVEL",
+      "instance": 1468873850915,
       "origen": "Ejemplos",
-      "id": 2
+      "id": 4
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468873793382,
+          "faseDeExperimentoActiva": "Tutorial",
+          "levelJugado": [
+            {
+              "identificador": "Ejemplos",
+              "contexto": "Tutorial",
+              "Instance": 1468873925043
+            }
+          ],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468874322330,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468874337302,
+      "origen": 1468873793382,
+      "id": 5
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468873793382,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [
+              {
+                "identificador": "Ejemplos",
+                "contexto": "Tutorial",
+                "Instance": 1468873925043
+              }
+            ],
+            "eleccion": "A60"
+          },
+          "sessionInstance": 1468874322330,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "Ejemplos",
+        "instance": 1468874363371
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468874368456,
+      "origen": "Ejemplos",
+      "id": 6
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468873793382,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [
+              {
+                "identificador": "Ejemplos",
+                "contexto": "Tutorial",
+                "Instance": 1468873925043
+              },
+              {
+                "identificador": "Ejemplos",
+                "contexto": "Tutorial",
+                "Instance": 1468874388632
+              }
+            ],
+            "eleccion": "A60"
+          },
+          "sessionInstance": 1468874322330,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "ParalelismoTutorial",
+        "instance": 1468874392539
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468874394976,
+      "origen": "ParalelismoTutorial",
+      "id": 7
     },
     {
       "estadoEnvio": "ENVIANDO",
@@ -60,41 +207,57 @@
         "levelLog": {
           "sesion": {
             "user": {
-              "id": 1468685795245,
+              "id": 1468873793382,
               "faseDeExperimentoActiva": "Tutorial",
-              "levelsJugados": [
+              "levelJugado": [
                 {
                   "identificador": "Ejemplos",
                   "contexto": "Tutorial",
-                  "Instance": 1468685808480
+                  "Instance": 1468873925043
                 },
                 {
-                  "identificador": "ParalelismoTutorial",
+                  "identificador": "Ejemplos",
                   "contexto": "Tutorial",
-                  "Instance": 1468685872500
+                  "Instance": 1468874388632
                 }
               ],
-              "eleccion": "P60"
+              "eleccion": "A60"
             },
-            "sessionInstance": 1468685795243,
+            "sessionInstance": 1468874322330,
             "codeVersion": 31,
             "resourcesVersion": 25,
             "plataforma": "Desktop"
           },
           "identificadorNivel": "ParalelismoTutorial",
-          "instance": 1468685810463
+          "instance": 1468874392539
         },
         "dinamica": {
           "estimuloActivo": {
-            "anguloFijo": 2.5,
+            "anguloFijo": 0,
             "desviacion": 0,
-            "idResource": 98,
-            "idTrial": 57,
+            "idResource": 97,
+            "idTrial": 56,
             "nivelSenal": 0
           },
           "pseudorandom": [
             {
               "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
               "trialType": "NoEstimulo"
             },
             {
@@ -106,28 +269,12 @@
               "trialType": "Test"
             },
             {
-              "confiance": true,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
               "confiance": false,
               "trialType": "NoEstimulo"
             },
             {
               "confiance": true,
               "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
             },
             {
               "confiance": false,
@@ -141,128 +288,32 @@
               "confianceTimeInTrial": 0,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 7.5,
-                "desviacion": 0,
-                "idResource": 102,
-                "idTrial": 61,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 9,
-              "selectionTimeInTrial": 4.6836357,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 6.8665986,
-              "confianza": 0.9210527,
-              "estimulo": {
                 "anguloFijo": 0,
-                "desviacion": -12.56605314896181,
-                "idResource": 94,
-                "idTrial": 52,
-                "nivelSenal": 8
-              },
-              "nivelEstimulo": 7,
-              "selectionTimeInTrial": 5.9172854,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 7.400084,
-              "confianza": 0.9545454,
-              "estimulo": {
-                "anguloFijo": 0,
-                "desviacion": -49.99999999999999,
-                "idResource": 96,
-                "idTrial": 54,
+                "desviacion": 49.99999999999999,
+                "idResource": 77,
+                "idTrial": 35,
                 "nivelSenal": 10
               },
-              "nivelEstimulo": 5,
-              "selectionTimeInTrial": 6.3500853,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 5.916462,
-              "confianza": 0.9401915,
-              "estimulo": {
-                "anguloFijo": 0,
-                "desviacion": 12.56605314896181,
-                "idResource": 79,
-                "idTrial": 37,
-                "nivelSenal": 8
-              },
-              "nivelEstimulo": 3,
-              "selectionTimeInTrial": 4.8165045,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 0,
-                "desviacion": 0.19947365987750282,
-                "idResource": 85,
-                "idTrial": 43,
-                "nivelSenal": 2
-              },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 3.200014,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 3.7437646,
               "soundLoops": 1,
               "trialType": "Estimulo"
             },
             {
               "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
+              "confianceTimeInTrial": 1.2029444,
+              "confianza": 0.81371605,
               "estimulo": {
                 "anguloFijo": 0,
-                "desviacion": 0.7937005259840999,
-                "idResource": 83,
-                "idTrial": 41,
-                "nivelSenal": 4
+                "desviacion": -25.06596611838631,
+                "idResource": 95,
+                "idTrial": 53,
+                "nivelSenal": 9
               },
-              "nivelEstimulo": 3,
-              "selectionTimeInTrial": 4.550535,
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.20023479,
               "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": -5,
-                "desviacion": 0,
-                "idResource": 101,
-                "idTrial": 60,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 3,
-              "selectionTimeInTrial": 2.6830947,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 8.565497,
-              "confianza": 0.81339705,
-              "estimulo": {
-                "anguloFijo": -10,
-                "desviacion": 0,
-                "idResource": 105,
-                "idTrial": 64,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 5,
-              "selectionTimeInTrial": 7.4670315,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
+              "trialType": "Test"
             },
             {
               "acertado": false,
@@ -276,14 +327,94 @@
                 "nivelSenal": 6
               },
               "nivelEstimulo": 5,
-              "selectionTimeInTrial": 5.7513924,
+              "selectionTimeInTrial": 0.33965197,
               "soundLoops": 1,
               "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": 12.56605314896181,
+                "idResource": 79,
+                "idTrial": 37,
+                "nivelSenal": 8
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.40321517,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": -7.5,
+                "desviacion": 0,
+                "idResource": 103,
+                "idTrial": 62,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.29961488,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 1.1495718,
+              "confianza": 0.91342425,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -49.99999999999999,
+                "idResource": 96,
+                "idTrial": 54,
+                "nivelSenal": 10
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.26619706,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 0.98254555,
+              "confianza": 0.8599222,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -12.56605314896181,
+                "idResource": 94,
+                "idTrial": 52,
+                "nivelSenal": 8
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.3501261,
+              "soundLoops": 1,
+              "trialType": "Test"
             },
             {
               "acertado": true,
               "confianceTimeInTrial": -2,
               "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 10,
+                "desviacion": 0,
+                "idResource": 104,
+                "idTrial": 63,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.3665577,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 1.3824846,
+              "confianza": 0.90612847,
               "estimulo": {
                 "anguloFijo": 2.5,
                 "desviacion": 0,
@@ -291,9 +422,25 @@
                 "idTrial": 57,
                 "nivelSenal": 0
               },
-              "nivelEstimulo": 7,
-              "selectionTimeInTrial": 11.367547,
-              "soundLoops": 2,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.34965175,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": 0,
+                "idResource": 97,
+                "idTrial": 56,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.29999495,
+              "soundLoops": 1,
               "trialType": "NoEstimulo"
             }
           ],
@@ -308,10 +455,10 @@
           "trialType": "NoEstimulo"
         }
       },
-      "tipo": "LEVEL",
-      "instance": 1468685872500,
+      "tipo": "RESULTADOS",
+      "instance": 1468874430382,
       "origen": "ParalelismoTutorial",
-      "id": 3
+      "id": 8
     },
     {
       "estadoEnvio": "ENVIANDO",
@@ -319,74 +466,39 @@
         "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
         "sesion": {
           "user": {
-            "id": 1468685795245,
+            "id": 1468873793382,
             "faseDeExperimentoActiva": "Tutorial",
-            "levelsJugados": [
+            "levelJugado": [
               {
                 "identificador": "Ejemplos",
                 "contexto": "Tutorial",
-                "Instance": 1468685808480
+                "Instance": 1468873925043
+              },
+              {
+                "identificador": "Ejemplos",
+                "contexto": "Tutorial",
+                "Instance": 1468874388632
               },
               {
                 "identificador": "ParalelismoTutorial",
                 "contexto": "Tutorial",
-                "Instance": 1468685872500
+                "Instance": 1468874492727
               }
             ],
-            "eleccion": "P60"
+            "eleccion": "A60"
           },
-          "sessionInstance": 1468685795243,
-          "codeVersion": 31,
-          "resourcesVersion": 25,
-          "plataforma": "Desktop"
-        },
-        "identificadorNivel": "ParalelismoTutorial",
-        "instance": 1468685810463
-      },
-      "tipo": "NIVEL",
-      "instance": 1468685810463,
-      "origen": "ParalelismoTutorial",
-      "id": 4
-    },
-    {
-      "estadoEnvio": "ENVIANDO",
-      "objeto": {
-        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
-        "sesion": {
-          "user": {
-            "id": 1468685795245,
-            "faseDeExperimentoActiva": "TestInicial",
-            "levelsJugados": [
-              {
-                "identificador": "Ejemplos",
-                "contexto": "Tutorial",
-                "Instance": 1468685808480
-              },
-              {
-                "identificador": "ParalelismoTutorial",
-                "contexto": "Tutorial",
-                "Instance": 1468685872500
-              },
-              {
-                "identificador": "AngulosTutorial",
-                "contexto": "Tutorial",
-                "Instance": 1468685928883
-              }
-            ],
-            "eleccion": "P60"
-          },
-          "sessionInstance": 1468685795243,
+          "sessionInstance": 1468874322330,
           "codeVersion": 31,
           "resourcesVersion": 25,
           "plataforma": "Desktop"
         },
         "identificadorNivel": "AngulosTutorial",
-        "instance": 1468685874580
+        "instance": 1468874519834
       },
-      "tipo": "NIVEL",
-      "instance": 1468685874580,
+      "tipo": "INICIONIVEL",
+      "instance": 1468874522494,
       "origen": "AngulosTutorial",
-      "id": 5
+      "id": 9
     },
     {
       "estadoEnvio": "ENVIANDO",
@@ -395,48 +507,57 @@
         "levelLog": {
           "sesion": {
             "user": {
-              "id": 1468685795245,
-              "faseDeExperimentoActiva": "TestInicial",
-              "levelsJugados": [
+              "id": 1468873793382,
+              "faseDeExperimentoActiva": "Tutorial",
+              "levelJugado": [
                 {
                   "identificador": "Ejemplos",
                   "contexto": "Tutorial",
-                  "Instance": 1468685808480
+                  "Instance": 1468873925043
+                },
+                {
+                  "identificador": "Ejemplos",
+                  "contexto": "Tutorial",
+                  "Instance": 1468874388632
                 },
                 {
                   "identificador": "ParalelismoTutorial",
                   "contexto": "Tutorial",
-                  "Instance": 1468685872500
+                  "Instance": 1468874492727
                 },
                 {
                   "identificador": "AngulosTutorial",
                   "contexto": "Tutorial",
-                  "Instance": 1468685928883
+                  "Instance": 1468874539286
                 }
               ],
-              "eleccion": "P60"
+              "eleccion": "A60"
             },
-            "sessionInstance": 1468685795243,
+            "sessionInstance": 1468874322330,
             "codeVersion": 31,
             "resourcesVersion": 25,
             "plataforma": "Desktop"
           },
           "identificadorNivel": "AngulosTutorial",
-          "instance": 1468685874580
+          "instance": 1468874519834
         },
         "dinamica": {
           "estimuloActivo": {
             "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
-            "anguloFijo": 180,
-            "desviacion": 88.37274939006308,
-            "idResource": 59,
-            "idTrial": 16,
-            "nivelSenal": 2,
-            "anguloLadoMovil": 268.37274939006306
+            "anguloFijo": 182.5,
+            "desviacion": 90,
+            "idResource": 69,
+            "idTrial": 27,
+            "nivelSenal": 0,
+            "anguloLadoMovil": 272.5
           },
           "pseudorandom": [
             {
-              "confiance": true,
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
               "trialType": "NoEstimulo"
             },
             {
@@ -444,15 +565,19 @@
               "trialType": "Test"
             },
             {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
               "confiance": true,
               "trialType": "Test"
             },
             {
               "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
               "trialType": "Estimulo"
             },
             {
@@ -461,45 +586,91 @@
             },
             {
               "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
               "trialType": "NoEstimulo"
             },
             {
-              "confiance": false,
+              "confiance": true,
               "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
             }
           ],
           "estimulosCeros": [],
           "historial": [
             {
               "acertado": true,
-              "confianceTimeInTrial": 7.96629,
-              "confianza": 0.9425838,
+              "confianceTimeInTrial": 0,
+              "confianza": -1,
               "estimulo": {
                 "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
-                "anguloFijo": 172.5,
-                "desviacion": 90,
-                "idResource": 74,
-                "idTrial": 32,
-                "nivelSenal": 0,
-                "anguloLadoMovil": 262.5
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
               },
               "nivelEstimulo": 9,
-              "selectionTimeInTrial": 6.932911,
+              "selectionTimeInTrial": 4.4249682,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 185,
+                "desviacion": 90,
+                "idResource": 71,
+                "idTrial": 29,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 275
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.28201094,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 1.399975,
+              "confianza": 0.92071974,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 120.21211304229124,
+                "idResource": 50,
+                "idTrial": 7,
+                "nivelSenal": 8,
+                "anguloLadoMovil": 300.2121130422912
+              },
+              "nivelEstimulo": 5,
+              "selectionTimeInTrial": 0.29997203,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 190,
+                "desviacion": 90,
+                "idResource": 75,
+                "idTrial": 33,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 280
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.3010497,
               "soundLoops": 1,
               "trialType": "NoEstimulo"
             },
             {
               "acertado": true,
-              "confianceTimeInTrial": 5.0335727,
-              "confianza": 0.9497608,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
               "estimulo": {
                 "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
                 "anguloFijo": 180,
@@ -510,117 +681,63 @@
                 "anguloLadoMovil": 300.2121130422912
               },
               "nivelEstimulo": 7,
-              "selectionTimeInTrial": 3.9334717,
+              "selectionTimeInTrial": 0.30000263,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 1.1168162,
+              "confianza": 0.9280156,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 169.99999999999997,
+                "idResource": 48,
+                "idTrial": 5,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 350
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.38285008,
               "soundLoops": 1,
               "trialType": "Test"
             },
             {
-              "acertado": true,
-              "confianceTimeInTrial": 6.384046,
-              "confianza": 0.9401914,
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
               "estimulo": {
                 "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
                 "anguloFijo": 180,
-                "desviacion": 59.787886957708764,
-                "idResource": 65,
-                "idTrial": 22,
-                "nivelSenal": 8,
-                "anguloLadoMovil": 239.78788695770876
+                "desviacion": 101.40964718100231,
+                "idResource": 52,
+                "idTrial": 9,
+                "nivelSenal": 6,
+                "anguloLadoMovil": 281.4096471810023
               },
               "nivelEstimulo": 5,
-              "selectionTimeInTrial": 4.748959,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
-                "anguloFijo": 177.5,
-                "desviacion": 90,
-                "idResource": 70,
-                "idTrial": 28,
-                "nivelSenal": 0,
-                "anguloLadoMovil": 267.5
-              },
-              "nivelEstimulo": 3,
-              "selectionTimeInTrial": 4.8511677,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
-                "anguloFijo": 180,
-                "desviacion": 91.62725060993692,
-                "idResource": 56,
-                "idTrial": 13,
-                "nivelSenal": 2,
-                "anguloLadoMovil": 271.62725060993694
-              },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 4.7670517,
+              "selectionTimeInTrial": 0.3499728,
               "soundLoops": 1,
               "trialType": "Estimulo"
             },
             {
-              "acertado": true,
-              "confianceTimeInTrial": 4.966549,
-              "confianza": 0.9306221,
+              "acertado": false,
+              "confianceTimeInTrial": 1.199974,
+              "confianza": 0.9620624,
               "estimulo": {
                 "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
                 "anguloFijo": 180,
-                "desviacion": 88.37274939006308,
-                "idResource": 59,
-                "idTrial": 16,
-                "nivelSenal": 2,
-                "anguloLadoMovil": 268.37274939006306
+                "desviacion": 120.21211304229124,
+                "idResource": 50,
+                "idTrial": 7,
+                "nivelSenal": 8,
+                "anguloLadoMovil": 300.2121130422912
               },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 4.083205,
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.28397998,
               "soundLoops": 1,
               "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
-                "anguloFijo": 180,
-                "desviacion": 91.62725060993692,
-                "idResource": 56,
-                "idTrial": 13,
-                "nivelSenal": 2,
-                "anguloLadoMovil": 271.62725060993694
-              },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 6.3338003,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
-                "anguloFijo": 187.5,
-                "desviacion": 90,
-                "idResource": 73,
-                "idTrial": 31,
-                "nivelSenal": 0,
-                "anguloLadoMovil": 277.5
-              },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 4.684885,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
             },
             {
               "acertado": true,
@@ -635,8 +752,579 @@
                 "nivelSenal": 0,
                 "anguloLadoMovil": 270
               },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 4.284172,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.34989735,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0.9170853,
+              "confianza": 0.59241235,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 182.5,
+                "desviacion": 90,
+                "idResource": 69,
+                "idTrial": 27,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 272.5
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.28306478,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            }
+          ],
+          "identificadorNivel": "AngulosTutorial",
+          "levelFinalizadoCorrectamente": true,
+          "nivelEstimulo": 9,
+          "proporcionAciertos": 3,
+          "referencia": 180,
+          "saltosActivos": 2,
+          "seriesEstimulos": [],
+          "trialsPorNivel": 10,
+          "trialType": "NoEstimulo"
+        }
+      },
+      "tipo": "RESULTADOS",
+      "instance": 1468874539286,
+      "origen": "AngulosTutorial",
+      "id": 10
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468873793382,
+          "faseDeExperimentoActiva": "TestInicial",
+          "levelJugado": [
+            {
+              "identificador": "Ejemplos",
+              "contexto": "Tutorial",
+              "Instance": 1468873925043
+            },
+            {
+              "identificador": "Ejemplos",
+              "contexto": "Tutorial",
+              "Instance": 1468874388632
+            },
+            {
+              "identificador": "ParalelismoTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468874492727
+            },
+            {
+              "identificador": "AngulosTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468874539286
+            }
+          ],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468874569748,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468874569774,
+      "origen": 1468873793382,
+      "id": 11
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468875031628,
+          "faseDeExperimentoActiva": "Intro",
+          "levelJugado": [],
+          "eleccion": "P150"
+        },
+        "sessionInstance": 1468875031602,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468875031694,
+      "origen": 1468875031628,
+      "id": 12
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468875031628,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [],
+            "eleccion": "P150"
+          },
+          "sessionInstance": 1468875031602,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "Ejemplos",
+        "instance": 1468875034034
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468875034034,
+      "origen": "Ejemplos",
+      "id": 13
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468875031628,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [
+              {
+                "identificador": "Ejemplos",
+                "contexto": "Tutorial",
+                "Instance": 1468875036065
+              }
+            ],
+            "eleccion": "P150"
+          },
+          "sessionInstance": 1468875031602,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "ParalelismoTutorial",
+        "instance": 1468875037437
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468875037437,
+      "origen": "ParalelismoTutorial",
+      "id": 14
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.LevelUmbral$LogConvergencia",
+        "levelLog": {
+          "sesion": {
+            "user": {
+              "id": 1468875031628,
+              "faseDeExperimentoActiva": "Tutorial",
+              "levelJugado": [
+                {
+                  "identificador": "Ejemplos",
+                  "contexto": "Tutorial",
+                  "Instance": 1468875036065
+                },
+                {
+                  "identificador": "ParalelismoTutorial",
+                  "contexto": "Tutorial",
+                  "Instance": 1468875046685
+                }
+              ],
+              "eleccion": "P150"
+            },
+            "sessionInstance": 1468875031602,
+            "codeVersion": 31,
+            "resourcesVersion": 25,
+            "plataforma": "Desktop"
+          },
+          "identificadorNivel": "ParalelismoTutorial",
+          "instance": 1468875037437
+        },
+        "dinamica": {
+          "estimuloActivo": {
+            "anguloFijo": -7.5,
+            "desviacion": 0,
+            "idResource": 103,
+            "idTrial": 62,
+            "nivelSenal": 0
+          },
+          "pseudorandom": [
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": true,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            }
+          ],
+          "estimulosCeros": [],
+          "historial": [
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 0,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": -2.5,
+                "desviacion": 0,
+                "idResource": 99,
+                "idTrial": 58,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.77275115,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 2.7784753,
+              "confianza": 0.64153695,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -49.99999999999999,
+                "idResource": 96,
+                "idTrial": 54,
+                "nivelSenal": 10
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 2.0280242,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -49.99999999999999,
+                "idResource": 96,
+                "idTrial": 54,
+                "nivelSenal": 10
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.33377928,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 7.5,
+                "desviacion": 0,
+                "idResource": 102,
+                "idTrial": 61,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.27043283,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 0.95106834,
+              "confianza": 0.6488328,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": 12.56605314896181,
+                "idResource": 79,
+                "idTrial": 37,
+                "nivelSenal": 8
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.26789713,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0.8752277,
+              "confianza": 0.61478615,
+              "estimulo": {
+                "anguloFijo": -5,
+                "desviacion": 0,
+                "idResource": 101,
+                "idTrial": 60,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.21715187,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -49.99999999999999,
+                "idResource": 96,
+                "idTrial": 54,
+                "nivelSenal": 10
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.25038975,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -49.99999999999999,
+                "idResource": 96,
+                "idTrial": 54,
+                "nivelSenal": 10
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.3653767,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 1.2848532,
+              "confianza": 0.73151755,
+              "estimulo": {
+                "anguloFijo": 0,
+                "desviacion": -12.56605314896181,
+                "idResource": 94,
+                "idTrial": 52,
+                "nivelSenal": 8
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.41735783,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "anguloFijo": -7.5,
+                "desviacion": 0,
+                "idResource": 103,
+                "idTrial": 62,
+                "nivelSenal": 0
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.31722897,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            }
+          ],
+          "identificadorNivel": "ParalelismoTutorial",
+          "levelFinalizadoCorrectamente": true,
+          "nivelEstimulo": 9,
+          "proporcionAciertos": 3,
+          "referencia": 0,
+          "saltosActivos": 2,
+          "seriesEstimulos": [],
+          "trialsPorNivel": 10,
+          "trialType": "NoEstimulo"
+        }
+      },
+      "tipo": "RESULTADOS",
+      "instance": 1468875046685,
+      "origen": "ParalelismoTutorial",
+      "id": 15
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468875031628,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [
+              {
+                "identificador": "Ejemplos",
+                "contexto": "Tutorial",
+                "Instance": 1468875036065
+              },
+              {
+                "identificador": "ParalelismoTutorial",
+                "contexto": "Tutorial",
+                "Instance": 1468875046685
+              }
+            ],
+            "eleccion": "P150"
+          },
+          "sessionInstance": 1468875031602,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "AngulosTutorial",
+        "instance": 1468875048178
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468875048178,
+      "origen": "AngulosTutorial",
+      "id": 16
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.LevelUmbral$LogConvergencia",
+        "levelLog": {
+          "sesion": {
+            "user": {
+              "id": 1468875031628,
+              "faseDeExperimentoActiva": "Tutorial",
+              "levelJugado": [
+                {
+                  "identificador": "Ejemplos",
+                  "contexto": "Tutorial",
+                  "Instance": 1468875036065
+                },
+                {
+                  "identificador": "ParalelismoTutorial",
+                  "contexto": "Tutorial",
+                  "Instance": 1468875046685
+                },
+                {
+                  "identificador": "AngulosTutorial",
+                  "contexto": "Tutorial",
+                  "Instance": 1468875056197
+                }
+              ],
+              "eleccion": "P150"
+            },
+            "sessionInstance": 1468875031602,
+            "codeVersion": 31,
+            "resourcesVersion": 25,
+            "plataforma": "Desktop"
+          },
+          "identificadorNivel": "AngulosTutorial",
+          "instance": 1468875048178
+        },
+        "dinamica": {
+          "estimuloActivo": {
+            "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+            "anguloFijo": 180,
+            "desviacion": 10.000000000000028,
+            "idResource": 67,
+            "idTrial": 24,
+            "nivelSenal": 10,
+            "anguloLadoMovil": 190.00000000000003
+          },
+          "pseudorandom": [
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            }
+          ],
+          "estimulosCeros": [],
+          "historial": [
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 182.5,
+                "desviacion": 90,
+                "idResource": 69,
+                "idTrial": 27,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 272.5
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.717004,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 1.5168741,
+              "confianza": 0.6877433,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 177.5,
+                "desviacion": 90,
+                "idResource": 70,
+                "idTrial": 28,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 267.5
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.40021008,
               "soundLoops": 1,
               "trialType": "NoEstimulo"
             },
@@ -647,21 +1335,147 @@
               "estimulo": {
                 "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
                 "anguloFijo": 180,
-                "desviacion": 88.37274939006308,
-                "idResource": 59,
-                "idTrial": 16,
-                "nivelSenal": 2,
-                "anguloLadoMovil": 268.37274939006306
+                "desviacion": 78.59035281899769,
+                "idResource": 63,
+                "idTrial": 20,
+                "nivelSenal": 6,
+                "anguloLadoMovil": 258.5903528189977
               },
-              "nivelEstimulo": 1,
-              "selectionTimeInTrial": 3.9189851,
+              "nivelEstimulo": 5,
+              "selectionTimeInTrial": 0.3333359,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 90,
+                "idResource": 68,
+                "idTrial": 26,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 270
+              },
+              "nivelEstimulo": 3,
+              "selectionTimeInTrial": 0.3999777,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0.95043564,
+              "confianza": 0.6974709,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 169.99999999999997,
+                "idResource": 48,
+                "idTrial": 5,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 350
+              },
+              "nivelEstimulo": 5,
+              "selectionTimeInTrial": 0.33423197,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 101.40964718100231,
+                "idResource": 52,
+                "idTrial": 9,
+                "nivelSenal": 6,
+                "anguloLadoMovil": 281.4096471810023
+              },
+              "nivelEstimulo": 5,
+              "selectionTimeInTrial": 0.35008302,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 0.9161552,
+              "confianza": 0.72422194,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 59.787886957708764,
+                "idResource": 65,
+                "idTrial": 22,
+                "nivelSenal": 8,
+                "anguloLadoMovil": 239.78788695770876
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.3002561,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 182.5,
+                "desviacion": 90,
+                "idResource": 69,
+                "idTrial": 27,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 272.5
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.29945862,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 1.0164586,
+              "confianza": 0.799611,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 120.21211304229124,
+                "idResource": 50,
+                "idTrial": 7,
+                "nivelSenal": 8,
+                "anguloLadoMovil": 300.2121130422912
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.3492494,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.4331782,
               "soundLoops": 1,
               "trialType": "Estimulo"
             }
           ],
           "identificadorNivel": "AngulosTutorial",
           "levelFinalizadoCorrectamente": true,
-          "nivelEstimulo": 1,
+          "nivelEstimulo": 9,
           "proporcionAciertos": 3,
           "referencia": 180,
           "saltosActivos": 2,
@@ -670,10 +1484,102 @@
           "trialType": "Estimulo"
         }
       },
-      "tipo": "LEVEL",
-      "instance": 1468685928883,
+      "tipo": "RESULTADOS",
+      "instance": 1468875056196,
       "origen": "AngulosTutorial",
-      "id": 6
+      "id": 17
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468875031628,
+          "faseDeExperimentoActiva": "TestInicial",
+          "levelJugado": [
+            {
+              "identificador": "Ejemplos",
+              "contexto": "Tutorial",
+              "Instance": 1468875036065
+            },
+            {
+              "identificador": "ParalelismoTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468875046685
+            },
+            {
+              "identificador": "AngulosTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468875056197
+            }
+          ],
+          "eleccion": "P150"
+        },
+        "sessionInstance": 1468875185821,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468875185849,
+      "origen": 1468875031628,
+      "id": 18
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468875031628,
+          "faseDeExperimentoActiva": "TestInicial",
+          "levelJugado": [
+            {
+              "identificador": "Ejemplos",
+              "contexto": "Tutorial",
+              "Instance": 1468875036065
+            },
+            {
+              "identificador": "ParalelismoTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468875046685
+            },
+            {
+              "identificador": "AngulosTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468875056197
+            }
+          ],
+          "eleccion": "P150"
+        },
+        "sessionInstance": 1468878656970,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468878661144,
+      "origen": 1468875031628,
+      "id": 19
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468878701957,
+          "faseDeExperimentoActiva": "Intro",
+          "levelJugado": [],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468878701956,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468878702057,
+      "origen": 1468878701957,
+      "id": 20
     },
     {
       "estadoEnvio": "ENVIANDO",
@@ -681,44 +1587,67 @@
         "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
         "sesion": {
           "user": {
-            "id": 1468685795245,
-            "faseDeExperimentoActiva": "TestInicial",
-            "levelsJugados": [
-              {
-                "identificador": "Ejemplos",
-                "contexto": "Tutorial",
-                "Instance": 1468685808480
-              },
-              {
-                "identificador": "ParalelismoTutorial",
-                "contexto": "Tutorial",
-                "Instance": 1468685872500
-              },
-              {
-                "identificador": "AngulosTutorial",
-                "contexto": "Tutorial",
-                "Instance": 1468685928883
-              },
-              {
-                "identificador": "TESTP30",
-                "contexto": "TestInicial",
-                "Instance": 1468687092457
-              }
-            ],
-            "eleccion": "P60"
+            "id": 1468878701957,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [],
+            "eleccion": "A60"
           },
-          "sessionInstance": 1468685795243,
+          "sessionInstance": 1468878701956,
           "codeVersion": 31,
           "resourcesVersion": 25,
           "plataforma": "Desktop"
         },
-        "identificadorNivel": "TESTP30",
-        "instance": 1468685934199
+        "identificadorNivel": "AngulosTutorial",
+        "instance": 1468878705958
       },
-      "tipo": "NIVEL",
-      "instance": 1468685934199,
-      "origen": "TESTP30",
-      "id": 7
+      "tipo": "INICIONIVEL",
+      "instance": 1468878705958,
+      "origen": "AngulosTutorial",
+      "id": 21
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468878701957,
+          "faseDeExperimentoActiva": "Tutorial",
+          "levelJugado": [],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468878860429,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468878860451,
+      "origen": 1468878701957,
+      "id": 22
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468878701957,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [],
+            "eleccion": "A60"
+          },
+          "sessionInstance": 1468878860429,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "AngulosTutorial",
+        "instance": 1468878861456
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468878861456,
+      "origen": "AngulosTutorial",
+      "id": 23
     },
     {
       "estadoEnvio": "ENVIANDO",
@@ -727,162 +1656,37 @@
         "levelLog": {
           "sesion": {
             "user": {
-              "id": 1468685795245,
-              "faseDeExperimentoActiva": "TestInicial",
-              "levelsJugados": [
-                {
-                  "identificador": "Ejemplos",
-                  "contexto": "Tutorial",
-                  "Instance": 1468685808480
-                },
-                {
-                  "identificador": "ParalelismoTutorial",
-                  "contexto": "Tutorial",
-                  "Instance": 1468685872500
-                },
+              "id": 1468878701957,
+              "faseDeExperimentoActiva": "Tutorial",
+              "levelJugado": [
                 {
                   "identificador": "AngulosTutorial",
                   "contexto": "Tutorial",
-                  "Instance": 1468685928883
-                },
-                {
-                  "identificador": "TESTP30",
-                  "contexto": "TestInicial",
-                  "Instance": 1468687092457
+                  "Instance": 1468878869503
                 }
               ],
-              "eleccion": "P60"
+              "eleccion": "A60"
             },
-            "sessionInstance": 1468685795243,
+            "sessionInstance": 1468878860429,
             "codeVersion": 31,
             "resourcesVersion": 25,
             "plataforma": "Desktop"
           },
-          "identificadorNivel": "TESTP30",
-          "instance": 1468685934199
+          "identificadorNivel": "AngulosTutorial",
+          "instance": 1468878861456
         },
         "dinamica": {
           "estimuloActivo": {
-            "anguloFijo": 32.5,
-            "desviacion": 0,
-            "idResource": 2543,
-            "idTrial": 369,
-            "nivelSenal": 0
+            "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+            "anguloFijo": 185,
+            "desviacion": 90,
+            "idResource": 71,
+            "idTrial": 29,
+            "nivelSenal": 0,
+            "anguloLadoMovil": 275
           },
           "pseudorandom": [
             {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
               "confiance": true,
               "trialType": "NoEstimulo"
             },
@@ -891,11 +1695,7 @@
               "trialType": "NoEstimulo"
             },
             {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
+              "confiance": true,
               "trialType": "Test"
             },
             {
@@ -908,86 +1708,6 @@
             },
             {
               "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
               "trialType": "Estimulo"
             },
             {
@@ -999,172 +1719,8 @@
               "trialType": "NoEstimulo"
             },
             {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
               "confiance": false,
               "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": true,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Test"
-            },
-            {
-              "confiance": true,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Estimulo"
-            },
-            {
-              "confiance": true,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "confiance": false,
-              "trialType": "Test"
-            },
-            {
-              "confiance": false,
-              "trialType": "NoEstimulo"
             },
             {
               "confiance": false,
@@ -1175,209 +1731,73 @@
           "historial": [
             {
               "acertado": true,
-              "confianceTimeInTrial": 0,
-              "confianza": -1,
+              "confianceTimeInTrial": 1.2420585,
+              "confianza": 0.4708171,
               "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -49.99999999999999,
-                "idResource": 1441,
-                "idTrial": 164,
-                "nivelSenal": 50
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 172.5,
+                "desviacion": 90,
+                "idResource": 74,
+                "idTrial": 32,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 262.5
               },
-              "nivelEstimulo": 49,
-              "selectionTimeInTrial": 7.9668584,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -10.914347029616945,
-                "idResource": 1429,
-                "idTrial": 152,
-                "nivelSenal": 38
-              },
-              "nivelEstimulo": 37,
-              "selectionTimeInTrial": 5.799064,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 0,
-                "idResource": 2546,
-                "idTrial": 372,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 5.2996435,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.67609745,
               "soundLoops": 1,
               "trialType": "NoEstimulo"
             },
             {
               "acertado": false,
-              "confianceTimeInTrial": 6.4325185,
-              "confianza": 0.8851676,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -0.5200597782391537,
-                "idResource": 1405,
-                "idTrial": 128,
-                "nivelSenal": 14
-              },
-              "nivelEstimulo": 13,
-              "selectionTimeInTrial": 5.282661,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
               "confianceTimeInTrial": -2,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 172.5,
+                "desviacion": 90,
+                "idResource": 74,
+                "idTrial": 32,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 262.5
               },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 15.015952,
-              "soundLoops": 3,
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.33382362,
+              "soundLoops": 1,
               "trialType": "NoEstimulo"
             },
             {
               "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
+              "confianceTimeInTrial": 1.4161704,
+              "confianza": 0.59484446,
               "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 2.382459421658164,
-                "idResource": 1366,
-                "idTrial": 89,
-                "nivelSenal": 26
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
               },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 6.499569,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 8.41606,
-              "confianza": 0.39952147,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 2.382459421658164,
-                "idResource": 1366,
-                "idTrial": 89,
-                "nivelSenal": 26
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 6.998861,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 30.105505398003693,
-                "idResource": 1446,
-                "idTrial": 170,
-                "nivelSenal": 46
-              },
-              "nivelEstimulo": 36,
-              "selectionTimeInTrial": 3.4164798,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.5161626,
               "soundLoops": 1,
               "trialType": "Test"
             },
             {
               "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
+              "confianceTimeInTrial": 1.0728264,
+              "confianza": 0.6313229,
               "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 9.61427937559268,
-                "idResource": 1555,
-                "idTrial": 280,
-                "nivelSenal": 37
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 169.99999999999997,
+                "idResource": 48,
+                "idTrial": 5,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 350
               },
-              "nivelEstimulo": 36,
-              "selectionTimeInTrial": 7.866605,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 34.1764494851246,
-                "idResource": 1545,
-                "idTrial": 270,
-                "nivelSenal": 47
-              },
-              "nivelEstimulo": 46,
-              "selectionTimeInTrial": 4.4495454,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -34.1764494851246,
-                "idResource": 1638,
-                "idTrial": 363,
-                "nivelSenal": 47
-              },
-              "nivelEstimulo": 46,
-              "selectionTimeInTrial": 5.9824595,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 46,
-              "selectionTimeInTrial": 6.250763,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 8.449275,
-              "confianza": 0.20574164,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 15.967643207594525,
-                "idResource": 1451,
-                "idTrial": 175,
-                "nivelSenal": 41
-              },
-              "nivelEstimulo": 36,
-              "selectionTimeInTrial": 6.8492575,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.355807,
               "soundLoops": 1,
               "trialType": "Test"
             },
@@ -1386,30 +1806,52 @@
               "confianceTimeInTrial": -2,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 20,
-                "desviacion": 0,
-                "idResource": 2550,
-                "idTrial": 376,
-                "nivelSenal": 0
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
               },
-              "nivelEstimulo": 45,
-              "selectionTimeInTrial": 14.68278,
-              "soundLoops": 3,
-              "trialType": "NoEstimulo"
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.28275526,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
             },
             {
               "acertado": true,
               "confianceTimeInTrial": -2,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 30.105505398003693,
-                "idResource": 1346,
-                "idTrial": 69,
-                "nivelSenal": 46
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
               },
-              "nivelEstimulo": 45,
-              "selectionTimeInTrial": 4.2825065,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.6000147,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 0.86691177,
+              "confianza": 0.7164397,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.2669537,
               "soundLoops": 1,
               "trialType": "Estimulo"
             },
@@ -1418,334 +1860,16 @@
               "confianceTimeInTrial": -2,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 32.5,
-                "desviacion": 0,
-                "idResource": 2543,
-                "idTrial": 369,
-                "nivelSenal": 0
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 177.5,
+                "desviacion": 90,
+                "idResource": 70,
+                "idTrial": 28,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 267.5
               },
-              "nivelEstimulo": 45,
-              "selectionTimeInTrial": 5.6161904,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 49.99999999999999,
-                "idResource": 1342,
-                "idTrial": 65,
-                "nivelSenal": 50
-              },
-              "nivelEstimulo": 49,
-              "selectionTimeInTrial": 3.3990817,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 0,
-                "idResource": 2546,
-                "idTrial": 372,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 49,
-              "selectionTimeInTrial": 6.3164864,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -49.99999999999999,
-                "idResource": 1541,
-                "idTrial": 265,
-                "nivelSenal": 50
-              },
-              "nivelEstimulo": 49,
-              "selectionTimeInTrial": 4.7829876,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 49.99999999999999,
-                "idResource": 1442,
-                "idTrial": 166,
-                "nivelSenal": 50
-              },
-              "nivelEstimulo": 49,
-              "selectionTimeInTrial": 4.5156307,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 5.0334764,
-              "confianza": 0.9354067,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 49.99999999999999,
-                "idResource": 1542,
-                "idTrial": 267,
-                "nivelSenal": 50
-              },
-              "nivelEstimulo": 49,
-              "selectionTimeInTrial": 3.7167218,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -20.577985689180384,
-                "idResource": 1634,
-                "idTrial": 359,
-                "nivelSenal": 43
-              },
-              "nivelEstimulo": 42,
-              "selectionTimeInTrial": 4.5331483,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 7.5828424,
-              "confianza": 0.42583728,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 0,
-                "idResource": 2545,
-                "idTrial": 371,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 35,
-              "selectionTimeInTrial": 5.5829806,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 20.577985689180384,
-                "idResource": 1449,
-                "idTrial": 173,
-                "nivelSenal": 43
-              },
-              "nivelEstimulo": 42,
-              "selectionTimeInTrial": 5.683622,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 20.577985689180384,
-                "idResource": 1549,
-                "idTrial": 274,
-                "nivelSenal": 43
-              },
-              "nivelEstimulo": 42,
-              "selectionTimeInTrial": 3.432924,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 6.115991,
-              "confianza": 0.9377991,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -20.577985689180384,
-                "idResource": 1534,
-                "idTrial": 258,
-                "nivelSenal": 43
-              },
-              "nivelEstimulo": 42,
-              "selectionTimeInTrial": 4.78172,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 9.399834,
-              "confianza": 0.13397124,
-              "estimulo": {
-                "anguloFijo": 40,
-                "desviacion": 0,
-                "idResource": 2549,
-                "idTrial": 375,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 36,
-              "selectionTimeInTrial": 7.5329623,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 23.36059398818547,
-                "idResource": 1348,
-                "idTrial": 71,
-                "nivelSenal": 44
-              },
-              "nivelEstimulo": 30,
-              "selectionTimeInTrial": 4.782556,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 6.816412,
-              "confianza": 0.83253586,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 0,
-                "idResource": 2545,
-                "idTrial": 371,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 24,
-              "selectionTimeInTrial": 5.4667783,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 0,
-                "idResource": 2545,
-                "idTrial": 371,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 6.7500954,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 13,
-              "selectionTimeInTrial": 6.131537,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -34.1764494851246,
-                "idResource": 1638,
-                "idTrial": 363,
-                "nivelSenal": 47
-              },
-              "nivelEstimulo": 8,
-              "selectionTimeInTrial": 4.59974,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 19.883389,
-              "confianza": 0.72966516,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -3.9568500680545697,
-                "idResource": 1621,
-                "idTrial": 346,
-                "nivelSenal": 30
-              },
-              "nivelEstimulo": 3,
-              "selectionTimeInTrial": 18.583246,
-              "soundLoops": 3,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -0.2758342328341773,
-                "idResource": 1600,
-                "idTrial": 325,
-                "nivelSenal": 9
-              },
-              "nivelEstimulo": 8,
-              "selectionTimeInTrial": 5.682772,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 6.57163866831637,
-                "idResource": 1558,
-                "idTrial": 283,
-                "nivelSenal": 34
-              },
-              "nivelEstimulo": 12,
-              "selectionTimeInTrial": 5.499762,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 16,
-              "selectionTimeInTrial": 5.432932,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.37095615,
               "soundLoops": 1,
               "trialType": "NoEstimulo"
             },
@@ -1754,14 +1878,16 @@
               "confianceTimeInTrial": -2,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -0.7608452400321912,
-                "idResource": 1508,
-                "idTrial": 232,
-                "nivelSenal": 17
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
               },
-              "nivelEstimulo": 16,
-              "selectionTimeInTrial": 7.1657834,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.43306908,
               "soundLoops": 1,
               "trialType": "Estimulo"
             },
@@ -1770,1025 +1896,373 @@
               "confianceTimeInTrial": -2,
               "confianza": -1,
               "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -1.2636314022528297,
-                "idResource": 1512,
-                "idTrial": 236,
-                "nivelSenal": 21
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 185,
+                "desviacion": 90,
+                "idResource": 71,
+                "idTrial": 29,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 275
               },
-              "nivelEstimulo": 20,
-              "selectionTimeInTrial": 6.5997143,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -1.2636314022528297,
-                "idResource": 1612,
-                "idTrial": 337,
-                "nivelSenal": 21
-              },
-              "nivelEstimulo": 20,
-              "selectionTimeInTrial": 5.182766,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -1.2636314022528297,
-                "idResource": 1612,
-                "idTrial": 337,
-                "nivelSenal": 21
-              },
-              "nivelEstimulo": 20,
-              "selectionTimeInTrial": 7.3660903,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 22.5,
-                "desviacion": 0,
-                "idResource": 2548,
-                "idTrial": 374,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 61.35074,
-              "soundLoops": 9,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 61.55208,
-              "confianza": 0.34210527,
-              "estimulo": {
-                "anguloFijo": 22.5,
-                "desviacion": 0,
-                "idResource": 2548,
-                "idTrial": 374,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 59.534893,
-              "soundLoops": 9,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 5.016243,
-              "confianza": 0.73684204,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 1.8486873582389372,
-                "idResource": 1368,
-                "idTrial": 91,
-                "nivelSenal": 24
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 3.8331285,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 1.4345028995850928,
-                "idResource": 1370,
-                "idTrial": 93,
-                "nivelSenal": 22
-              },
-              "nivelEstimulo": 21,
-              "selectionTimeInTrial": 6.3001113,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -1.1131133448536707,
-                "idResource": 1611,
-                "idTrial": 336,
-                "nivelSenal": 20
-              },
-              "nivelEstimulo": 19,
-              "selectionTimeInTrial": 5.282017,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 9.199593,
-              "confianza": 0.19856456,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 17,
-              "selectionTimeInTrial": 6.9495215,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 6.282457,
-              "confianza": 0.9425838,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 15.967643207594525,
-                "idResource": 1351,
-                "idTrial": 74,
-                "nivelSenal": 41
-              },
-              "nivelEstimulo": 16,
-              "selectionTimeInTrial": 4.9324536,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 32.5,
-                "desviacion": 0,
-                "idResource": 2543,
-                "idTrial": 369,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 15,
-              "selectionTimeInTrial": 6.599848,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 13.549893,
-              "confianza": 0.29665077,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 16,
-              "selectionTimeInTrial": 10.533305,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 0,
-                "idResource": 2546,
-                "idTrial": 372,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 17,
-              "selectionTimeInTrial": 16.215265,
-              "soundLoops": 3,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 7.0506024,
-              "confianza": 0.28947377,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 5.850617,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 5.6833467,
-              "confianza": 0.8851676,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 10.914347029616945,
-                "idResource": 1354,
-                "idTrial": 77,
-                "nivelSenal": 38
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 4.6663246,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 12.390213184913268,
-                "idResource": 1453,
-                "idTrial": 177,
-                "nivelSenal": 39
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 4.8660784,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 10.515976,
-              "confianza": 0.5765549,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 0.8637286957382201,
-                "idResource": 1374,
-                "idTrial": 97,
-                "nivelSenal": 18
-              },
-              "nivelEstimulo": 17,
-              "selectionTimeInTrial": 9.167026,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 8.832992,
-              "confianza": 0.35167468,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -0.9805243176786939,
-                "idResource": 1610,
-                "idTrial": 335,
-                "nivelSenal": 19
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 7.5494037,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 11.799801,
-              "confianza": 0.6267942,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -0.9805243176786939,
-                "idResource": 1610,
-                "idTrial": 335,
-                "nivelSenal": 19
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 10.566327,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 4.732915,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 7.1326327,
-              "confianza": 0.41387558,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 17,
-              "selectionTimeInTrial": 5.699242,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 16,
-              "selectionTimeInTrial": 6.949057,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 17,
-              "selectionTimeInTrial": 6.866015,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 8.199608,
-              "confianza": 0.6770336,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -0.8637286957382201,
-                "idResource": 1609,
-                "idTrial": 334,
-                "nivelSenal": 18
-              },
-              "nivelEstimulo": 17,
-              "selectionTimeInTrial": 7.1995416,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 0.9805243176786939,
-                "idResource": 1573,
-                "idTrial": 298,
-                "nivelSenal": 19
-              },
-              "nivelEstimulo": 18,
-              "selectionTimeInTrial": 42.05035,
-              "soundLoops": 6,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 1.1131133448536707,
-                "idResource": 1572,
-                "idTrial": 297,
-                "nivelSenal": 20
-              },
-              "nivelEstimulo": 19,
-              "selectionTimeInTrial": 8.9324045,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 0,
-                "idResource": 2546,
-                "idTrial": 372,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 20,
-              "selectionTimeInTrial": 5.816893,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 15.967643207594525,
-                "idResource": 1351,
-                "idTrial": 74,
-                "nivelSenal": 41
-              },
-              "nivelEstimulo": 21,
-              "selectionTimeInTrial": 3.3990574,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -1.4345028995850928,
-                "idResource": 1513,
-                "idTrial": 237,
-                "nivelSenal": 22
-              },
-              "nivelEstimulo": 21,
-              "selectionTimeInTrial": 4.632215,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 26.5194737582006,
-                "idResource": 1447,
-                "idTrial": 171,
-                "nivelSenal": 45
-              },
-              "nivelEstimulo": 22,
-              "selectionTimeInTrial": 3.3332586,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 13.39992,
-              "confianza": 0.32535887,
-              "estimulo": {
-                "anguloFijo": 40,
-                "desviacion": 0,
-                "idResource": 2549,
-                "idTrial": 375,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 22,
-              "selectionTimeInTrial": 11.982751,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -30.105505398003693,
-                "idResource": 1537,
-                "idTrial": 261,
-                "nivelSenal": 46
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 4.266609,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -1.8486873582389372,
-                "idResource": 1415,
-                "idTrial": 138,
-                "nivelSenal": 24
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 5.849329,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 32.5,
-                "desviacion": 0,
-                "idResource": 2543,
-                "idTrial": 369,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 7.116302,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 8.165912,
-              "confianza": 0.75598085,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 2.098671630898149,
-                "idResource": 1367,
-                "idTrial": 90,
-                "nivelSenal": 25
-              },
-              "nivelEstimulo": 24,
-              "selectionTimeInTrial": 7.082556,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 8.649769,
-              "confianza": 0.32535887,
-              "estimulo": {
-                "anguloFijo": 40,
-                "desviacion": 0,
-                "idResource": 2549,
-                "idTrial": 375,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 7.4163995,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 2.382459421658164,
-                "idResource": 1566,
-                "idTrial": 291,
-                "nivelSenal": 26
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 6.016658,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 7.1497664,
-              "confianza": 0.35885167,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 5.8996634,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 2.098671630898149,
-                "idResource": 1567,
-                "idTrial": 292,
-                "nivelSenal": 25
-              },
-              "nivelEstimulo": 24,
-              "selectionTimeInTrial": 21.367136,
-              "soundLoops": 4,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": -26.5194737582006,
-                "idResource": 1536,
-                "idTrial": 260,
-                "nivelSenal": 45
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 4.4163046,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 2.382459421658164,
-                "idResource": 1466,
-                "idTrial": 190,
-                "nivelSenal": 26
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 6.1994324,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 22.5,
-                "desviacion": 0,
-                "idResource": 2548,
-                "idTrial": 374,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 5.199753,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 18.126829105384605,
-                "idResource": 1350,
-                "idTrial": 73,
-                "nivelSenal": 42
-              },
-              "nivelEstimulo": 24,
-              "selectionTimeInTrial": 2.6162848,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 0,
-                "idResource": 2546,
-                "idTrial": 372,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 23,
-              "selectionTimeInTrial": 5.3154535,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 24,
-              "selectionTimeInTrial": 12.417016,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 0,
-                "idResource": 2542,
-                "idTrial": 368,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 7.4827957,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -2.382459421658164,
-                "idResource": 1417,
-                "idTrial": 140,
-                "nivelSenal": 26
-              },
-              "nivelEstimulo": 25,
-              "selectionTimeInTrial": 7.69981,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 26,
-              "selectionTimeInTrial": 6.266473,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 22.5,
-                "desviacion": 0,
-                "idResource": 2548,
-                "idTrial": 374,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 27,
-              "selectionTimeInTrial": 6.43413,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 28,
-              "selectionTimeInTrial": 7.7833543,
-              "soundLoops": 2,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 3.9568500680545697,
-                "idResource": 1362,
-                "idTrial": 85,
-                "nivelSenal": 30
-              },
-              "nivelEstimulo": 29,
-              "selectionTimeInTrial": 6.0154524,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 26.5194737582006,
-                "idResource": 1547,
-                "idTrial": 272,
-                "nivelSenal": 45
-              },
-              "nivelEstimulo": 29,
-              "selectionTimeInTrial": 2.8996427,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 7.083295,
-              "confianza": 0.29186606,
-              "estimulo": {
-                "anguloFijo": 27.5,
-                "desviacion": 0,
-                "idResource": 2544,
-                "idTrial": 370,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 29,
-              "selectionTimeInTrial": 5.6498356,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 21.483585,
-              "confianza": 0.5765549,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": 3.4855279842558486,
-                "idResource": 1563,
-                "idTrial": 288,
-                "nivelSenal": 29
-              },
-              "nivelEstimulo": 28,
-              "selectionTimeInTrial": 19.732998,
-              "soundLoops": 3,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 40,
-                "desviacion": 0,
-                "idResource": 2549,
-                "idTrial": 375,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 27,
-              "selectionTimeInTrial": 5.266348,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 6.466245,
-              "confianza": 0.9401915,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -49.99999999999999,
-                "idResource": 1641,
-                "idTrial": 366,
-                "nivelSenal": 50
-              },
-              "nivelEstimulo": 28,
-              "selectionTimeInTrial": 4.949608,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": 8.032148,
-              "confianza": 0.72966516,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": 3.4855279842558486,
-                "idResource": 1363,
-                "idTrial": 86,
-                "nivelSenal": 29
-              },
-              "nivelEstimulo": 28,
-              "selectionTimeInTrial": 6.88252,
-              "soundLoops": 1,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 25,
-                "desviacion": -3.9568500680545697,
-                "idResource": 1621,
-                "idTrial": 346,
-                "nivelSenal": 30
-              },
-              "nivelEstimulo": 29,
-              "selectionTimeInTrial": 7.6321187,
-              "soundLoops": 2,
-              "trialType": "Estimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": 5.416313,
-              "confianza": 0.944976,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -30.105505398003693,
-                "idResource": 1437,
-                "idTrial": 160,
-                "nivelSenal": 46
-              },
-              "nivelEstimulo": 29,
-              "selectionTimeInTrial": 3.6495674,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 35,
-                "desviacion": 0,
-                "idResource": 2545,
-                "idTrial": 371,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 29,
-              "selectionTimeInTrial": 7.067052,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 30,
-                "desviacion": -34.1764494851246,
-                "idResource": 1438,
-                "idTrial": 161,
-                "nivelSenal": 47
-              },
-              "nivelEstimulo": 28,
-              "selectionTimeInTrial": 3.5663843,
-              "soundLoops": 1,
-              "trialType": "Test"
-            },
-            {
-              "acertado": false,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 37.5,
-                "desviacion": 0,
-                "idResource": 2547,
-                "idTrial": 373,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 27,
-              "selectionTimeInTrial": 4.8494916,
-              "soundLoops": 1,
-              "trialType": "NoEstimulo"
-            },
-            {
-              "acertado": true,
-              "confianceTimeInTrial": -2,
-              "confianza": -1,
-              "estimulo": {
-                "anguloFijo": 32.5,
-                "desviacion": 0,
-                "idResource": 2543,
-                "idTrial": 369,
-                "nivelSenal": 0
-              },
-              "nivelEstimulo": 28,
-              "selectionTimeInTrial": 3.8832753,
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.38291928,
               "soundLoops": 1,
               "trialType": "NoEstimulo"
             }
           ],
-          "identificadorNivel": "TESTP30",
+          "identificadorNivel": "AngulosTutorial",
           "levelFinalizadoCorrectamente": true,
-          "nivelEstimulo": 28,
+          "nivelEstimulo": 9,
           "proporcionAciertos": 3,
-          "referencia": 30,
-          "saltosActivos": 1,
+          "referencia": 180,
+          "saltosActivos": 2,
           "seriesEstimulos": [],
-          "trialsPorNivel": 100,
+          "trialsPorNivel": 10,
           "trialType": "NoEstimulo"
         }
       },
-      "tipo": "LEVEL",
-      "instance": 1468687092456,
-      "origen": "TESTP30",
-      "id": 8
+      "tipo": "RESULTADOS",
+      "instance": 1468878869503,
+      "origen": "AngulosTutorial",
+      "id": 24
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.diseno.Session",
+        "user": {
+          "id": 1468878701957,
+          "faseDeExperimentoActiva": "Tutorial",
+          "levelJugado": [
+            {
+              "identificador": "AngulosTutorial",
+              "contexto": "Tutorial",
+              "Instance": 1468878869503
+            }
+          ],
+          "eleccion": "A60"
+        },
+        "sessionInstance": 1468880119047,
+        "codeVersion": 31,
+        "resourcesVersion": 25,
+        "plataforma": "Desktop"
+      },
+      "tipo": "SESION",
+      "instance": 1468880120400,
+      "origen": 1468878701957,
+      "id": 25
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.Level$LevelLog",
+        "sesion": {
+          "user": {
+            "id": 1468878701957,
+            "faseDeExperimentoActiva": "Tutorial",
+            "levelJugado": [
+              {
+                "identificador": "AngulosTutorial",
+                "contexto": "Tutorial",
+                "Instance": 1468878869503
+              }
+            ],
+            "eleccion": "A60"
+          },
+          "sessionInstance": 1468880119047,
+          "codeVersion": 31,
+          "resourcesVersion": 25,
+          "plataforma": "Desktop"
+        },
+        "identificadorNivel": "AngulosTutorial",
+        "instance": 1468880124588
+      },
+      "tipo": "INICIONIVEL",
+      "instance": 1468880124588,
+      "origen": "AngulosTutorial",
+      "id": 26
+    },
+    {
+      "estadoEnvio": "ENVIANDO",
+      "objeto": {
+        "class": "com.turin.tur.main.levelsDesign.LevelUmbral$LogConvergencia",
+        "levelLog": {
+          "sesion": {
+            "user": {
+              "id": 1468878701957,
+              "faseDeExperimentoActiva": "Tutorial",
+              "levelJugado": [
+                {
+                  "identificador": "AngulosTutorial",
+                  "contexto": "Tutorial",
+                  "Instance": 1468878869503
+                },
+                {
+                  "identificador": "AngulosTutorial",
+                  "contexto": "Tutorial",
+                  "Instance": 1468880138615
+                }
+              ],
+              "eleccion": "A60"
+            },
+            "sessionInstance": 1468880119047,
+            "codeVersion": 31,
+            "resourcesVersion": 25,
+            "plataforma": "Desktop"
+          },
+          "identificadorNivel": "AngulosTutorial",
+          "instance": 1468880124588
+        },
+        "dinamica": {
+          "estimuloActivo": {
+            "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+            "anguloFijo": 180,
+            "desviacion": 139.1626793755517,
+            "idResource": 49,
+            "idTrial": 6,
+            "nivelSenal": 9,
+            "anguloLadoMovil": 319.1626793755517
+          },
+          "pseudorandom": [
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "confiance": true,
+              "trialType": "Test"
+            },
+            {
+              "confiance": true,
+              "trialType": "Estimulo"
+            },
+            {
+              "confiance": false,
+              "trialType": "Estimulo"
+            }
+          ],
+          "estimulosCeros": [],
+          "historial": [
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 185,
+                "desviacion": 90,
+                "idResource": 71,
+                "idTrial": 29,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 275
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 6.4141893,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": 1.9679776,
+              "confianza": 0.45379382,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 190,
+                "desviacion": 90,
+                "idResource": 75,
+                "idTrial": 33,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 280
+              },
+              "nivelEstimulo": 7,
+              "selectionTimeInTrial": 0.61789787,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.3030783,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0.97487575,
+              "confianza": 0.5048637,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 139.1626793755517,
+                "idResource": 49,
+                "idTrial": 6,
+                "nivelSenal": 9,
+                "anguloLadoMovil": 319.1626793755517
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.42488393,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 175,
+                "desviacion": 90,
+                "idResource": 72,
+                "idTrial": 30,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 265
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.26699963,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 169.99999999999997,
+                "idResource": 48,
+                "idTrial": 5,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 350
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.4360386,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 175,
+                "desviacion": 90,
+                "idResource": 72,
+                "idTrial": 30,
+                "nivelSenal": 0,
+                "anguloLadoMovil": 265
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.28298435,
+              "soundLoops": 1,
+              "trialType": "NoEstimulo"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 1.1999432,
+              "confianza": 0.5218871,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 139.1626793755517,
+                "idResource": 49,
+                "idTrial": 6,
+                "nivelSenal": 9,
+                "anguloLadoMovil": 319.1626793755517
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.26698488,
+              "soundLoops": 1,
+              "trialType": "Test"
+            },
+            {
+              "acertado": true,
+              "confianceTimeInTrial": 0.90001327,
+              "confianza": 0.52675104,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 10.000000000000028,
+                "idResource": 67,
+                "idTrial": 24,
+                "nivelSenal": 10,
+                "anguloLadoMovil": 190.00000000000003
+              },
+              "nivelEstimulo": 9,
+              "selectionTimeInTrial": 0.29999408,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            },
+            {
+              "acertado": false,
+              "confianceTimeInTrial": -2,
+              "confianza": -1,
+              "estimulo": {
+                "class": "com.turin.tur.main.levelsDesign.LevelUmbral$EstimuloAngulo",
+                "anguloFijo": 180,
+                "desviacion": 139.1626793755517,
+                "idResource": 49,
+                "idTrial": 6,
+                "nivelSenal": 9,
+                "anguloLadoMovil": 319.1626793755517
+              },
+              "nivelEstimulo": 8,
+              "selectionTimeInTrial": 0.26618922,
+              "soundLoops": 1,
+              "trialType": "Estimulo"
+            }
+          ],
+          "identificadorNivel": "AngulosTutorial",
+          "levelFinalizadoCorrectamente": true,
+          "nivelEstimulo": 9,
+          "proporcionAciertos": 3,
+          "referencia": 180,
+          "saltosActivos": 1,
+          "seriesEstimulos": [],
+          "trialsPorNivel": 10,
+          "trialType": "Estimulo"
+        }
+      },
+      "tipo": "RESULTADOS",
+      "instance": 1468880138615,
+      "origen": "AngulosTutorial",
+      "id": 27
     }
   ]
 }

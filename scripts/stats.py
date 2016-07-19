@@ -1,14 +1,16 @@
 def sessionStats():
 
-    from scripts.db import pandasUtilPiloto
+    #from scripts.db import pandasUtilPiloto
+    from scripts.db import pandasTransferencia
     from IPython.display import display
     from scripts.general import fechaLocal
+    import scripts.constants as cts
 
-    dbPiloto = pandasUtilPiloto()
-    sessionInstances = dbPiloto['sessionInstance'].unique()
+    data = pandasTransferencia()
+    sessionInstances = data[cts.P_SessionInstance].unique()
     for sessionInstance in sessionInstances:
-        dbPilotoBySession = dbPiloto[dbPiloto['sessionInstance'] == sessionInstance]
-        display ('El usuario ' + dbPilotoBySession.iloc[0]['alias'] + ' inicio sesion el ' + str(fechaLocal(sessionInstance)) + ' y juego ' + str(len(dbPilotoBySession['levelInstance'])) + ' niveles.')
+        infoSesion = data[data[cts.P_SessionInstance] == sessionInstance]
+        display ('El usuario ' + infoSesion.iloc[0][cts.P_Alias] + ' inicio sesion el ' + str(fechaLocal(sessionInstance)) + ' y juego ' + str(len(infoSesion[cts.P_LevelInstance].unique())) + ' niveles.')
 
 def condicion(serie, M):
     from IPython.display import display
