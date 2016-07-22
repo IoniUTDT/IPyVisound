@@ -38,6 +38,9 @@ Db_Historial_Recurso_AnguloFijo = 'anguloFijo'
 Db_Historial_Recurso_Desviacion = 'desviacion'
 Db_Historial_Recurso_Estimulo = 'nivelSenal'
 Db_Historial_Recurso_Id = 'idResource'
+Db_Historial_Recurso_EtiquetaTipoEstimulo = 'Estimulo'
+Db_Historial_Recurso_EtiquetaTipoNoEstimulo = 'NoEstimulo'
+Db_Historial_Recurso_EtiquetaTipoTest = 'Test'
 
 # Estructuras dict de python
 Db_Users_id = 'id'

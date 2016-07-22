@@ -1,28 +1,113 @@
-def plotByUser (alias=["Todos"], completado=True, expList=['UmbralAngulosPiloto', 'UmbralParalelismoPiloto','UmbralAngulosTutorial']):
+import scripts.constants as cts
 
-    from scripts.db import pandasUtilPiloto
-    from IPython.display import display
+from scripts.general import chkVersion
+from IPython.display import display
 
-    db = pandasUtilPiloto()
+chkVersion()
+
+def plotByUser (alias=["Todos"], filtroCompletadoActivo=True, expList=['ParalelismoTutorial', 'AngulosTutorial','TESTP30']):
+
+    from scripts.db import pandasTransferencia
+
+    db = pandasTransferencia()
 
     if alias == ["Todos"]:
-        users = db['alias'].unique()
+        users = db[cts.P_Alias].unique()
     else:
         users = alias
 
 
     for user in users:
 
-        userDb = db[db['alias']==user]
-        userAlias = userDb.iloc[0]['alias']
+        userDb = db[db[cts.P_Alias]==user]
 
-        if completado:
-            userDb = userDb[userDb['levelFinalizadoCorrectamente']==True]
+        if filtroCompletadoActivo:
+            userDb = userDb[userDb[cts.P_LevelFinalizado]==True]
 
-        exps = userDb['expName'].unique()
+        exps = userDb[cts.P_LevelIdentificador].unique()
         for exp in exps:
             if exp in expList:
-                plotConvergenciaVersionPiloto (userDb, exp)
+                data = userDb[userDb[cts.P_LevelIdentificador]==exp]
+                plotConvergencia (data, exp)
+
+
+def plotConvergencia (db, expName, fromStadistics=False):
+
+    import matplotlib.pyplot as plt
+    import matplotlib.cm as cm
+    import numpy as np
+
+    db=db[db[cts.P_LevelIdentificador]==expName]
+    dbInfo = db.iloc[0]
+    # Armamos el grafico
+    colormap = plt.cm.nipy_spectral #I suggest to use nipy_spectral, Set1,Paired
+    
+    if fromStadistics:
+        fig = plt.figure(figsize=(20, 10))
+    else:
+        fig = plt.figure(figsize=(20, 20))
+
+    ax = plt.subplot(111)
+    ax.set_xlabel('Numero de trial')
+    ax.set_ylabel('señal (nivel)')
+    
+    title = ''
+    if len(db[cts.P_Alias].unique()) == 1:
+        title = title + ' Usuario: ' + dbInfo[cts.P_Alias]
+
+    title = title + ' Experimento: ' + expName
+
+    ax.set_title(title, va='bottom')
+
+    # Definimos la escala de colores
+    size = len(db[cts.P_Alias])
+    colors = iter(cm.Paired(np.linspace(0, 1, size)))
+    levelColors = {}
+
+    # Hacemos un grafico para cada instancia del nivel jugado (en principio deberia haber una sola, pero podria haber mas)
+    for levelInstance in db[cts.P_LevelInstance].unique():
+        dbLevelInstance = db[db[cts.P_LevelInstance] == levelInstance]
+        y = dbLevelInstance[cts.P_NivelEstimuloDinamica].tolist()
+        x = range (len(y))
+
+        # Construimos el label diferentes segun sea un grafico para un solo usuario o para varios
+        label = ''
+        
+        if len(db[cts.P_Alias].unique()) != 1:
+            label = label + ' Usuario: ' + dbLevelInstance[cts.P_Alias].unique()[0]
+        
+        label = label + ' referencia: ' + str(dbLevelInstance[cts.P_Referencia].unique()[0])
+        label = label + ' \n Valor final: ' + str(y[-1])
+        
+
+        # Graficamos
+        if levelInstance in levelColors.keys():
+            color = levelColors[levelInstance]
+            # ax.plot(x,y,color=color)
+            ax.plot(x,y)
+        else:
+            color=next(colors)
+            #ax.plot(x,y,label=label,color=color)
+            ax.plot(x,y,label=label)
+            levelColors[levelInstance] = color
+
+        # Agregamos las marcas
+        aciertos = dbLevelInstance[cts.P_RtaCorrecta].tolist()
+        tipo = dbLevelInstance[cts.P_TipoDeTrial].tolist()
+        for i in x:
+            if aciertos[i]:
+                ax.plot(i,y[i],'bo')
+            else:
+                ax.plot(i,y[i],'ro')
+
+        ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],'8', color='black', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo, mew = 3)
+        ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],'8', color='green', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoEstimulo, mew = 3)
+        ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],'8', color='cyan', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoTest, mew = 3)
+
+    ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    plt.show(block=False)
+
+
 
 
 def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLevelInstance = [1465499974725,1466028783553,1466028660936,1466028551014,1466028543250,1466027507789,1466027464069,1466027418273,1466027187076]):
