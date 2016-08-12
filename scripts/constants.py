@@ -70,6 +70,7 @@ P_AnguloFijo = 'AnguloFijo'
 P_Desviacion = 'Desviacion'
 P_NivelEstimuloEstimulo = 'NivelSenalEstimulo'
 P_IdEstimulos = 'IdEstimulo'
+P_EnvioInstance = 'EnvioInstance'
 
 # Constantes utiles localmente
 PathDirDatosLocal = './Guardados/datos.'
@@ -78,8 +79,14 @@ PATHSESSSION = PathDirDatosLocal + Db_Envios_TipoDeEnvio_Sesion
 PATHLEVELS = PathDirDatosLocal + 'NewLevel'
 PATHRESULTS = PathDirDatosLocal + 'RESULTADOS'
 
+#Otras Constantes
+expList = ['ParalelismoTutorial', 'AngulosTutorial',
+        'TESTP30', 'TESTP60', 'TESTP120', 'TESTP150', 'ENTRENAMIENTOA60INICIAL',
+        'ENTRENAMIENTOA60MEDIO','ENTRENAMIENTOA120MEDIO',
+        'ENTRENAMIENTOP30INICIAL','ENTRENAMIENTOP30MEDIO',
+        'ENTRENAMIENTOP30FINAL']
+
 URLserver = 'http://turintur.dynu.com/db'
 FileNameLocalDb = 'db.json'
 FileNameLocalDbTemp = 'temp.json'
-PathDirDbBackUp = './backups/' 
-
+PathDirDbBackUp = './backups/'

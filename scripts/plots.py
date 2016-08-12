@@ -5,7 +5,9 @@ from IPython.display import display
 
 chkVersion()
 
-def plotByUser (alias=["Todos"], filtroCompletadoActivo=True, expList=['ParalelismoTutorial', 'AngulosTutorial','TESTP30']):
+def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
+                expList=cts.expList,
+                onlyOneUser=True, number=-1, join=False):
 
     from scripts.db import pandasTransferencia
 
@@ -16,8 +18,14 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True, expList=['Paraleli
     else:
         users = alias
 
+    users = db[cts.P_Alias].unique() if alias == ["Todos"] else alias
+
 
     for user in users:
+
+        if onlyOneUser:
+            if user != users[number]:
+                continue
 
         userDb = db[db[cts.P_Alias]==user]
 
@@ -26,12 +34,14 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True, expList=['Paraleli
 
         exps = userDb[cts.P_LevelIdentificador].unique()
         for exp in exps:
+            display (exp)
             if exp in expList:
                 data = userDb[userDb[cts.P_LevelIdentificador]==exp]
-                plotConvergencia (data, exp)
+
+                plotConvergencia (data, exp, join=join)
 
 
-def plotConvergencia (db, expName, fromStadistics=False):
+def plotConvergencia (db, expName, fromStadistics=False, join=False):
 
     import matplotlib.pyplot as plt
     import matplotlib.cm as cm
@@ -41,44 +51,70 @@ def plotConvergencia (db, expName, fromStadistics=False):
     dbInfo = db.iloc[0]
     # Armamos el grafico
     colormap = plt.cm.nipy_spectral #I suggest to use nipy_spectral, Set1,Paired
-    
-    if fromStadistics:
-        fig = plt.figure(figsize=(20, 10))
-    else:
-        fig = plt.figure(figsize=(20, 20))
 
-    ax = plt.subplot(111)
-    ax.set_xlabel('Numero de trial')
-    ax.set_ylabel('señal (nivel)')
-    
-    title = ''
-    if len(db[cts.P_Alias].unique()) == 1:
-        title = title + ' Usuario: ' + dbInfo[cts.P_Alias]
+    if join:
+        if fromStadistics:
+            fig = plt.figure(figsize=(20, 10))
+        else:
+            fig = plt.figure(figsize=(20, 20))
 
-    title = title + ' Experimento: ' + expName
+        ax = plt.subplot(111)
+        ax.set_xlabel('Numero de trial')
+        ax.set_ylabel('señal (nivel)')
 
-    ax.set_title(title, va='bottom')
+        title = ''
+        if len(db[cts.P_Alias].unique()) == 1:
+            title = title + ' Usuario: ' + dbInfo[cts.P_Alias]
 
-    # Definimos la escala de colores
-    size = len(db[cts.P_Alias])
-    colors = iter(cm.Paired(np.linspace(0, 1, size)))
-    levelColors = {}
+        title = title + ' Experimento: ' + expName
+
+        ax.set_title(title, va='bottom')
+
+        # Definimos la escala de colores
+        size = len(db[cts.P_Alias])
+        colors = iter(cm.Paired(np.linspace(0, 1, size)))
+        levelColors = {}
 
     # Hacemos un grafico para cada instancia del nivel jugado (en principio deberia haber una sola, pero podria haber mas)
     for levelInstance in db[cts.P_LevelInstance].unique():
+
+        if not join:
+            if fromStadistics:
+                fig = plt.figure(figsize=(20, 10))
+            else:
+                fig = plt.figure(figsize=(20, 20))
+
+            ax = plt.subplot(111)
+            ax.set_xlabel('Numero de trial')
+            ax.set_ylabel('señal (nivel)')
+
+            title = ''
+            if len(db[cts.P_Alias].unique()) == 1:
+                title = title + ' Usuario: ' + dbInfo[cts.P_Alias]
+
+            title = title + ' Experimento: ' + expName
+
+            ax.set_title(title, va='bottom')
+
+            # Definimos la escala de colores
+            size = len(db[cts.P_Alias])
+            colors = iter(cm.Paired(np.linspace(0, 1, size)))
+            levelColors = {}
+
+
         dbLevelInstance = db[db[cts.P_LevelInstance] == levelInstance]
         y = dbLevelInstance[cts.P_NivelEstimuloDinamica].tolist()
         x = range (len(y))
 
         # Construimos el label diferentes segun sea un grafico para un solo usuario o para varios
         label = ''
-        
+
         if len(db[cts.P_Alias].unique()) != 1:
             label = label + ' Usuario: ' + dbLevelInstance[cts.P_Alias].unique()[0]
-        
+
         label = label + ' referencia: ' + str(dbLevelInstance[cts.P_Referencia].unique()[0])
         label = label + ' \n Valor final: ' + str(y[-1])
-        
+
 
         # Graficamos
         if levelInstance in levelColors.keys():
@@ -96,7 +132,7 @@ def plotConvergencia (db, expName, fromStadistics=False):
         tipo = dbLevelInstance[cts.P_TipoDeTrial].tolist()
         for i in x:
             if aciertos[i]:
-                ax.plot(i,y[i],'bo')
+                ax.plot(i,y[i],'go')
             else:
                 ax.plot(i,y[i],'ro')
 
@@ -104,7 +140,14 @@ def plotConvergencia (db, expName, fromStadistics=False):
         ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],'8', color='green', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoEstimulo, mew = 3)
         ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],'8', color='cyan', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoTest, mew = 3)
 
-    ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+        if not join:
+            fig.savefig('./Images/Calibracion'+str(levelInstance))
+
+        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+
+    if join:
+        fig.savefig('./Images/Calibracion'+str(levelInstance))
+
     plt.show(block=False)
 
 

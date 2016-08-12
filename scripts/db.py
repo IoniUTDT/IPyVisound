@@ -56,6 +56,13 @@ def join (filename=cts.FileNameLocalDb):
     # Seleccionamos los datos
     data = db[cts.Db_Envios_Key]
 
+    # Se me filtro envios de un aversion vieja de la app!
+    dataFiltrada=[]
+    for envio in data:
+        if cts.Db_Envios_TipoDeEnvioKey in envio:
+            dataFiltrada = dataFiltrada + [envio]
+    data = dataFiltrada
+
     # Buscamos la lista de todas las categorias de envios
     tiposDeEnvio = set([envio[cts.Db_Envios_TipoDeEnvioKey] for envio in data])
 
@@ -150,15 +157,15 @@ def updateUser (user):
             users = pickle.load(f)
     else:
         display ('ERROR : No se ha encontrado el archivo ' + cts.PATHALIAS)
-    
-    
+
+
     for eachuser in users:
         cambiar = False
 
         if isinstance(user, int):
             if eachuser[cts.Db_Users_id] == user:
                 cambiar = True
-        if isinstance (user , str):            
+        if isinstance (user , str):
             if eachuser[cts.Db_Users_Alias] == user:
                 cambiar = True
 
@@ -184,7 +191,7 @@ def listOfUsers ():
     """
     import os
     import pickle
-    
+
     if os.path.isfile(cts.PATHALIAS):
         with open(cts.PATHALIAS, 'rb') as f:
             users = pickle.load(f)
@@ -219,11 +226,11 @@ def updateListOfUsers ():
     from scripts.general import fechaLocal
     import os
     import pickle
-    
+
     users = listOfUsers()
     for user in users:
-        if user[cts.Db_Users_Alias]==str(user[cts.Db_Sesion_User_Id]):
-            display ('Usuario creado el '+str(fechaLocal(user[cts.Db_Sesion_User_Id])))
+        #if user[cts.Db_Users_Alias]==str(user[cts.Db_Sesion_User_Id]):
+            display ('Usuario creado el '+str(fechaLocal(user[cts.Db_Sesion_User_Id])) + ' Alias actual: ' +  user[cts.Db_Users_Alias])
             response = input("Ingrese un alias o enter para continuar:")
             if response!= "":
                 user[cts.Db_Users_Alias] = response
@@ -273,6 +280,7 @@ def pandasTransferencia(completos=True):
         resultado = {}
         # Recuperamos la info del nivel:
         # resultado[cts.P_LevelIdentificador] = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_NivelLog][cts.Db_Resultados_NivelLog_LevelIdentificador] (Esto no conviene hacerlo aca porque si llega a mezclar niveles o algo no es info que venga del nivel posta)
+        resultado[cts.P_EnvioInstance] = resultado_db[cts.Db_Envios_InstanceKey]
         resultado[cts.P_LevelInstance] = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_NivelLog][cts.Db_Resultados_NivelLog_LevelInstance]
         # Recuperamos la info de la sesion
         sessionData = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_NivelLog][cts.Db_Resultados_NivelLog_Sesion]
@@ -288,7 +296,7 @@ def pandasTransferencia(completos=True):
         resultado[cts.P_Referencia] = resultadosData[cts.Db_Resultados_Dinamica_Referencia]
 
         # Buscamos y creamos una entrada por cada elemento del historial y lo agregamos
-        
+
         historial = resultado_db[cts.Db_Envios_Contenido][cts.Db_Resultados_Dinamica][cts.Db_Resultados_Dinamica_Historial]
         for entrada in historial:
             respuesta = {}
@@ -307,7 +315,7 @@ def pandasTransferencia(completos=True):
 
 
             respuestas = respuestas + [respuesta]
-   
+
         resultados = resultados + [resultado]
 
     resultados_pandas = pandas.DataFrame(resultados)
