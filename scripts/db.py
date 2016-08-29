@@ -162,6 +162,7 @@ def updateUser (user):
     for eachuser in users:
         cambiar = False
 
+
         if isinstance(user, int):
             if eachuser[cts.Db_Users_id] == user:
                 cambiar = True

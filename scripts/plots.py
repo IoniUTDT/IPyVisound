@@ -20,7 +20,7 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
 
     users = db[cts.P_Alias].unique() if alias == ["Todos"] else alias
 
- 
+
     for user in users:
 
         if onlyOneUser:
@@ -38,7 +38,6 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
             if exp in expList:
 
                 data = userDb[userDb[cts.P_LevelIdentificador]==exp]
-
                 plotConvergencia (data, exp, join=join)
 
 
