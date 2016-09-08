@@ -16,6 +16,7 @@ def downloadFile ():
     import time
     import urllib
     import os
+    import filecmp
 
     timestamp = time.time()
     st = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
@@ -25,16 +26,16 @@ def downloadFile ():
 
     # Bajamos el archivo
     urllib.request.urlretrieve(cts.URLserver, cts.FileNameLocalDbTemp)
+    print ('Donload finish')
 
+    if filecmp.cmp(cts.FileNameLocalDbTemp,cts.FileNameLocalDb):
+        print ('El archivo descargado es identico al existente')
 
     # Renombramos el archivo viejo y dejamos el descargado con el nombre que corresponde si se descargo bien
     if os.path.isfile(cts.FileNameLocalDbTemp):
         if os.path.isfile(cts.FileNameLocalDb):
             os.rename(cts.FileNameLocalDb,filenameBackup)
         os.rename(cts.FileNameLocalDbTemp,cts.FileNameLocalDb)
-
-    print ('Donload finish')
-
 
 def join (filename=cts.FileNameLocalDb):
 
