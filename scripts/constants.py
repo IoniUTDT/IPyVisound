@@ -80,7 +80,7 @@ PATHLEVELS = PathDirDatosLocal + 'NewLevel'
 PATHRESULTS = PathDirDatosLocal + 'RESULTADOS'
 
 #Otras Constantes
-expList = ['ParalelismoTutorial', 'AngulosTutorial',
+expList = [#'ParalelismoTutorial', 'AngulosTutorial',
         'TESTP30', 'TESTP60', 'TESTP120', 'TESTP150',
         'TESTA30', 'TESTA60', 'TESTA120', 'TESTA150',
         'ENTRENAMIENTOA30INICIAL', 'ENTRENAMIENTOA60INICIAL', 'ENTRENAMIENTOA120INICIAL', 'ENTRENAMIENTOA150INICIAL',

@@ -17,16 +17,21 @@ def downloadFile ():
     import urllib
     import os
     import filecmp
+    import progressbar
+
+    def avance(bloques,tamanoBloque,tamanoTotal):
+        avanzado = bloques * tamanoBloque
+        progreso = avanzado/tamanoTotal*100
+        if progreso <= 100:
+            bar.update(avanzado/tamanoTotal*100)
 
     timestamp = time.time()
     st = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
     filenameBackup = cts.PathDirDbBackUp + cts.FileNameLocalDb[:-5] + ' backup ' + st + '.json'
 
-    print ('Starting download, please wait')
-
+    bar = progressbar.ProgressBar()
     # Bajamos el archivo
-    urllib.request.urlretrieve(cts.URLserver, cts.FileNameLocalDbTemp)
-    print ('Donload finish')
+    urllib.request.urlretrieve(cts.URLserver, cts.FileNameLocalDbTemp, reporthook=avance)
 
     if filecmp.cmp(cts.FileNameLocalDbTemp,cts.FileNameLocalDb):
         print ('El archivo descargado es identico al existente')
@@ -220,7 +225,7 @@ def listOfUsersCleanAlias ():
     usersClean = listOfUsersClean()
     return [user[cts.Db_Users_Alias] for user in usersClean]
 
-def updateListOfUsers ():
+def updateListOfUsers (notIgnored=False):
 
     """
         Detecta que usuarios no tienen alias y propone modificarlo en forma semiautomartica
@@ -231,14 +236,17 @@ def updateListOfUsers ():
 
     users = listOfUsers()
     for user in users:
-        #if user[cts.Db_Users_Alias]==str(user[cts.Db_Sesion_User_Id]):
-            display ('Usuario creado el '+str(fechaLocal(user[cts.Db_Sesion_User_Id])) + ' Alias actual: ' +  user[cts.Db_Users_Alias])
-            response = input("Ingrese un alias o enter para continuar:")
-            if response!= "":
-                user[cts.Db_Users_Alias] = response
-            response = input("Presiones 'si' para descartar este usuario del procesamiento de datos")
-            if response=="si":
-                user[cts.Db_Users_Ignore] = True
+        if notIgnored:
+            if not user[cts.Db_Users_Alias] in listOfUsersCleanAlias():
+                continue
+                display('Saltar!')
+        display ('Usuario creado el '+str(fechaLocal(user[cts.Db_Sesion_User_Id])) + ' Alias actual: ' +  user[cts.Db_Users_Alias])
+        response = input("Ingrese un nuevo alias o enter para continuar:")
+        if response!= "":
+            user[cts.Db_Users_Alias] = response
+        response = input("Presiones 'si' para descartar este usuario del procesamiento de datos")
+        if response=="si":
+            user[cts.Db_Users_Ignore] = True
 
     with open(cts.PATHALIAS, 'wb') as f:
         pickle.dump(users, f)

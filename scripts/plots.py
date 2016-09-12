@@ -9,20 +9,23 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
                 expList=cts.expList,
                 onlyOneUser=True, number=-1, join=False):
 
+
+    excludedSessionInstance = [1473088663797]
+
     from scripts.db import pandasTransferencia
 
     db = pandasTransferencia()
 
+    """
     if alias == ["Todos"]:
         users = db[cts.P_Alias].unique()
     else:
         users = alias
+    """
 
     users = db[cts.P_Alias].unique() if alias == ["Todos"] else alias
 
-
     for user in users:
-
         if onlyOneUser:
             if user != users[number]:
                 continue
@@ -34,10 +37,11 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
 
         exps = userDb[cts.P_LevelIdentificador].unique()
         for exp in exps:
-            display (exp)
+            #display (exp)
             if exp in expList:
 
                 data = userDb[userDb[cts.P_LevelIdentificador]==exp]
+                data = userDb[~userDb[cts.P_SessionInstance].isin(excludedSessionInstance)]
                 plotConvergencia (data, exp, join=join)
 
 
@@ -46,6 +50,7 @@ def plotConvergencia (db, expName, fromStadistics=False, join=False):
     import matplotlib.pyplot as plt
     import matplotlib.cm as cm
     import numpy as np
+    from scripts.general import fechaLocal
 
     db=db[db[cts.P_LevelIdentificador]==expName]
     dbInfo = db.iloc[0]
@@ -75,6 +80,7 @@ def plotConvergencia (db, expName, fromStadistics=False, join=False):
         colors = iter(cm.Paired(np.linspace(0, 1, size)))
         levelColors = {}
 
+    onceInstance = True
     # Hacemos un grafico para cada instancia del nivel jugado (en principio deberia haber una sola, pero podria haber mas)
     for levelInstance in db[cts.P_LevelInstance].unique():
 
@@ -103,6 +109,7 @@ def plotConvergencia (db, expName, fromStadistics=False, join=False):
 
 
         dbLevelInstance = db[db[cts.P_LevelInstance] == levelInstance]
+        #display (dbLevelInstance[cts.P_SessionInstance].unique())
         y = dbLevelInstance[cts.P_NivelEstimuloDinamica].tolist()
         x = range (len(y))
 
@@ -114,7 +121,27 @@ def plotConvergencia (db, expName, fromStadistics=False, join=False):
 
         label = label + ' referencia: ' + str(dbLevelInstance[cts.P_Referencia].unique()[0])
         label = label + ' \n Valor final: ' + str(y[-1])
+        label = label + ' \n Sesion:' + str(dbLevelInstance[cts.P_SessionInstance].unique()[0])
+        label = label + ' \n Fecha:' + str(fechaLocal(dbLevelInstance[cts.P_SessionInstance].unique()[0]))
+        #display (levelInstance)
 
+        # Agregamos las marcas
+        aciertos = dbLevelInstance[cts.P_RtaCorrecta].tolist()
+        tipo = dbLevelInstance[cts.P_TipoDeTrial].tolist()
+        for i in x:
+            if aciertos[i]:
+                ax.plot(i,y[i],'go')
+            else:
+                ax.plot(i,y[i],'ro')
+
+        if onceInstance:
+            ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],'8', color='black', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo, mew = 3)
+            ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],'8', color='green', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoEstimulo, mew = 3)
+            ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],'8', color='cyan', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoTest, mew = 3)
+        else:
+            ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],'8', color='black', markersize=15, fillstyle = 'none', mew = 3)
+            ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],'8', color='green', markersize=15, fillstyle = 'none', mew = 3)
+            ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],'8', color='cyan', markersize=15, fillstyle = 'none', mew = 3)
 
         # Graficamos
         if levelInstance in levelColors.keys():
@@ -127,23 +154,12 @@ def plotConvergencia (db, expName, fromStadistics=False, join=False):
             ax.plot(x,y,label=label)
             levelColors[levelInstance] = color
 
-        # Agregamos las marcas
-        aciertos = dbLevelInstance[cts.P_RtaCorrecta].tolist()
-        tipo = dbLevelInstance[cts.P_TipoDeTrial].tolist()
-        for i in x:
-            if aciertos[i]:
-                ax.plot(i,y[i],'go')
-            else:
-                ax.plot(i,y[i],'ro')
-
-        ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo],'8', color='black', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoNoEstimulo, mew = 3)
-        ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoEstimulo],'8', color='green', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoEstimulo, mew = 3)
-        ax.plot([i for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],[y[i] for i in x if tipo[i]==cts.Db_Historial_Recurso_EtiquetaTipoTest],'8', color='cyan', markersize=15, fillstyle = 'none', label=cts.Db_Historial_Recurso_EtiquetaTipoTest, mew = 3)
-
         if not join:
             fig.savefig('./Images/Calibracion'+str(levelInstance))
 
-        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+        ax.legend(loc='center left', bbox_to_anchor=(1, 0.5),numpoints=1)
+
+        onceInstance = False
 
     if join:
         fig.savefig('./Images/Calibracion'+str(levelInstance))
@@ -151,9 +167,11 @@ def plotConvergencia (db, expName, fromStadistics=False, join=False):
     plt.show(block=False)
 
 
+"""
 
+def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False):
 
-def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLevelInstance = [1465499974725,1466028783553,1466028660936,1466028551014,1466028543250,1466027507789,1466027464069,1466027418273,1466027187076]):
+    excludedLevelInstance = [1465499974725,1466028783553,1466028660936,1466028551014,1466028543250,1466027507789,1466027464069,1466027418273,1466027187076]
 
     from IPython.display import display
     import matplotlib.pyplot as plt
@@ -249,7 +267,7 @@ def plotConvergenciaVersionPiloto (db, expName, fromStadistics=False, excludedLe
     ax.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     plt.show(block=False)
 
-"""
+
 def plotAllByUser (userAlias=[], soloCompletados = True):
 
 
