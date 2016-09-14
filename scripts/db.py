@@ -22,8 +22,9 @@ def downloadFile ():
     def avance(bloques,tamanoBloque,tamanoTotal):
         avanzado = bloques * tamanoBloque
         progreso = avanzado/tamanoTotal*100
-        if progreso <= 100:
-            bar.update(avanzado/tamanoTotal*100)
+        if progreso >100:
+            progreso = 100
+        bar.update(progreso)
 
     timestamp = time.time()
     st = datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
@@ -34,7 +35,7 @@ def downloadFile ():
     urllib.request.urlretrieve(cts.URLserver, cts.FileNameLocalDbTemp, reporthook=avance)
 
     if filecmp.cmp(cts.FileNameLocalDbTemp,cts.FileNameLocalDb):
-        print ('El archivo descargado es identico al existente')
+        display ('El archivo descargado es identico al existente')
 
     # Renombramos el archivo viejo y dejamos el descargado con el nombre que corresponde si se descargo bien
     if os.path.isfile(cts.FileNameLocalDbTemp):

@@ -3,6 +3,7 @@ import scripts.constants as cts
 from scripts.general import chkVersion
 from IPython.display import display
 from scripts.general import fechaLocal
+from scripts.db import pandasTransferencia
 
 def sessionStats():
 
@@ -30,4 +31,7 @@ def lastSessionStats(number=-1):
             display (' Level ' + infoLevel[cts.P_LevelIdentificador] + ' jugado a las: ' + str(fechaLocal(levelInstance)) + ' Envio de datos terminado a las: ' + str(fechaLocal(infoLevel[cts.P_EnvioInstance])))
 
 def usersResumen():
-    pass
+    data = pandasTransferencia()
+    for user in data[cts.P_Alias].unique():
+        display ('El usuario ' + user + ' realizo entrenamiento en ' + str(data[data[cts.P_Alias]==user][cts.P_OrientacionEntrenamiento].unique()))
+        display ('Y realizo los siguientes niveles: ' + str(data[data[cts.P_Alias]==user][cts.P_FaseActiva].unique()))

@@ -91,6 +91,8 @@ expList = [#'ParalelismoTutorial', 'AngulosTutorial',
         'ENTRENAMIENTOP30FINAL', 'ENTRENAMIENTOP60FINAL', 'ENTRENAMIENTOP120FINAL', 'ENTRENAMIENTOP150FINAL',
         ]
 
+expListToCut = ['ENTRENAMIENTOA30INICIAL', 'ENTRENAMIENTOP30INICIAL']
+
 URLserver = 'http://turintur.dynu.com/db'
 FileNameLocalDb = 'db.json'
 FileNameLocalDbTemp = 'temp.json'
