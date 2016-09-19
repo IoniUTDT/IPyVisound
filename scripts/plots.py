@@ -2,38 +2,39 @@ import scripts.constants as cts
 
 from scripts.general import chkVersion
 from IPython.display import display
+from scripts.db import dataProcesada
 
 chkVersion()
 
-def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
-                expList=cts.expList,
-                onlyOneUser=True, number=-1, join=False):
+def plotByUser (specificData=False, alias=["Todos"], filtroCompletadoActivo=True,
+                expList=cts.expList, onlyOneUser=True, number=-1, join=False, db=None):
 
+    users, db = dataProcesada(specificData=specificData, alias=alias, filtroCompletadoActivo=filtroCompletadoActivo,
+                        expList=expList, onlyOneUser=onlyOneUser, number=number, join=join, db=db)
 
+    """
     excludedSessionInstance = [1473088663797]
 
     from scripts.db import pandasTransferencia
 
-    db = pandasTransferencia()
-
-    """
-    if alias == ["Todos"]:
-        users = db[cts.P_Alias].unique()
-    else:
-        users = alias
-    """
+    if not specificData:
+        db = pandasTransferencia()
 
     users = db[cts.P_Alias].unique() if alias == ["Todos"] else alias
+    """
 
     for user in users:
+        """
         if onlyOneUser:
             if user != users[number]:
                 continue
-
+        """
         userDb = db[db[cts.P_Alias]==user]
 
+        """
         if filtroCompletadoActivo:
             userDb = userDb[userDb[cts.P_LevelFinalizado]==True]
+        """
 
         exps = userDb[cts.P_LevelIdentificador].unique()
         for exp in exps:
@@ -41,7 +42,7 @@ def plotByUser (alias=["Todos"], filtroCompletadoActivo=True,
             if exp in expList:
 
                 data = userDb[userDb[cts.P_LevelIdentificador]==exp]
-                data = userDb[~userDb[cts.P_SessionInstance].isin(excludedSessionInstance)]
+                #data = userDb[~userDb[cts.P_SessionInstance].isin(excludedSessionInstance)]
                 plotConvergencia (data, exp, join=join)
 
 

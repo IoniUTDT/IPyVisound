@@ -336,3 +336,22 @@ def pandasTransferencia(completos=True):
     df = pandas.merge(df,respuestas_pandas, on=cts.P_LevelInstance)
 
     return df
+
+def dataProcesada (specificData=False, alias=["Todos"], filtroCompletadoActivo=True,
+                expList=cts.expList, onlyOneUser=True, number=-1, join=False, db=None):
+
+    excludedSessionInstance = [1473088663797]
+
+    from scripts.db import pandasTransferencia
+    if not specificData:
+        db = pandasTransferencia()
+
+    db = db[~db[cts.P_SessionInstance].isin(excludedSessionInstance)]
+    users = db[cts.P_Alias].unique() if alias == ["Todos"] else alias
+    if onlyOneUser:
+        users = [users[number]]
+
+    if filtroCompletadoActivo:
+        db = db[db[cts.P_LevelFinalizado]==True]
+
+    return users, db

@@ -1,3 +1,4 @@
+"""Este modulo guarda los nombres de los texts que vienen de los json o los campos de los data frame para unificar y nombres"""
 
 # Nombres que vienen del codigo del Java
 Db_Envios_Key = 'Envio'
@@ -79,8 +80,8 @@ PATHSESSSION = PathDirDatosLocal + Db_Envios_TipoDeEnvio_Sesion
 PATHLEVELS = PathDirDatosLocal + 'NewLevel'
 PATHRESULTS = PathDirDatosLocal + 'RESULTADOS'
 
-#Otras Constantes
-expList = [#'ParalelismoTutorial', 'AngulosTutorial',
+# Otras Constantes
+expList = [  # 'ParalelismoTutorial', 'AngulosTutorial',
         'TESTP30', 'TESTP60', 'TESTP120', 'TESTP150',
         'TESTA30', 'TESTA60', 'TESTA120', 'TESTA150',
         'ENTRENAMIENTOA30INICIAL', 'ENTRENAMIENTOA60INICIAL', 'ENTRENAMIENTOA120INICIAL', 'ENTRENAMIENTOA150INICIAL',
