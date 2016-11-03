@@ -97,7 +97,7 @@ def filterData (data=None):
 
     return data
 
-def resumeByUsers(data=None):
+def resumeByUsers(data=None,escalaEnAngulos = False, diferencias=False):
 
     from matplotlib.backends.backend_pdf import PdfPages
     import numpy as np
@@ -105,21 +105,409 @@ def resumeByUsers(data=None):
     import matplotlib.patches as patches
     import datetime
 
+    if data:
+        resumen = dataNumerica(data)
+    else:
+        resumen = dataNumerica()
+
+    # Generamos las etiquetas
+        etiquetasTest = ['P30', 'P60', 'P120', 'P150', 'A30', 'A60', 'A120', 'A150']
+        etiquetasEntrenamiento = ['Dia1', 'Dia2', 'Dia3', 'Dia4']
+
+    # Creamos el pdf con todos los graficoados
+    #pp = PdfPages("./Images/TransferenciaResultados ("+ datetime.date.today().strftime("%B %d, %Y") +").pdf")
+
+    # Creamos un lienzo con todos los graficoados
+    f, axarr = plt.subplots(len (resumen.keys()),2)
+    f.set_size_inches(20, 2.5 * len (resumen.keys()))
+    #f.tight_layout()
+    f.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.4, hspace=0.4)
+    f.subplots_adjust(top=1)
+    i = 0
+    for alias, resultado in resumen.items():
+
+        valoresTestInicial = resultado['TestInicial']
+        valoresTestFinal = resultado['TestFinal']
+        valoresTestDiferencia = resultado['Evolucion']
+
+        valoresTestInicialEnAngulos = resultado['TestInicialAngulos']
+        valoresTestFinalEnAngulos = resultado['TestFinalAngulos']
+        valoresTestDiferenciaEnAngulo = resultado['EvolucionAngulos']
+
+        valoresEntrenamientoInicial = resultado['EntrenamientoInicial']
+        valoresEntrenamientoIntermedio = resultado['EntrenamientoMedio']
+        valoresEntrenamientoFinal = resultado['EntrenamientoFinal']
+
+        valoresEntrenamientoInicialEnAngulos = resultado['EntrenamientoInicialEnAngulos']
+        valoresEntrenamientoIntermedioEnAngulos = resultado['EntrenamientoMedioEnAngulos']
+        valoresEntrenamientoFinalEnAngulos = resultado['EntrenamientoFinalEnAngulos']
+
+        # Creamos las dos figuras para el usuario
+        # fig = axarr[i]
+        # fig = plt.figure(figsize=(20,2))
+        # fig.set_title("Usuario: " + cts.mapNames[alias] + ". Entrenamiento: " + resultado['Orientacion'], fontsize=12)
+        # fig.subplots_adjust(top=0.85)
+
+
+        if escalaEnAngulos:
+            valoresTestInicialUnificado = valoresTestInicialEnAngulos
+            valoresTestFinalUnificado = valoresTestFinalEnAngulos
+            valoresTestDiferenciaUnificado = valoresTestDiferenciaEnAngulo
+        else:
+            valoresTestInicialUnificado = valoresTestInicial
+            valoresTestFinalUnificado = valoresTestFinal
+            valoresTestDiferenciaUnificado = valoresTestDiferencia
+
+        valoresTestDiferenciaUnificadoPos = valoresTestDiferenciaUnificado
+        valoresTestDiferenciaUnificadoNeg = [- value for value in valoresTestDiferenciaUnificado]
+
+        # Creamos el grafico de test
+        #figuraTest = plt.subplot(121)
+        figuraTest = axarr[i,0]
+        #figuraTest.set_title("Usuario: " + cts.mapNames[alias], fontsize=12)
+        n_groups = 8
+        index = np.arange(n_groups)
+        if diferencias:
+            bar_width = 0.25
+        else:
+            bar_width = 0.4
+        opacity = 0.4
+        rects1 = figuraTest.bar(index, valoresTestInicialUnificado, bar_width,
+                 alpha=opacity * 0.5,
+                 color='b',
+                 label='Test Inicial')
+        rects2 = figuraTest.bar(index + bar_width, valoresTestFinalUnificado, bar_width,
+                 alpha=opacity * 2,
+                 color='b',
+                 label='TestFinal')
+        if diferencias:
+            rects3 = figuraTest.bar(index + bar_width*2, valoresTestDiferenciaUnificadoPos, bar_width,
+                     alpha=opacity * 2,
+                     color='g',
+                     label='Evolucion positiva')
+            rects4 = figuraTest.bar(index + bar_width*2, valoresTestDiferenciaUnificadoNeg, bar_width,
+                     alpha=opacity * 2,
+                     color='r',
+                     label='Evolucion negativa')
+        figuraTest.set_xlabel('Orientacion')
+
+        if escalaEnAngulos:
+            figuraTest.set_ylabel('Umbral de detección (angulo)')
+        else:
+            figuraTest.set_ylabel('Performance (estimulos)')
+        figuraTest.set_title('Comparacion test inicial y final ' + '('+"Usuario: " + alias+')')
+        plt.sca(axarr[i, 0])
+        plt.xticks(index + bar_width, etiquetasTest)
+        figuraTest.legend(bbox_to_anchor=(0.95, 1), loc=2, borderaxespad=0.)
+        if escalaEnAngulos:
+            figuraTest.set_ylim([0,100])
+        else:
+            figuraTest.set_ylim([0,200])
+
+        # Remarcamos el entrenamiento
+        MaxA = 80
+        MaxP = 100
+        pasos = 200
+        if escalaEnAngulos:
+            MaxCuadraditoA = MaxA
+            MaxCuadraditoP = MaxP
+        else:
+            MaxCuadraditoA = pasos
+            MaxCuadraditoP = pasos
+
+        if diferencias:
+            ancho = 0.75
+        else:
+            ancho = 0.8
+
+        if resultado['Orientacion'] == 'P30':
+            figuraTest.add_patch(
+                patches.Rectangle(
+                    (0, 0),
+                    ancho,
+                    MaxCuadraditoP,
+                    fill=False,      # remove background
+                    edgecolor="red"
+                )
+            )
+        if resultado['Orientacion'] == 'A30':
+            figuraTest.add_patch(
+                patches.Rectangle(
+                    (4, 0),
+                    ancho,
+                    MaxCuadraditoA,
+                    fill=False,      # remove background
+                    edgecolor="red"
+                )
+            )
+
+
+
+        # Grafico de entreamiento
+        figuraEntrenamiento = axarr[i,1]
+        # figuraEntrenamiento = plt.subplot(122)
+        n_groups = 4
+        index = np.arange(n_groups)
+        bar_width = 0.25
+        opacity = 0.4
+
+        if escalaEnAngulos:
+            valoresEntrenamientoInicial = valoresEntrenamientoInicialEnAngulos
+            valoresEntrenamientoIntermedio = valoresEntrenamientoIntermedioEnAngulos
+            valoresEntrenamientoFinal = valoresEntrenamientoFinalEnAngulos
+        else:
+            valoresEntrenamientoInicial = valoresEntrenamientoInicial
+            valoresEntrenamientoIntermedio = valoresEntrenamientoIntermedio
+            valoresEntrenamientoFinal = valoresEntrenamientoFinal
+
+        rects1 = figuraEntrenamiento.bar(index, valoresEntrenamientoInicial, bar_width,
+                 alpha=opacity*0.5,
+                 color='b',
+                 label='Entrenamiento inicial con feedback (100 trials)')
+        rects2 = figuraEntrenamiento.bar(index + bar_width, valoresEntrenamientoIntermedio, bar_width,
+                 alpha=opacity,
+                 color='b',
+                 label='Entrenamiento intermedio sin feedback (50 trials)')
+        rects3 = figuraEntrenamiento.bar(index + bar_width*2, valoresEntrenamientoFinal, bar_width,
+                alpha=opacity*2,
+                color='b',
+                label='Entrenamiento final con feedback (100 trials)')
+
+        figuraEntrenamiento.set_xlabel('Sesion')
+        if escalaEnAngulos:
+            figuraEntrenamiento.set_ylabel('Umbral de detección (angulo)')
+        else:
+            figuraEntrenamiento.set_ylabel('Performance (estimulos)')
+        #plt.ylabel('Performance')
+
+        figuraEntrenamiento.set_title('Evolucion de performance en entrenamiento' + '('+"Usuario: " + alias+')')
+        plt.sca(axarr[i, 1])
+        plt.xticks(index + 1.5 * bar_width, etiquetasEntrenamiento)
+        #figuraEntrenamiento.set_xticklabels(index + 1.5 * bar_width, etiquetasEntrenamiento)
+        figuraEntrenamiento.legend(bbox_to_anchor=(0.95, 1), loc=2, borderaxespad=0.)
+        if escalaEnAngulos:
+            figuraEntrenamiento.set_ylim([0,100])
+        else:
+            figuraEntrenamiento.set_ylim([0,200])
+
+        # pp.savefig(fig, dpi = 300, transparent = True)
+        i += 1
+
+    if escalaEnAngulos:
+        f.savefig('./Images/TransferenciaResultadosEnAngulos', bbox_inches='tight')
+    else:
+        f.savefig('./Images/TransferenciaResultados', bbox_inches='tight')
+    #pp.close()
+
+
+def resumeByUsersNuevo(data=None, escalaEnAngulos = True, diferencias=False):
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as patches
+    import datetime
+
+    if data:
+        resumen = dataNumerica(data)
+    else:
+        resumen = dataNumerica()
+
+    # Generamos las etiquetas
+        etiquetasTest = ['P30', 'P60', 'P120', 'P150', 'A30', 'A60', 'A120', 'A150']
+        etiquetasEntrenamiento = ['Test Inicial', 'Dia1', 'Dia2', 'Dia3', 'Dia4', 'TestFinal']
+
+    # Creamos un lienzo con todos los graficoados
+    f, axarr = plt.subplots(nrows=len(resumen.keys()),ncols=2,sharex=True, sharey=True,
+                           figsize=(20,2.5 * len (resumen.keys())))
+
+    #f.tight_layout()
+    f.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0, hspace=0)
+
+    # Variables que permiten ordenar las figuras
+
+    par=0
+    ang=3
+    sin=5
+
+    for alias, resultado in resumen.items():
+
+        if resultado['Orientacion'] == 'CONTROL':
+            i = sin
+            print ('CONTROL' + str(i))
+            sin = sin + 1
+        if resultado['Orientacion'] == 'P30':
+            i = par
+            print ('P30' + str(i))
+            par = par + 1
+        if resultado['Orientacion'] == 'A30':
+            i = ang
+            print ('A30' + str(i))
+            ang = ang + 1
+
+
+        valoresTestInicial = resultado['TestInicial']
+        valoresTestFinal = resultado['TestFinal']
+
+        valoresTestInicialEnAngulos = resultado['TestInicialAngulos']
+        valoresTestFinalEnAngulos = resultado['TestFinalAngulos']
+
+        valoresEntrenamientoInicial = resultado['EntrenamientoInicial']
+        valoresEntrenamientoIntermedio = resultado['EntrenamientoMedio']
+        valoresEntrenamientoFinal = resultado['EntrenamientoFinal']
+
+        valoresEntrenamientoInicialEnAngulos = resultado['EntrenamientoInicialEnAngulos']
+        valoresEntrenamientoIntermedioEnAngulos = resultado['EntrenamientoMedioEnAngulos']
+        valoresEntrenamientoFinalEnAngulos = resultado['EntrenamientoFinalEnAngulos']
+
+        if escalaEnAngulos:
+            valoresTestInicialUnificado = valoresTestInicialEnAngulos
+            valoresTestFinalUnificado = valoresTestFinalEnAngulos
+        else:
+            valoresTestInicialUnificado = valoresTestInicial
+            valoresTestFinalUnificado = valoresTestFinal
+
+        #figuraTest = plt.subplot(121)
+        figuraTest = axarr[i,0]
+        n_groups = 8
+        index = np.arange(n_groups)
+        bar_width = 0.4
+        opacity = 0.4
+
+        rects1 = figuraTest.bar(index, valoresTestInicialUnificado, bar_width,
+                 alpha=opacity * 0.5,
+                 color='b',
+                 label='Test Inicial')
+        rects2 = figuraTest.bar(index + bar_width, valoresTestFinalUnificado, bar_width,
+                 alpha=opacity * 2,
+                 color='b',
+                 label='TestFinal')
+        figuraTest.set_xlabel('Categoría y orientación')
+
+        if escalaEnAngulos:
+            figuraTest.set_ylabel('Umbral de detección (ángulo)')
+        else:
+            figuraTest.set_ylabel('Performance (estímulos)')
+
+        if i==0:
+            figuraTest.set_title('Comparacion test inicial y final según categoria y orientación')
+            figuraTest.legend(bbox_to_anchor=(0.95, 1), loc=1, borderaxespad=0.)
+
+        # plt.sca(axarr[i, 0])
+        if i==10:
+            figuraTest.xticks(index + bar_width, etiquetasTest)
+
+        if escalaEnAngulos:
+            figuraTest.set_ylim([80,0])
+        else:
+            figuraTest.set_ylim([0,200])
+
+        # Remarcamos el entrenamiento
+        Max = 80
+        pasos = 200
+        if escalaEnAngulos:
+            MaxCuadradito = Max
+        else:
+            MaxCuadradito = pasos
+
+        ancho = 0.8
+
+        if resultado['Orientacion'] == 'P30':
+            figuraTest.add_patch(
+                patches.Rectangle(
+                    (0, 0),
+                    ancho,
+                    MaxCuadradito,
+                    fill=False,      # remove background
+                    edgecolor="red"
+                )
+            )
+        if resultado['Orientacion'] == 'A30':
+            figuraTest.add_patch(
+                patches.Rectangle(
+                    (4, 0),
+                    ancho,
+                    MaxCuadradito,
+                    fill=False,      # remove background
+                    edgecolor="red"
+                )
+            )
+"""
+        # Grafico de entreamiento
+        figuraEntrenamiento = axarr[i,1]
+        # figuraEntrenamiento = plt.subplot(122)
+        n_groups = 4
+        index = np.arange(n_groups)
+        bar_width = 0.25
+        opacity = 0.4
+
+        if escalaEnAngulos:
+            valoresEntrenamientoInicial = valoresEntrenamientoInicialEnAngulos
+            valoresEntrenamientoIntermedio = valoresEntrenamientoIntermedioEnAngulos
+            valoresEntrenamientoFinal = valoresEntrenamientoFinalEnAngulos
+        else:
+            valoresEntrenamientoInicial = valoresEntrenamientoInicial
+            valoresEntrenamientoIntermedio = valoresEntrenamientoIntermedio
+            valoresEntrenamientoFinal = valoresEntrenamientoFinal
+
+        rects1 = figuraEntrenamiento.bar(index, valoresEntrenamientoInicial, bar_width,
+                 alpha=opacity*0.5,
+                 color='b',
+                 label='Entrenamiento inicial con feedback (100 trials)')
+        rects2 = figuraEntrenamiento.bar(index + bar_width, valoresEntrenamientoIntermedio, bar_width,
+                 alpha=opacity,
+                 color='b',
+                 label='Entrenamiento intermedio sin feedback (50 trials)')
+        rects3 = figuraEntrenamiento.bar(index + bar_width*2, valoresEntrenamientoFinal, bar_width,
+                alpha=opacity*2,
+                color='b',
+                label='Entrenamiento final con feedback (100 trials)')
+
+        figuraEntrenamiento.set_xlabel('Sesion')
+        if escalaEnAngulos:
+            figuraEntrenamiento.set_ylabel('Umbral de detección (angulo)')
+        else:
+            figuraEntrenamiento.set_ylabel('Performance (estimulos)')
+        #plt.ylabel('Performance')
+
+        figuraEntrenamiento.set_title('Evolucion de performance en entrenamiento' + '('+"Usuario: " + alias+')')
+        plt.sca(axarr[i, 1])
+        plt.xticks(index + 1.5 * bar_width, etiquetasEntrenamiento)
+        #figuraEntrenamiento.set_xticklabels(index + 1.5 * bar_width, etiquetasEntrenamiento)
+        figuraEntrenamiento.legend(bbox_to_anchor=(0.95, 1), loc=2, borderaxespad=0.)
+        if escalaEnAngulos:
+            figuraEntrenamiento.set_ylim([0,100])
+        else:
+            figuraEntrenamiento.set_ylim([0,200])
+
+        # pp.savefig(fig, dpi = 300, transparent = True)
+        i += 1
+"""
+#    if escalaEnAngulos:
+#        f.savefig('./Images/TransferenciaResultadosEnAngulos', bbox_inches='tight')
+#    else:
+#        f.savefig('./Images/TransferenciaResultados', bbox_inches='tight')
+
+
+def dataNumerica(data=None):
+
+    import numpy as np
+    import datetime
+
     if not data:
         data = filterData()
 
-    # Creamos el pdf con todos los graficoados
-    pp = PdfPages("./Images/TransferenciaResultados ("+ datetime.date.today().strftime("%B %d, %Y") +").pdf")
+    resultados = {}
+
     for alias in data[cts.P_Alias].unique():
         dataByAlias = data[data[cts.P_Alias] == alias]
+
+        resultado = {}
 
         # Corregimos errores en a generacion de datos
         if alias == "ExpT_Magdalena":
             dataByAlias[cts.P_OrientacionEntrenamiento].replace('A30', 'P30', inplace=True)
         if alias == "ExpT_Julieta":
             dataByAlias[cts.P_OrientacionEntrenamiento].replace('P30', 'CONTROL', inplace=True)
-
-
 
         # Generamos las etiquetas
         etiquetasTest = ['P30', 'P60', 'P120', 'P150', 'A30', 'A60', 'A120', 'A150']
@@ -142,7 +530,11 @@ def resumeByUsers(data=None):
         else:
             continue
 
+        resultado['TestInicial'] = valoresTestInicial
+
+        # Corregimos etiquetas mal generadas
         dataByAlias[cts.P_FaseActiva].replace('ExperimentoCompleto', 'TestFinal', inplace=True)
+
         dataTestFinal = dataByAlias[dataByAlias[cts.P_FaseActiva] == 'TestFinal']
         if len (dataTestFinal.index) == 8:
             valoresTestFinal = []
@@ -158,8 +550,12 @@ def resumeByUsers(data=None):
         else:
             valoresTestFinal = [0]*8
 
+        resultado['TestFinal'] = valoresTestFinal
+
         # Creamos las diferencias
         valoresTestDiferencia = [y-x for y,x in zip (valoresTestFinal, valoresTestInicial)]
+
+        resultado['Evolucion'] = valoresTestDiferencia
 
         # Pasamos los valores a angulos reales
         pasosLineal = True
@@ -168,9 +564,15 @@ def resumeByUsers(data=None):
         MaxA = 80
         MaxP = 100
 
-        valoresTestInicialEnAngulos = [value/pasos*(MaxP-Min) for value in valoresTestInicial]
-        valoresTestFinalEnAngulos = [value/pasos*(MaxA-Min) for value in valoresTestFinal]
+        valoresTestInicialEnAngulos = [(200-value)/pasos*(MaxP-Min) for value in valoresTestInicial[0:4]]
+        valoresTestInicialEnAngulos = valoresTestInicialEnAngulos + [(200-value)/pasos*(MaxA-Min) for value in valoresTestInicial[4:8]]
+        valoresTestFinalEnAngulos = [(200-value)/pasos*(MaxA-Min) for value in valoresTestFinal[0:4]]
+        valoresTestFinalEnAngulos = valoresTestFinalEnAngulos + [(200-value)/pasos*(MaxA-Min) for value in valoresTestFinal[4:8]]
         valoresTestDiferenciaEnAngulo = [y-x for y,x in zip (valoresTestFinalEnAngulos, valoresTestInicialEnAngulos)]
+
+        resultado['TestInicialAngulos'] = valoresTestInicialEnAngulos
+        resultado['TestFinalAngulos'] = valoresTestFinalEnAngulos
+        resultado['EvolucionAngulos'] = valoresTestDiferenciaEnAngulo
 
         # Recopilamos los datos del entrenamiento
         valoresEntrenamientoInicial = []
@@ -234,134 +636,49 @@ def resumeByUsers(data=None):
             valoresEntrenamientoFinal += [dataFinal[dataFinal[cts.P_FaseActiva]=='Entrenamiento3'][cts.P_NivelEstimuloDinamica].values[0]]
             valoresEntrenamientoFinal += [dataFinal[dataFinal[cts.P_FaseActiva]=='Entrenamiento4'][cts.P_NivelEstimuloDinamica].values[0]]
 
-
         valoresEntrenamientoInicial = [200 - x for x in valoresEntrenamientoInicial]
         valoresEntrenamientoIntermedio = [200 - x for x in valoresEntrenamientoIntermedio]
         valoresEntrenamientoFinal = [200 - x for x in valoresEntrenamientoFinal]
-        # Creamos las dos figuras para el usuario
-        fig = plt.figure(figsize=(20,2))
-        fig.suptitle("Usuario: " + str(dataByAlias[cts.P_Alias].iloc[0]) + ". Entrenamiento: " + str(dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0]), fontsize=12)
-        fig.subplots_adjust(top=0.85)
-
-        # Elegimos si graficar en escala  relativa o absoluta
-        escalaEnAngulos = False
-
-        if escalaEnAngulos:
-            valoresTestInicialUnificado = valoresTestInicialEnAngulos
-            valoresTestFinalUnificado = valoresTestFinalEnAngulos
-            valoresTestDiferenciaUnificado = valoresTestDiferenciaEnAngulo
-        else:
-            valoresTestInicialUnificado = valoresTestInicial
-            valoresTestFinalUnificado = valoresTestFinal
-            valoresTestDiferenciaUnificado = valoresTestDiferencia
-
-        valoresTestDiferenciaUnificadoPos = valoresTestDiferenciaUnificado
-        valoresTestDiferenciaUnificadoNeg = [- value for value in valoresTestDiferenciaUnificado]
-
-        # Creamos el grafico de test
-        figuraTest = plt.subplot(121)
-        n_groups = 8
-        index = np.arange(n_groups)
-        bar_width = 0.25
-        opacity = 0.4
-        rects1 = figuraTest.bar(index, valoresTestInicialUnificado, bar_width,
-                 alpha=opacity * 0.5,
-                 color='b',
-                 label='Test Inicial')
-        rects2 = figuraTest.bar(index + bar_width, valoresTestFinalUnificado, bar_width,
-                 alpha=opacity * 2,
-                 color='b',
-                 label='TestFinal')
-        rects3 = figuraTest.bar(index + bar_width*2, valoresTestDiferenciaUnificadoPos, bar_width,
-                 alpha=opacity * 2,
-                 color='g',
-                 label='Evolucion positiva')
-        rects4 = figuraTest.bar(index + bar_width*2, valoresTestDiferenciaUnificadoNeg, bar_width,
-                 alpha=opacity * 2,
-                 color='r',
-                 label='Evolucion negativa')
-        plt.xlabel('Orientacion')
-        if escalaEnAngulos:
-            plt.ylabel('Performance (angulo de separación)')
-        else:
-            plt.ylabel('Performance (escala de estimulos)')
-        plt.title('Comparacion test inicial y final')
-        plt.xticks(index + bar_width, etiquetasTest)
-        plt.legend(bbox_to_anchor=(0.95, 1), loc=2, borderaxespad=0.)
-        if escalaEnAngulos:
-            figuraTest.set_ylim([0,100])
-        else:
-            figuraTest.set_ylim([0,200])
-
-        # Remarcamos el entrenamiento
-        if escalaEnAngulos:
-            MaxCuadraditoA = MaxA
-            MaxCuadraditoP = MaxP
-        else:
-            MaxCuadraditoA = pasos
-            MaxCuadraditoP = pasos
-
-        if str(dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0]) == 'P30':
-            figuraTest.add_patch(
-                patches.Rectangle(
-                    (0, 0),
-                    0.75,
-                    MaxCuadraditoP,
-                    fill=False,      # remove background
-                    edgecolor="red"
-                )
-            )
-        if str(dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0]) == 'A30':
-            figuraTest.add_patch(
-                patches.Rectangle(
-                    (4, 0),
-                    0.75,
-                    MaxCuadraditoA,
-                    fill=False,      # remove background
-                    edgecolor="red"
-                )
-            )
-
 
         if valoresEntrenamientoInicial == []:
             valoresEntrenamientoInicial = [0] * 4
             valoresEntrenamientoIntermedio = [0] * 4
             valoresEntrenamientoFinal = [0] * 4
-        if len(valoresEntrenamientoInicial) == 1:
-            valoresEntrenamientoInicial = valoresEntrenamientoInicial + [0] * 3
-            valoresEntrenamientoIntermedio = valoresEntrenamientoIntermedio + [0] * 3
-            valoresEntrenamientoFinal = valoresEntrenamientoFinal + [0] * 3
+        # if len(valoresEntrenamientoInicial) == 1:
+        #     valoresEntrenamientoInicial = valoresEntrenamientoInicial + [0] * 3
+        #     valoresEntrenamientoIntermedio = valoresEntrenamientoIntermedio + [0] * 3
+        #     valoresEntrenamientoFinal = valoresEntrenamientoFinal + [0] * 3
 
-        # Grafico de entreamiento
-        figuraEntrenamiento = plt.subplot(122)
-        n_groups = 4
-        index = np.arange(n_groups)
-        bar_width = 0.25
-        opacity = 0.4
-        rects1 = figuraEntrenamiento.bar(index, valoresEntrenamientoInicial, bar_width,
-                 alpha=opacity*0.5,
-                 color='b',
-                 label='Entrenamiento inicial con feedback (100 trials)')
-        rects2 = figuraEntrenamiento.bar(index + bar_width, valoresEntrenamientoIntermedio, bar_width,
-                 alpha=opacity,
-                 color='b',
-                 label='Entrenamiento intermedio sin feedback (50 trials)')
-        rects3 = figuraEntrenamiento.bar(index + bar_width*2, valoresEntrenamientoFinal, bar_width,
-                alpha=opacity*2,
-                color='b',
-                label='Entrenamiento final con feedback (100 trials)')
+        if dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0] == 'P30':
+            valoresEntrenamientoInicialEnAngulos = [(200-value)/pasos*(MaxP-Min) for value in valoresEntrenamientoInicial]
+            valoresEntrenamientoIntermedioEnAngulos = [(200-value)/pasos*(MaxP-Min) for value in valoresEntrenamientoIntermedio]
+            valoresEntrenamientoFinalEnAngulos = [(200-value)/pasos*(MaxP-Min) for value in valoresEntrenamientoFinal]
+        if dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0] == 'A30':
+            valoresEntrenamientoInicialEnAngulos = [(200-value)/pasos*(MaxA-Min) for value in valoresEntrenamientoInicial]
+            valoresEntrenamientoIntermedioEnAngulos = [(200-value)/pasos*(MaxA-Min) for value in valoresEntrenamientoIntermedio]
+            valoresEntrenamientoFinalEnAngulos = [(200-value)/pasos*(MaxA-Min) for value in valoresEntrenamientoFinal]
+        if dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0] == 'CONTROL':
+            valoresEntrenamientoInicialEnAngulos = [0]*4
+            valoresEntrenamientoIntermedioEnAngulos = [0]*4
+            valoresEntrenamientoFinalEnAngulos = [0]*4
 
-        plt.xlabel('Orientacion')
-        #plt.ylabel('Performance')
-        plt.title('Evolucion de performance en entrenamiento')
-        plt.xticks(index + 1.5 * bar_width, etiquetasEntrenamiento)
-        plt.legend(bbox_to_anchor=(0.95, 1), loc=2, borderaxespad=0.)
-        figuraEntrenamiento.set_ylim([0,200])
+        # corregimos los datos para Ivan que no hizo entrenamiento 2, 3, y 4
+        if valoresEntrenamientoInicialEnAngulos[1] > 90:
+            valoresEntrenamientoInicialEnAngulos[1:4] = [0,0,0]
+            valoresEntrenamientoIntermedioEnAngulos[1:4] = [0,0,0]
+            valoresEntrenamientoFinalEnAngulos[1:4] = [0,0,0]
 
-        fig.savefig('./Images/TransferenciaResultados:' + str(dataByAlias[cts.P_Alias].iloc[0]), bbox_inches='tight')
-        pp.savefig(fig, dpi = 300, transparent = True)
+        resultado['EntrenamientoInicial'] = valoresEntrenamientoInicial
+        resultado['EntrenamientoMedio'] = valoresEntrenamientoIntermedio
+        resultado['EntrenamientoFinal'] = valoresEntrenamientoFinal
+        resultado['EntrenamientoInicialEnAngulos'] = valoresEntrenamientoInicialEnAngulos
+        resultado['EntrenamientoMedioEnAngulos'] = valoresEntrenamientoIntermedioEnAngulos
+        resultado['EntrenamientoFinalEnAngulos'] = valoresEntrenamientoFinalEnAngulos
 
-    pp.close()
+        resultado['Orientacion'] = str(dataByAlias[cts.P_OrientacionEntrenamiento].iloc[0])
+        resultados[cts.mapNames[alias]] = resultado
+    return resultados
+
 
 def resumeByCategorias(data=None):
 

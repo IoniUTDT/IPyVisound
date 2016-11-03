@@ -98,3 +98,7 @@ URLserver = 'http://turintur.dynu.com/db'
 FileNameLocalDb = 'db.json'
 FileNameLocalDbTemp = 'temp.json'
 PathDirDbBackUp = './backups/'
+
+
+mapNames = {'ExpT_Marco':'Sujeto01','ExpT_Carolina':'Sujeto02','ExpT_Magdalena':'Sujeto03','ExpT_Ivan':'Sujeto04','ExpT_Enzo':'Sujeto05',
+            'ExpT_Julieta':'Sujeto06','ExpT_Gaston':'Sujeto07','ExpT_Andres':'Sujeto08','ExpT_CaroG':'Sujeto09','ExpT_Michelle':'Sujeto10'}
